@@ -10,7 +10,6 @@ const NAV = [
   { label: "Why Us", href: "#why" },
   { label: "Price", href: "#pricing" },
   { label: "Flow", href: "#flow" },
-  { label: "Journal", href: "#journal" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -49,7 +48,7 @@ export function Header() {
             href="#top"
             className="text-white tracking-[0.18em] text-[10px] sm:text-[11px] font-semibold leading-tight"
           >
-            <span className="block">OSAKA WALK-IN</span>
+            <span className="block">KYOTO WALK-IN</span>
             <span className="block">TATTOO STUDIO / JAPAN</span>
           </Link>
 
@@ -66,9 +65,6 @@ export function Header() {
           </nav>
 
           <div className="flex items-center gap-4">
-            <span className="hidden sm:inline-block text-[10px] tracking-[0.2em] text-white/80 uppercase">
-              JP / EN
-            </span>
             <a
               href="#contact"
               className="hidden md:inline-flex items-center gap-2 border border-white text-white px-4 py-2 text-[11px] tracking-[0.18em] uppercase font-medium hover:bg-white hover:text-black transition-colors"
@@ -114,8 +110,8 @@ export function Header() {
             ))}
           </nav>
           <div className="text-white/60 text-xs tracking-[0.2em] uppercase pt-8 border-t border-white/10 mt-auto">
-            <p>11:00 — 24:00 / Open Every Day</p>
-            <p className="mt-2">Osaka, Japan</p>
+            <p>11:00 — 21:00 / Open Every Day</p>
+            <p className="mt-2">Kyoto, Japan</p>
           </div>
         </div>
       </div>

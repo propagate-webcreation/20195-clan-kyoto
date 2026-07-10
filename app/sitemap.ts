@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://tattoo-studio-osaka.com';
+  const baseUrl = 'https://kyoto-walkin-tattoo-studio.com';
 
   const routes = [
     '/',

@@ -1,0 +1,21 @@
+export const SITE_CONFIG = {
+  brandName: "KYOTO WALK-IN TATTOO STUDIO JAPAN",
+  brandShort: "KYOTO WALK-IN",
+  companyName: "株式会社 Clan③",
+  companyNameEn: "Clan③ Inc.",
+  representative: "近藤 悠介",
+  representativeEn: "Yusuke Kondo",
+  address: "兵庫県芦屋市春日町12-4 106",
+  addressEn: "12-4 Kasuga-cho 106, Ashiya, Hyogo",
+  founded: "2025年12月1日",
+  foundedEn: "Dec 1, 2025",
+  serviceArea: "京都",
+  businessHours: "11:00 — 21:00",
+  businessHoursJp: "11:00〜21:00",
+  holidays: "年中無休",
+  instagramUrl:
+    "https://www.instagram.com/osaka_walkin_tattoo_studio?igsh=MTJ6Mm5ydDJ1Z3ViYg%3D%3D&utm_source=qr",
+  instagramHandle: "@osaka_walkin_tattoo_studio",
+  whatsappUrl: "https://wa.me/818025184492",
+  coordinates: "N 35.0116° / E 135.7681°",
+} as const;

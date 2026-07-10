@@ -34,16 +34,22 @@ export function Offer() {
               <span className="text-[#c8102e]">.</span>
             </h2>
             <p className="font-jp text-black/65 text-sm sm:text-base leading-[2.0] mt-8 tracking-[0.04em] max-w-md">
-              タトゥーは、消えない旅の記憶。
+              彫るだけじゃない。
               <br />
-              施術後のチェキと、
+              日本のタトゥーの背景や意味も学べる体験を。
               <br />
-              現地ガイドが案内する大阪の夜と。
+              施術後のチェキ・写真のプレゼントに加え、
+              <br />
+              現地ガイドや提携企業との連携で
+              <br />
+              観光ツアーのご紹介も可能です。
               <br />
               <span className="text-black/45 text-sm">
-                A polaroid in your hand. A guide for your night.
+                Not just ink — learn the culture behind the design.
                 <br />
-                A story under your skin.
+                A polaroid in your hand. A guide for your journey.
+                <br />
+                Tattoo + Japan + travel, all at once.
               </span>
             </p>
           </div>
@@ -52,8 +58,8 @@ export function Offer() {
           <div className="col-span-12 lg:col-span-7 lg:pl-8">
             <div className="relative w-full aspect-[4/5] sm:aspect-[5/6] bg-[#161616] overflow-hidden">
               <Image
-                src="/images/polaroid-traveler.webp"
-                alt="Traveler with fresh Japanese tattoo and polaroid in Osaka"
+                src="/images/polaroid-traveler-kyoto-soft.webp"
+                alt="淡いトーンでチェキを手にした日本人女性のタトゥー旅行者"
                 fill
                 sizes="(max-width: 1024px) 100vw, 60vw"
                 className="object-cover"
@@ -62,7 +68,7 @@ export function Offer() {
                 — Fig. 02 / Polaroid Souvenir
               </div>
               <div className="absolute bottom-5 right-5 text-[10px] tracking-[0.28em] uppercase text-white/85 text-right">
-                Osaka · Japan
+                Kyoto · Japan
               </div>
             </div>
           </div>
@@ -71,18 +77,18 @@ export function Offer() {
           <div className="col-span-12 grid grid-cols-1 md:grid-cols-2 gap-px bg-black/15 mt-10 sm:mt-16">
             {[
               {
-                tag: "01 / Polaroid",
-                title: "Polaroid Gift",
-                jp: "施術後のチェキプレゼント",
+                tag: "01 / Learn",
+                title: "Culture & Meaning",
+                jp: "背景や意味も学べる体験",
                 body:
-                  "Every guest leaves with a fresh polaroid of their new tattoo. A real, tangible souvenir.",
+                  "We share the story behind Japanese motifs — not just the design on skin, but the culture and meaning travellers remember.",
               },
               {
-                tag: "02 / Memory",
-                title: "A Story for Life",
-                jp: "一生残る、旅の記憶",
+                tag: "02 / Polaroid",
+                title: "Polaroid Gift",
+                jp: "施術後のチェキ・写真プレゼント",
                 body:
-                  "Tattoo + culture + travel — three layers of memory you carry home together, not separately.",
+                  "Every guest leaves with a fresh polaroid or photo of their new tattoo — a real, tangible souvenir of your time in Japan.",
               },
             ].map((b) => (
               <ScrollReveal

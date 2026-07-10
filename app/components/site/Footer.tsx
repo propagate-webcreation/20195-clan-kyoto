@@ -9,7 +9,6 @@ const NAV = [
   { label: "Why Us", href: "#why" },
   { label: "Offer", href: "#offer" },
   { label: "Flow", href: "#flow" },
-  { label: "Journal", href: "#journal" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -20,10 +19,10 @@ export function Footer() {
       <div className="relative overflow-hidden border-b border-white/15">
         <div className="max-w-[1600px] mx-auto px-5 sm:px-8 py-12 sm:py-24">
           <p className="text-[10px] sm:text-xs tracking-[0.32em] uppercase text-[#c8102e] mb-5 sm:mb-10">
-            — Walk-in tattoo studio · Osaka · Japan
+            — Walk-in tattoo studio · Kyoto · Japan
           </p>
           <h2 className="display text-white text-[clamp(2.2rem,12vw,11rem)] leading-[0.86] tracking-[-0.022em]">
-            <span className="block">OSAKA WALK-IN</span>
+            <span className="block">KYOTO WALK-IN</span>
             <span className="block">TATTOO STUDIO</span>
             <span className="block text-white/30">JAPAN<span className="text-[#c8102e]">.</span></span>
           </h2>
@@ -38,11 +37,11 @@ export function Footer() {
             — Studio
           </p>
           <p className="text-white text-base leading-[1.8] max-w-sm">
-            A walk-in tattoo studio in central Osaka, specialising in modern
-            and traditional Japanese motifs.
+            A walk-in tattoo studio in Kyoto, specialising in modern
+            and traditional Japanese motifs for international travellers.
           </p>
           <p className="font-jp text-white/55 text-sm mt-3 leading-[1.95] tracking-[0.04em]">
-            大阪・心斎橋エリアの飛び込み歓迎タトゥースタジオ。
+            京都の飛び込み歓迎タトゥースタジオ。
             <br />
             日本モチーフ・和テイスト専門。
           </p>
@@ -114,7 +113,7 @@ export function Footer() {
               </a>
             </li>
             <li className="text-white/85 text-sm pt-2 tabular">
-              11:00 — 24:00
+              11:00 — 21:00
             </li>
             <li className="text-white/55 text-xs">
               年中無休 / Open daily
@@ -128,8 +127,8 @@ export function Footer() {
             <p className="text-[10px] tracking-[0.28em] uppercase text-white/45 mb-2">
               Company
             </p>
-            <p className="text-white text-sm">株式会社 Clan②</p>
-            <p className="text-white/55 text-xs mt-1">Clan② Inc.</p>
+            <p className="text-white text-sm">株式会社 Clan③</p>
+            <p className="text-white/55 text-xs mt-1">Clan③ Inc.</p>
           </div>
           <div>
             <p className="text-[10px] tracking-[0.28em] uppercase text-white/45 mb-2">
@@ -163,7 +162,7 @@ export function Footer() {
           <span className="text-[#c8102e]">★</span>
           <span>Made for travellers</span>
           <span className="hidden sm:inline-block w-6 h-px bg-white/30" />
-          <span className="font-jp tracking-[0.18em]">大阪</span>
+          <span className="font-jp tracking-[0.18em]">京都</span>
           <span className="hidden sm:inline-block w-6 h-px bg-white/30" />
           <span>Japan</span>
           <span className="text-[#c8102e]">★</span>
@@ -173,8 +172,8 @@ export function Footer() {
       {/* bottom rail */}
       <div className="border-t border-white/10 bg-[#0a0a0a]">
         <div className="max-w-[1600px] mx-auto px-5 sm:px-8 py-5 sm:py-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-4 text-[9px] sm:text-[10px] tracking-[0.22em] sm:tracking-[0.24em] uppercase text-white/40">
-          <p className="leading-tight">© 2026 株式会社 Clan② / OSAKA WALK-IN TATTOO STUDIO JAPAN</p>
-          <p className="tabular leading-tight">EST. 2025 · OSAKA</p>
+          <p className="leading-tight">© 2026 株式会社 Clan③ / KYOTO WALK-IN TATTOO STUDIO JAPAN</p>
+          <p className="tabular leading-tight">EST. 2025 · KYOTO</p>
         </div>
       </div>
     </footer>

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://tattoo-studio-osaka.com/sitemap.xml
+Sitemap: https://kyoto-walkin-tattoo-studio.com/sitemap.xml

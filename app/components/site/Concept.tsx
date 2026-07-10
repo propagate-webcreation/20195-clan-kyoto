@@ -53,8 +53,8 @@ export function Concept() {
       <div className="relative w-full">
         <div className="relative w-full h-[60vh] sm:h-[80vh] min-h-[420px]">
           <Image
-            src="/images/concept-japan.webp"
-            alt="Red torii gate in a quiet Osaka alley"
+            src="/images/journal-sakura.webp"
+            alt="京都の桜と和の情景"
             fill
             sizes="100vw"
             className="object-cover object-center"
@@ -92,23 +92,22 @@ export function Concept() {
         <div className="col-span-12 lg:col-span-7">
           <ScrollReveal>
             <p className="text-white text-2xl sm:text-3xl lg:text-4xl leading-[1.45] tracking-[-0.005em] font-light">
-              Japanese tattoo carries its own quiet aesthetic — composition,
-              negative space, and balance. A simple line, a single blossom,
-              a coil of wave: minimal in form, but carrying centuries of
-              meaning beneath the skin.
+              We started with a simple wish — to make a special experience in
+              Japan feel easy and approachable. For travellers, we wanted a
+              place you can step into on impulse, leave with a memory under
+              your skin, and understand the culture behind the design — not
+              just the ink.
             </p>
           </ScrollReveal>
         </div>
         <div className="col-span-12 lg:col-start-9 lg:col-span-4 lg:pt-6">
           <ScrollReveal delay={0.15}>
             <p className="font-jp text-white/65 text-sm sm:text-base leading-[2.0] tracking-[0.04em]">
-              日本のタトゥーには、独自の美意識と繊細さがあります。構図や余白、バランスにこだわることで、シンプルでありながら深い意味を持つデザインが生まれます。桜や龍、波、漢字
-              ——
-              世界中の人々に愛されるモチーフには、それぞれの意味とストーリーが宿ります。
+              当スタジオは、日本での特別な体験をより気軽に提供したいという想いからスタートしました。観光で訪れる海外のお客様にとって、「その場で体験できる」「思い出として残せる」場所を作りたいと考えています。タトゥーをただ彫るだけでなく、日本の文化やデザインの意味も含めて体験できる空間を提供し、旅の一部として記憶に残るサービスを目指しています。
             </p>
             <div className="mt-8 flex items-center gap-4 text-[11px] tracking-[0.28em] uppercase text-white/50">
               <span className="block w-8 h-px bg-white/40" />
-              <span>OSAKA WALK-IN TATTOO STUDIO JAPAN</span>
+              <span>KYOTO WALK-IN TATTOO STUDIO JAPAN</span>
             </div>
           </ScrollReveal>
         </div>

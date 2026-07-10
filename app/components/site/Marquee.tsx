@@ -3,7 +3,7 @@
 const ITEMS = [
   "WALK-IN WELCOME",
   "OPEN EVERY DAY",
-  "11:00 — 24:00",
+  "11:00 — 21:00",
   "PRIVATE BOOTHS",
   "JAPANESE ARTISTS",
   "ENGLISH OK",

@@ -28,10 +28,10 @@ const notoSansJP = Noto_Sans_JP({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://tattoo-studio-osaka.com"),
-  title: "大阪のタトゥースタジオ| Tattoo Studio in Osaka",
+  metadataBase: new URL("https://kyoto-walkin-tattoo-studio.com"),
+  title: "京都のタトゥースタジオ | KYOTO WALK-IN TATTOO STUDIO JAPAN",
   description:
-    "大阪のタトゥースタジオ。ワンポイントから和彫りまで幅広いデザインに対応し、徹底した衛生管理で施術します。Premium tattoo studio in Osaka. We offer custom designs with strict hygiene standards. English OK!",
+    "京都のウォークイン対応タトゥースタジオ。日本モチーフ・和テイストのデザインを中心に、海外からのお客様にも対応。予約不要・年中無休 11:00〜21:00。Walk-in tattoo studio in Kyoto. Japanese motifs, English OK, polaroid gift.",
   alternates: {
     canonical: "/",
   },

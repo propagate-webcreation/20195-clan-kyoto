@@ -12,8 +12,8 @@ export function Hero() {
       {/* Background image — main subject */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/hero-main.webp"
-          alt="Japanese-style dragon tattoo close-up"
+          src="/images/hero-kyoto.webp"
+          alt="京都の桜と和柄タトゥーのクローズアップ"
           fill
           priority
           sizes="100vw"
@@ -34,14 +34,14 @@ export function Hero() {
 
       {/* meta corner top-left */}
       <div className="absolute top-28 sm:top-28 left-5 sm:left-8 z-20 text-[10px] sm:text-[11px] tracking-[0.24em] uppercase text-white/70 leading-relaxed">
-        <p>N 34.6937° / E 135.5023°</p>
-        <p className="mt-1">Walk-in Tattoo Studio · Osaka, Japan</p>
+        <p>N 35.0116° / E 135.7681°</p>
+        <p className="mt-1">Walk-in Tattoo Studio · Kyoto, Japan</p>
       </div>
 
       {/* meta corner top-right */}
       <div className="absolute top-[164px] sm:top-28 right-5 sm:right-8 lg:right-16 z-20 text-[10px] sm:text-[11px] tracking-[0.24em] uppercase text-white/70 text-right leading-relaxed">
         <p>Est. 2025</p>
-        <p className="mt-1">Six booths · Daily 11:00–24:00</p>
+        <p className="mt-1">Six booths · Daily 11:00–21:00</p>
       </div>
 
       {/* main headline — bottom-anchored */}
@@ -74,7 +74,7 @@ export function Hero() {
                 transition={{ duration: 1.0, delay: 0.30, ease: [0.22, 1, 0.36, 1] }}
                 className="block"
               >
-                IN <span className="text-[#c8102e]">OSAKA</span>,
+                IN <span className="text-[#c8102e]">KYOTO</span>,
               </motion.span>
               <motion.span
                 initial={{ opacity: 0, y: 80 }}
@@ -99,7 +99,7 @@ export function Hero() {
               旅の思い出を一生に刻む。
               <br />
               <span className="text-white/50 text-xs tracking-[0.04em]">
-                A Japanese tattoo as your souvenir from Osaka.
+                A Japanese tattoo as your souvenir from Kyoto.
               </span>
             </motion.p>
 
@@ -162,7 +162,7 @@ export function Hero() {
             <span>Scroll</span>
           </div>
           <p className="text-right whitespace-nowrap">
-            © 株式会社 Clan② / 2025
+            © 株式会社 Clan③ / 2025
           </p>
         </motion.div>
       </div>

@@ -97,7 +97,7 @@ export function Pricing() {
               Prices include tax.
             </p>
             <p className="text-[10px] tracking-[0.24em] uppercase text-black/45 mt-4">
-              Osaka, Japan
+              Kyoto, Japan
             </p>
             <p className="text-[13px] md:text-[16px] text-black/55 mt-1 leading-relaxed">
               We look forward to seeing you!
@@ -111,7 +111,7 @@ export function Pricing() {
               <div className="relative w-full h-[200px] md:h-[240px] bg-[#161616]">
                 <Image
                   src={PRICE_MENU_IMAGE}
-                  alt="大阪店タトゥーメニュー料金表"
+                  alt="京都店タトゥーメニュー料金表"
                   fill
                   sizes="220px"
                   className="object-contain"
@@ -214,7 +214,7 @@ export function Pricing() {
           </button>
           <Image
             src={PRICE_MENU_IMAGE}
-            alt="大阪店タトゥーメニュー料金表（拡大）"
+            alt="京都店タトゥーメニュー料金表（拡大）"
             width={1086}
             height={1448}
             className="max-w-[min(900px,calc(100vw-40px))] max-h-[85dvh] w-auto h-auto object-contain"

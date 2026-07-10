@@ -17,7 +17,7 @@ export function Contact() {
       <div className="border-t border-white/10">
         <div className="max-w-[1600px] mx-auto px-5 sm:px-8 py-6 flex items-center justify-between text-[10px] sm:text-[11px] tracking-[0.28em] uppercase text-white/55">
           <div className="flex items-center gap-4">
-            <span className="tabular text-[#c8102e]">09</span>
+            <span className="tabular text-[#c8102e]">08</span>
             <span>Walk in or Message</span>
           </div>
           <span>—— Contact</span>
@@ -28,7 +28,7 @@ export function Contact() {
       {/* HUGE outro headline */}
       <div className="max-w-[1600px] mx-auto px-5 sm:px-8 pt-16 sm:pt-32 pb-10 sm:pb-16">
         <p className="text-[10px] sm:text-xs tracking-[0.32em] uppercase text-[#c8102e] mb-5 sm:mb-10">
-          — Open every day · 11:00 — 24:00
+          — Open every day · 11:00 — 21:00
         </p>
         <h2 className="display text-white text-[clamp(2.8rem,12vw,12rem)] leading-[0.84] tracking-[-0.02em]">
           <TextReveal as="span" mode="word" staggerDelay={0.06} className="block">
@@ -41,13 +41,13 @@ export function Contact() {
             delay={0.25}
             className="block"
           >
-            {"INKED IN OSAKA."}
+            {"INKED IN KYOTO."}
           </TextReveal>
         </h2>
         <p className="font-jp text-white/65 text-sm sm:text-lg leading-[1.95] mt-6 sm:mt-12 tracking-[0.04em] max-w-xl">
-          飛び込み歓迎・予約不要・年中無休 11:00〜24:00。
+          飛び込み歓迎・予約不要・年中無休 11:00〜21:00。
           <br />
-          ご不安な方は WhatsApp / Instagram DM までお気軽に。
+          ご不安な方は WhatsApp で事前にご相談ください。
         </p>
       </div>
 
@@ -59,8 +59,8 @@ export function Contact() {
               Hours
             </p>
             <p className="text-white text-sm sm:text-xl tracking-[-0.005em] tabular leading-tight">
-              11:00<span className="hidden sm:inline"> — 24:00</span>
-              <span className="block sm:hidden text-[11px] mt-0.5">— 24:00</span>
+              11:00<span className="hidden sm:inline"> — 21:00</span>
+              <span className="block sm:hidden text-[11px] mt-0.5">— 21:00</span>
             </p>
             <p className="hidden sm:block text-white/55 text-sm mt-1">Open every day · 年中無休</p>
           </div>
@@ -68,7 +68,7 @@ export function Contact() {
             <p className="text-[9px] sm:text-[10px] tracking-[0.24em] uppercase text-white/45 mb-2 sm:mb-3">
               Location
             </p>
-            <p className="text-white text-sm sm:text-xl tracking-[-0.005em]">Osaka, JP</p>
+            <p className="text-white text-sm sm:text-xl tracking-[-0.005em]">Kyoto, JP</p>
             <p className="hidden sm:block text-white/55 text-sm mt-1">
               詳細住所はDMにてご案内
             </p>

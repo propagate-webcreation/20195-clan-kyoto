@@ -7,31 +7,31 @@ const REASONS = [
     num: "01",
     en: "Walk-in Welcome",
     jp: "予約不要・飛び込みOK",
-    body: "Drop in any time during business hours. No appointment needed — small pieces from the same day, larger work scheduled on the spot.",
+    body: "Drop in during your sightseeing — no appointment needed. A tattoo experience that fits naturally into your travel schedule.",
   },
   {
     num: "02",
-    en: "Private Booths",
-    jp: "本格スタジオ完備",
-    body: "Private booths in central Osaka, designed for focus and comfort, with Japanese tattoo artists on rotation every day of the year.",
+    en: "Japanese Motifs",
+    jp: "日本モチーフ・和テイスト専門",
+    body: "Sakura, dragon, wave, kanji, koi — traditional Japanese motifs reinterpreted in modern fine-line and bold irezumi work, loved by international guests.",
   },
   {
     num: "03",
-    en: "Japanese Motifs",
-    jp: "日本モチーフ・和テイスト専門",
-    body: "Sakura, dragon, wave, kanji, koi — traditional Japanese motifs reinterpreted in modern fine-line and bold irezumi work.",
+    en: "Six Booths · Daily Artists",
+    jp: "6ブース完備・日本人彫師が毎日出勤",
+    body: "Six private booths with selected Japanese tattoo artists on duty every day — smooth service even without a reservation.",
   },
   {
     num: "04",
-    en: "Short or Full Day",
-    jp: "短時間〜一日仕上げまで対応",
-    body: "From 30-minute fine-line keepsakes during your sightseeing break, to full-day traditional pieces — choose the size that fits your trip.",
+    en: "Short Sessions",
+    jp: "短時間施術も多数",
+    body: "Many designs can be completed in a short session — perfect for travellers who want a tattoo without reshaping their entire itinerary.",
   },
   {
     num: "05",
-    en: "English Spoken",
-    jp: "英語対応・海外観光客歓迎",
-    body: "Our staff speak English. Bring a screenshot, an idea, or just an emotion — we'll translate it into a design together.",
+    en: "Polaroid Gift",
+    jp: "チェキ・写真プレゼント",
+    body: "After your session, receive a polaroid or photo of your new tattoo — a tangible souvenir of your time in Japan.",
   },
   {
     num: "06",
@@ -76,9 +76,11 @@ export function WhyUs() {
                 US.
               </h2>
               <p className="font-jp text-white/55 text-sm leading-[1.95] mt-8 max-w-sm">
-                海外からの旅行者に選ばれる、
+                観光の合間に気軽に立ち寄れる
                 <br />
-                6 つの理由。
+                ウォークイン対応のタトゥースタジオ。
+                <br />
+                海外からのお客様にも多くご利用いただいています。
               </p>
             </div>
           </div>

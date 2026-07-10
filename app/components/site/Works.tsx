@@ -38,12 +38,12 @@ export function Works() {
           </div>
           <div className="col-span-12 lg:col-start-9 lg:col-span-4 lg:pt-6">
             <p className="text-white/60 text-sm leading-[1.85]">
-              Pick a motif. Bring a memory. Take it home —
-              <br />
-              under your skin.
+              From simple one-point designs to Japanese motifs and
+              wa-taste work — we&apos;ve built a wide portfolio for
+              travellers and first-timers alike.
             </p>
             <p className="font-jp text-white/45 text-sm leading-[2.0] mt-4 tracking-[0.04em]">
-              モチーフを選び、想い出を描き、肌に刻む。
+              シンプルなワンポイントから日本モチーフ・和テイストまで幅広く対応。観光客への施術経験も豊富で、初めての方にも安心してご利用いただけます。
             </p>
           </div>
         </div>
