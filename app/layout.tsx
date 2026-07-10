@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Anton, Inter, Noto_Sans_JP } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { SmoothScroll } from "./components/providers/SmoothScroll";
 
@@ -49,7 +50,10 @@ export default function RootLayout({
     >
       <body className="font-sans antialiased min-h-screen bg-[#0a0a0a] text-white selection:bg-[#c8102e] selection:text-white">
         <SmoothScroll>{children}</SmoothScroll>
-              <script src="https://www.propagate-annotator.com/tracker.js" async />
+        <Script
+          src="https://site-annotator.vercel.app/tracker.js"
+          strategy="afterInteractive"
+        />
 {/* Google Tag Manager */}
 <script id="pulse-gtm-w98rvbkz" dangerouslySetInnerHTML={{__html:`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
