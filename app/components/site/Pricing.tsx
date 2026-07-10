@@ -70,7 +70,7 @@ export function Pricing() {
       <div className="border-t border-black/15">
         <div className="max-w-[1600px] mx-auto px-5 sm:px-8 py-6 flex items-center justify-between text-[10px] sm:text-[11px] tracking-[0.28em] uppercase text-black/55">
           <div className="flex items-center gap-4">
-            <span className="tabular text-[#c8102e]">05</span>
+            <span className="tabular text-[#c8102e]">07</span>
             <span>Tattoo Menu</span>
           </div>
           <span>—— Price</span>

@@ -25,7 +25,7 @@ export function Flow() {
       <div className="border-t border-white/10">
         <div className="max-w-[1600px] mx-auto px-5 sm:px-8 py-6 flex items-center justify-between text-[10px] sm:text-[11px] tracking-[0.28em] uppercase text-white/55">
           <div className="flex items-center gap-4">
-            <span className="tabular text-[#c8102e]">07</span>
+            <span className="tabular text-[#c8102e]">06</span>
             <span>Two Ways In</span>
           </div>
           <span>—— Flow</span>

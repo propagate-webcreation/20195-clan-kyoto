@@ -5,11 +5,12 @@ import Link from "next/link";
 
 const NAV = [
   { label: "Concept", href: "#concept" },
+  { label: "Why Us", href: "#why" },
   { label: "Studio", href: "#studio" },
   { label: "Works", href: "#works" },
-  { label: "Why Us", href: "#why" },
-  { label: "Price", href: "#pricing" },
+  { label: "Offer", href: "#offer" },
   { label: "Flow", href: "#flow" },
+  { label: "Price", href: "#pricing" },
   { label: "Contact", href: "#contact" },
 ];
 
