@@ -1,0 +1,147 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-sans);
+  --font-display: var(--font-display);
+  --font-jp: var(--font-jp);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-ink: var(--ink);
+  --color-bone: var(--bone);
+  --color-blood: var(--blood);
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  html {
+    scroll-behavior: smooth;
+    font-variant-numeric: lining-nums tabular-nums;
+    background-color: #0a0a0a;
+  }
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-variant-numeric: lining-nums tabular-nums;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  ::selection {
+    background-color: #c8102e;
+    color: #fff;
+  }
+}
+
+:root {
+  /* sumi base */
+  --background: #0a0a0a;
+  --foreground: #f5f5f3;
+  --border: rgba(255, 255, 255, 0.12);
+  --muted: #161616;
+  --muted-foreground: #888888;
+  --primary: #f5f5f3;
+  --primary-foreground: #0a0a0a;
+  --accent: #c8102e;
+  --accent-foreground: #ffffff;
+  /* semantic */
+  --ink: #0a0a0a;
+  --bone: #f5f5f3;
+  --blood: #c8102e;
+}
+
+/* utility — film grain texture overlay */
+.grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.4 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.6'/></svg>");
+  opacity: 0.18;
+  mix-blend-mode: overlay;
+  z-index: 1;
+}
+
+/* hairline — NHA-style 1px white-12% horizontal divider */
+.hairline {
+  background-color: rgba(255, 255, 255, 0.12);
+  height: 1px;
+  width: 100%;
+}
+
+/* mono-tabular numerics for index labels */
+.tabular {
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+/* infinite marquee */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee 40s linear infinite;
+}
+
+@keyframes marquee-slow {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.marquee-slow {
+  animation: marquee-slow 80s linear infinite;
+}
+
+/* writing-mode: vertical-rl helper */
+.vert {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+/* large display headline reset */
+.display {
+  font-family: var(--font-display), "Hiragino Sans", "Noto Sans JP", sans-serif;
+  letter-spacing: -0.02em;
+  line-height: 0.86;
+  font-weight: 400;
+}
+
+/* mix-blend-mode header for hero */
+.diff-blend {
+  mix-blend-mode: difference;
+}
+
+/* button — NHA brutalist square */
+.btn-square {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  border: 1px solid currentColor;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.78rem;
+  font-weight: 500;
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.btn-square:hover {
+  background: var(--bone);
+  color: var(--ink);
+}
+.btn-blood {
+  background: var(--blood);
+  color: var(--bone);
+  border-color: var(--blood);
+}
+.btn-blood:hover {
+  background: var(--bone);
+  color: var(--ink);
+  border-color: var(--bone);
+}

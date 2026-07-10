@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tattoo-studio-osaka.com/sitemap.xml
