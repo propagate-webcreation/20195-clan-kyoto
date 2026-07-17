@@ -54,12 +54,12 @@ export function Header() {
             <span className="block">TATTOO STUDIO / JAPAN</span>
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-4 xl:gap-8 flex-nowrap shrink min-w-0 text-white">
+          <nav className="hidden lg:flex items-center gap-8 text-white">
             {NAV.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                className="text-[11px] xl:text-[12px] tracking-[0.16em] uppercase font-medium whitespace-nowrap hover:opacity-60 transition-opacity shrink-0"
+                className="text-[12px] tracking-[0.16em] uppercase font-medium hover:opacity-60 transition-opacity"
               >
                 {item.label}
               </a>
