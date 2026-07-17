@@ -9,6 +9,8 @@ alwaysApply: true
 
 # タイポグラフィ
 
+> ⚠ legacy補助ルール: 矛盾時は `01-rule-priority-v3.mdc` と `05-v3-core.mdc` を優先する。
+
 ## 文字は大きく・黒く
 
 - 本文: `text-[13px] md:text-[16px] leading-relaxed`（グレー禁止、`text-[#222]` 以上）

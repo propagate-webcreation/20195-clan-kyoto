@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import { Anton, Inter, Noto_Sans_JP } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
-import { SmoothScroll } from "./components/providers/SmoothScroll";
-
 // Display sans for huge English headlines (NHA-style condensed grotesque)
 const anton = Anton({
   subsets: ["latin"],
@@ -32,7 +30,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://kyoto-walkin-tattoo-studio.com"),
   title: "京都のタトゥースタジオ | KYOTO WALK-IN TATTOO STUDIO JAPAN",
   description:
-    "京都のウォークイン対応タトゥースタジオ。日本モチーフ・和テイストのデザインを中心に、海外からのお客様にも対応。予約不要・年中無休 11:00〜21:00。Walk-in tattoo studio in Kyoto. Japanese motifs, English OK, polaroid gift.",
+    "京都のウォークイン対応タトゥースタジオ。日本モチーフ・和テイストのデザインを中心に、海外からのお客様にも対応。予約不要・年中無休 11:00〜21:00。Walk-in tattoo studio in Kyoto. Japanese motifs, English OK.",
   alternates: {
     canonical: "/",
   },
@@ -46,10 +44,10 @@ export default function RootLayout({
   return (
     <html
       lang="ja"
-      className={`${anton.variable} ${inter.variable} ${notoSansJP.variable}`}
+      className={`scroll-auto md:scroll-smooth ${anton.variable} ${inter.variable} ${notoSansJP.variable}`}
     >
       <body className="font-sans antialiased min-h-screen bg-[#0a0a0a] text-white selection:bg-[#c8102e] selection:text-white">
-        <SmoothScroll>{children}</SmoothScroll>
+        {children}
         <Script
           src="https://site-annotator.vercel.app/tracker.js"
           strategy="afterInteractive"

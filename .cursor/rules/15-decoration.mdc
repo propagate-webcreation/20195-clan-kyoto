@@ -8,6 +8,8 @@ alwaysApply: true
 
 # 装飾制限
 
+> ⚠ legacy補助ルール: 矛盾時は `01-rule-priority-v3.mdc` と `05-v3-core.mdc` を優先する。
+
 | 禁止 | 代替 |
 |------|------|
 | 装飾目的の `shadow-*` / `ring-*` / `border-*` | 余白と背景差で表現 |

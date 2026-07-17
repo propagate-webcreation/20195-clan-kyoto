@@ -41,7 +41,7 @@ export function Hero() {
       {/* meta corner top-right */}
       <div className="absolute top-[164px] sm:top-28 right-5 sm:right-8 lg:right-16 z-20 text-[10px] sm:text-[11px] tracking-[0.24em] uppercase text-white/70 text-right leading-relaxed">
         <p>Est. 2025</p>
-        <p className="mt-1">Six booths · Daily 11:00–21:00</p>
+        <p className="mt-1">Three booths · Daily 11:00–21:00</p>
       </div>
 
       {/* main headline — bottom-anchored */}
@@ -110,26 +110,7 @@ export function Hero() {
               className="flex flex-nowrap items-center gap-2 sm:gap-3 -ml-1 sm:-ml-2 lg:-ml-4"
             >
               <a
-                href="https://wa.me/818025184492"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-square btn-blood shrink-0"
-              >
-                <Image
-                  src="/images/1781500391229_618524089186779494.png"
-                  alt=""
-                  width={20}
-                  height={20}
-                  className="shrink-0 w-5 h-5"
-                  aria-hidden
-                />
-                WhatsApp
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden>
-                  <path d="M1 11L11 1M11 1H3M11 1V9" stroke="currentColor" strokeWidth="1.2" />
-                </svg>
-              </a>
-              <a
-                href="https://www.instagram.com/osaka_walkin_tattoo_studio?igsh=MTJ6Mm5ydDJ1Z3ViYg%3D%3D&utm_source=qr"
+                href="https://www.instagram.com/kyoto_walkin_tattoo_studio?igsh=MTZuZGNyNWZhNHJsNw%3D%3D&utm_source=qr"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-square text-white shrink-0"
@@ -170,7 +151,7 @@ export function Hero() {
       {/* side vertical text — desktop only */}
       <div className="hidden xl:block absolute right-6 top-1/2 -translate-y-1/2 z-10">
         <p className="vert text-[10px] tracking-[0.4em] uppercase text-white/45 select-none">
-          Six booths · Japanese artists daily · Walk-in welcome
+          Three booths · Japanese artists daily · Walk-in welcome
         </p>
       </div>
     </section>

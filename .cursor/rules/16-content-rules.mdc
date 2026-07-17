@@ -8,6 +8,8 @@ alwaysApply: true
 
 # コンテンツルール
 
+> ⚠ legacy補助ルール: 矛盾時は `01-rule-priority-v3.mdc` と `05-v3-core.mdc` を優先する。
+
 ## 英語見出し禁止
 
 ```tsx

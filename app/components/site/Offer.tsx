@@ -13,7 +13,7 @@ export function Offer() {
         <div className="max-w-[1600px] mx-auto px-5 sm:px-8 py-6 flex items-center justify-between text-[10px] sm:text-[11px] tracking-[0.28em] uppercase text-black/55">
           <div className="flex items-center gap-4">
             <span className="tabular text-[#c8102e]">05</span>
-            <span>The Souvenir</span>
+            <span>The Experience</span>
           </div>
           <span>—— Offer</span>
         </div>
@@ -22,7 +22,6 @@ export function Offer() {
 
       <div className="max-w-[1600px] mx-auto px-5 sm:px-8 pt-20 sm:pt-32 pb-20 sm:pb-32">
         <div className="grid grid-cols-12 gap-y-16 gap-x-6">
-          {/* heading */}
           <div className="col-span-12 lg:col-span-5">
             <p className="text-[10px] tracking-[0.28em] uppercase text-[#c8102e] mb-6">
               — Tattoo × Japan × Travel
@@ -38,8 +37,6 @@ export function Offer() {
               <br />
               日本のタトゥーの背景や意味も学べる体験を。
               <br />
-              施術後のチェキ・写真のプレゼントに加え、
-              <br />
               現地ガイドや提携企業との連携で
               <br />
               観光ツアーのご紹介も可能です。
@@ -47,25 +44,24 @@ export function Offer() {
               <span className="text-black/45 text-sm">
                 Not just ink — learn the culture behind the design.
                 <br />
-                A polaroid in your hand. A guide for your journey.
+                A guide for your journey through Kyoto.
                 <br />
                 Tattoo + Japan + travel, all at once.
               </span>
             </p>
           </div>
 
-          {/* big image */}
           <div className="col-span-12 lg:col-span-7 lg:pl-8">
             <div className="relative w-full aspect-[4/5] sm:aspect-[5/6] bg-[#161616] overflow-hidden">
               <Image
-                src="/images/polaroid-traveler-kyoto-soft.webp"
-                alt="淡いトーンでチェキを手にした日本人女性のタトゥー旅行者"
+                src="/images/journal-sakura.webp"
+                alt="京都の桜と和柄タトゥーのイメージ"
                 fill
                 sizes="(max-width: 1024px) 100vw, 60vw"
                 className="object-cover"
               />
               <div className="absolute top-5 left-5 text-[10px] tracking-[0.28em] uppercase text-white/85">
-                — Fig. 02 / Polaroid Souvenir
+                — Fig. 02 / Kyoto Journey
               </div>
               <div className="absolute bottom-5 right-5 text-[10px] tracking-[0.28em] uppercase text-white/85 text-right">
                 Kyoto · Japan
@@ -73,7 +69,6 @@ export function Offer() {
             </div>
           </div>
 
-          {/* three benefits */}
           <div className="col-span-12 grid grid-cols-1 md:grid-cols-2 gap-px bg-black/15 mt-10 sm:mt-16">
             {[
               {
@@ -84,11 +79,11 @@ export function Offer() {
                   "We share the story behind Japanese motifs — not just the design on skin, but the culture and meaning travellers remember.",
               },
               {
-                tag: "02 / Polaroid",
-                title: "Polaroid Gift",
-                jp: "施術後のチェキ・写真プレゼント",
+                tag: "02 / Explore",
+                title: "Tour & Local Partners",
+                jp: "観光ツアー・現地ガイドのご紹介",
                 body:
-                  "Every guest leaves with a fresh polaroid or photo of their new tattoo — a real, tangible souvenir of your time in Japan.",
+                  "Through local guides and partner businesses, we can point you toward Kyoto experiences that fit your trip after your session.",
               },
             ].map((b) => (
               <ScrollReveal

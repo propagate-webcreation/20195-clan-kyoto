@@ -17,9 +17,9 @@ const REASONS = [
   },
   {
     num: "03",
-    en: "Six Booths · Daily Artists",
-    jp: "6ブース完備・日本人彫師が毎日出勤",
-    body: "Six private booths with selected Japanese tattoo artists on duty every day — smooth service even without a reservation.",
+    en: "Three Booths · Daily Artists",
+    jp: "3ブース完備・日本人彫師が毎日出勤",
+    body: "Three private booths with selected Japanese tattoo artists on duty every day — smooth service even without a reservation.",
   },
   {
     num: "04",
@@ -29,12 +29,6 @@ const REASONS = [
   },
   {
     num: "05",
-    en: "Polaroid Gift",
-    jp: "チェキ・写真プレゼント",
-    body: "After your session, receive a polaroid or photo of your new tattoo — a tangible souvenir of your time in Japan.",
-  },
-  {
-    num: "06",
     en: "Card & E-Pay",
     jp: "各種電子決済・クレジットカード対応",
     body: "Visa / Mastercard / AMEX, Apple Pay, Google Pay, PayPay, Alipay, WeChat Pay. Travel light — pay how you usually pay.",
@@ -64,7 +58,7 @@ export function WhyUs() {
           <div className="col-span-12 lg:col-span-4">
             <div className="lg:sticky lg:top-32">
               <p className="text-[10px] tracking-[0.28em] uppercase text-[#c8102e] mb-6">
-                — 6 Reasons
+                — 5 Reasons
               </p>
               <h2 className="display text-[clamp(2.4rem,6vw,6rem)] leading-[0.92] tracking-[-0.018em]">
                 WHY

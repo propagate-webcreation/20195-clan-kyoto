@@ -9,6 +9,8 @@ alwaysApply: false
 
 # iOS Safari モバイルビューポート対策
 
+> ⚠ legacy補助ルール: 矛盾時は `01-rule-priority-v3.mdc` と `05-v3-core.mdc` を優先する。
+
 iOS Safari ではスクロール時にアドレスバーが伸縮し、`vh` / `svh` / `dvh` が動的に再計算される。
 これにより画像のトリミング位置やレイアウトが「ガクン」と跳ねる（レイアウトジャンプ）。
 

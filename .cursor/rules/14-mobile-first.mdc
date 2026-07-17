@@ -8,6 +8,8 @@ alwaysApply: true
 
 # モバイルファースト
 
+> ⚠ legacy補助ルール: 矛盾時は `01-rule-priority-v3.mdc` と `05-v3-core.mdc` を優先する。
+
 プレフィックスなし = モバイル（0〜639px）。PC値は必ず `md:` 付き。
 
 ```tsx

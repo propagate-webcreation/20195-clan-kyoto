@@ -11,7 +11,9 @@
 ## このコマンドでできること（要約）
 
 1. `app/api/contact/route.ts` を作成（POST を受けて Google Sheets に書き込む API）
-2. フォーム（`app/contact/page.tsx` の `onSuccess` 内）に `fetch('/api/contact', ...)` を追記
+2. フォームの送信成功後に `fetch('/api/contact', ...)` を呼ぶよう、フォームコードを修正
+   - **v3.0.0（Server Action 方式）**: `handleSubmit` 内で `submitContactForm()` の戻り値が `ok: true` のときに追記
+   - **v2.0.0（旧 form-handler.js 方式）**: `FormHandler.init({ onSuccess: ... })` の `onSuccess` 内に追記
 3. `.env.example` にスプシ用の環境変数の説明を追記
 4. **初回送信時のみ** 1行目に列タイトル（`name` / `email` / `phone` 等）、2行目に1件目データを書き込み
 5. **2件目以降は最下行に追記**
@@ -21,10 +23,13 @@
 ```
 ユーザーがフォームを送信
    ↓
-[既存] 管理者にメール通知           ← フォーム本体に既に実装済み
-   ↓
+[既存] UFA に送信 → 管理者にメール通知    ← フォーム本体（Server Action または form-handler.js）
+   ↓ (送信成功時のみ)
 [新規] POST /api/contact   → Google スプシに1行追記   ← このコマンドで追加
 ```
+
+> 💡 **このコマンドは UFA 経由のメール通知とは独立して動く別系統の処理です**。
+> スプシ書き込みが失敗してもメール通知には影響しません。逆も同様です。
 
 ---
 
@@ -36,11 +41,21 @@
 
 | チェック項目 | 確認方法 |
 |---|---|
-| ✅ お問い合わせフォーム本体が存在する | `app/contact/page.tsx` が存在し、送信処理（`onSuccess` 等）が実装済み |
+| ✅ お問い合わせフォーム本体が存在する | `app/contact/page.tsx` が存在し、送信処理が実装済み |
 | ✅ ローカルでフォーム送信→メール通知が動いている | `npm run dev` → `/contact` から実送信して通知メール到達を確認 |
 | ✅ `.env.local` がプロジェクトルートに存在する | エディタで開いて確認（無い場合は新規作成可） |
 
-> ⚠️ お問い合わせフォーム本体が未実装の場合は、**先にフォーム本体を完成させてから**このコマンドを使ってください。
+> ⚠️ お問い合わせフォーム本体が未実装の場合は、**先にフォーム本体を完成させてから**このコマンドを使ってください（`/form-implement` を先に実行）。
+
+#### フォーム実装方式の自動判定
+
+AI は以下のシグナルから、フォームが v2 と v3 のどちらで実装されているかを判定します。
+
+| 方式 | 判別シグナル | スプシ呼び出しを差し込む場所 |
+|---|---|---|
+| **v3.0.0（Server Action）** | `app/actions/submit-contact.ts` が存在、または `app/contact/page.tsx` が `submitContactForm` を import している | `handleSubmit` 内、`result.ok` が `true` の分岐 |
+| **v2.0.0（form-handler.js）** | `app/contact/page.tsx` に `FormHandler.init` の呼び出しがある、または `<Script src="...form-handler.js" />` が読み込まれている | `FormHandler.init({ onSuccess: ... })` の `onSuccess` コールバック内 |
+| **不明** | 上記いずれにも該当しない | ユーザーに確認 |
 
 ---
 
@@ -118,9 +133,68 @@ Cursor のチャットに以下のように入力します。
 |---|---|---|
 | 1 | `googleapis` パッケージをインストール | `npm install googleapis` |
 | 2 | `app/api/contact/route.ts` を新規作成（既にあればタブ名のみ更新） | 新規ファイル |
-| 3 | `app/contact/page.tsx` の `onSuccess` 内に `fetch('/api/contact', ...)` を追記 | 既存ファイル修正 |
+| 3 | フォーム実装方式（v2 / v3）を判定し、送信成功後に `fetch('/api/contact', ...)` が呼ばれるよう修正 | `app/contact/page.tsx`（v3 の場合は `handleSubmit` 内、v2 の場合は `onSuccess` 内） |
 | 4 | `.env.example` にスプシ用変数の説明を追記 | 既存ファイル修正 |
 | 5 | 完了報告と「人がやるべき次の手順」を提示 | チャット |
+
+#### v3.0.0（Server Action 方式）の場合の挿入イメージ
+
+```tsx
+async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  e.preventDefault();
+  setIsSubmitting(true);
+  
+  const form = e.currentTarget;
+  const fd = new FormData(form);
+  const payload = {
+    name: String(fd.get("name") ?? ""),
+    email: String(fd.get("email") ?? ""),
+    phone: String(fd.get("phone") ?? ""),
+    message: String(fd.get("message") ?? ""),
+  };
+  
+  const result = await submitContactForm(payload);
+  setIsSubmitting(false);
+
+  if (result.ok) {
+    // ✅ ここに /api/contact 呼び出しを追加（スプシ書き込み）
+    fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    }).catch((err) => {
+      // スプシ書き込み失敗はメール通知の成否に影響させない
+      console.error("[spreadsheet sync] failed:", err);
+    });
+
+    setStatus({ type: "success", message: "送信完了しました。" });
+    form.reset();
+  } else {
+    setStatus({ type: "error", message: result.message });
+  }
+}
+```
+
+> 💡 **`.catch()` で握りつぶす理由**: メール通知は既に成功しているので、スプシ書き込みが落ちてもユーザーに「送信失敗」と見せたくないため。失敗はコンソールログだけに残す。
+
+#### v2.0.0（旧 form-handler.js 方式）の場合の挿入イメージ
+
+```tsx
+(window as any).FormHandler.init("site_id", token, {
+  apiBaseUrl: "https://universal-form-api.vercel.app",
+  beforeSend: (data) => { /* sanitize */ },
+  onSuccess: (response) => {
+    // ✅ ここに /api/contact 呼び出しを追加
+    fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    }).catch((err) => console.error(err));
+    // 既存の成功処理（リセット、メッセージ表示など）
+  },
+  onError: (err) => { /* ... */ },
+});
+```
 
 ---
 
@@ -223,7 +297,8 @@ git push origin main
 |---|---|
 | パッケージ | `npm install googleapis` の実行 |
 | API ルート | `app/api/contact/route.ts` の新規作成・タブ名更新 |
-| フォーム接続 | `app/contact/page.tsx` の `onSuccess` 内に `fetch('/api/contact', ...)` を追記 |
+| 実装方式判定 | フォームが v3（Server Action）か v2（form-handler.js）かを自動判定 |
+| フォーム接続 | 送信成功時に `fetch('/api/contact', ...)` が呼ばれるよう挿入（v3: `handleSubmit` 内、v2: `onSuccess` 内） |
 | 環境変数の説明 | `.env.example` への追記 |
 | ロジック | 1行目に列タイトル → 2行目以降にデータ追記、JST タイムスタンプ付与 |
 
@@ -248,7 +323,8 @@ git push origin main
 | `Unable to parse range: ○○!A:A` | スプシ側のタブ名と、コマンドで指定したタブ名が一致していない | スプシ下部のタブ名を確認し、半角/全角・スペースまで完全一致させる |
 | `error:0909006C:PEM routines:get_name:no start line` | `GOOGLE_SPREADSHEET_API` の改行処理に失敗している | JSON を**1行に圧縮し、シングルクォート `'...'` で囲む**。`private_key` の `\n` はそのまま残す |
 | ローカルで動くが本番で失敗 | Vercel に環境変数が登録されていない/Redeploy していない | STEP 5-2 を実施 |
-| メールは届くがスプシに記録されない | `app/contact/page.tsx` の `onSuccess` で `fetch('/api/contact', ...)` が呼ばれていない | `app/contact/page.tsx` を開き、`onSuccess` の中に `fetch` 呼び出しがあるか確認 |
+| メールは届くがスプシに記録されない | フォーム送信成功時に `fetch('/api/contact', ...)` が呼ばれていない | **v3**: `app/contact/page.tsx` の `handleSubmit` 内、`result.ok` の分岐に `fetch` 呼び出しがあるか確認 / **v2**: `FormHandler.init({ onSuccess })` の中に `fetch` 呼び出しがあるか確認 |
+| スプシ書き込みでフォーム送信全体が失敗する | `await fetch('/api/contact', ...)` で例外が握りつぶされていない | `.catch((err) => console.error(err))` を付けて、スプシ書き込みの失敗がメール通知の成否に影響しないようにする |
 | 1行目にデータが書かれて列タイトルが無い | `route.ts` の初回判定（`nextRow === 1`）が壊れている | コマンドを再実行するか、スプシを一度空にして再送信 |
 | Next.js が `Module not found: googleapis` で落ちる | パッケージが入っていない | `npm install googleapis` を手動実行 |
 
@@ -275,10 +351,13 @@ git push origin main
    - クォートが無い場合はコマンド直後の1単語をタブ名とする
    - 前後の空白はトリム
 
-3. **前提チェック**
+3. **前提チェック + フォーム実装方式の自動判定**
    - `app/contact/page.tsx` が存在するか
-   - フォーム送信処理（`onSubmit` または `onSuccess`）が実装済みか
-   - 不足があれば「先にお問い合わせフォーム本体を完成させてください」と案内して中断
+   - フォーム送信処理が実装済みか
+   - **🚨 v3 判定**: `app/actions/submit-contact.ts` の存在 / `submitContactForm` の import / `"use server"` ディレクティブ
+   - **🚨 v2 判定**: `FormHandler.init` の呼び出し / `<Script src="...form-handler.js" />` / `(window as any).FormHandler` の参照
+   - どちらにも該当しない場合はユーザーに確認
+   - 不足があれば「先にお問い合わせフォーム本体を完成させてください（`/form-implement` を使用）」と案内して中断
 
 4. **`googleapis` パッケージのインストール**
    - `package.json` に `googleapis` が無ければ `npm install googleapis` を実行
@@ -291,15 +370,26 @@ git push origin main
    - 列構成例: 送信日時(JST), name, email, phone, ...
    - 電話番号は先頭に `'` を付けて文字列として書き込み
 
-6. **フォーム接続**
-   - `app/contact/page.tsx` の `onSuccess`（または送信成功ハンドラ）内に `fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(formData) })` を追記
+6. **フォーム接続（実装方式に応じて挿入位置を切り替え）**
+
+   **v3.0.0（Server Action 方式）の場合:**
+   - `app/contact/page.tsx` の `handleSubmit` 内、`submitContactForm()` の戻り値が `ok: true` の分岐に `fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) }).catch((err) => console.error(err))` を追記
+   - **🚨 重要**: `.catch()` で握りつぶす（メール通知は成功済みなので、スプシ書き込みの失敗をユーザーに見せない）
+   - `await` を付けないことを推奨（ユーザー体験を遅延させない）
+
+   **v2.0.0（form-handler.js 方式）の場合:**
+   - `FormHandler.init({ onSuccess: (response) => {...} })` の `onSuccess` コールバック内に `fetch('/api/contact', ...)` を追記
+   - 同様に `.catch()` で握りつぶす
+
+   **共通:**
    - 既に呼ばれている場合はスキップ（タブ名のみ更新）
+   - 送信ペイロードはフォームの `name` 属性に対応するキーで構築
 
 7. **環境変数の説明**
    - `.env.example` に `GOOGLE_SPREADSHEET_API` と `SPREADSHEET_KEY` の説明を追記
 
 8. **完了報告**
-   - 実施した変更内容を簡潔に列挙
+   - 実施した変更内容を簡潔に列挙（判定した実装方式も明示）
    - **STEP 1（Google 側準備）と STEP 3（`.env.local` 設定）は人がやるべき作業として明示**
    - スプシのタブ名を完全一致させること、サービスアカウントへの共有を忘れないことを強調
 
@@ -316,9 +406,16 @@ git push origin main
 - **目的の絶対化**: タブ名の変更だけにとどめず、API ルートの作成・フォーム接続・環境変数説明をまとめて行う
 - **API ルート**: `app/api/contact/route.ts` で POST を受け取り、`GOOGLE_SPREADSHEET_API` と `SPREADSHEET_KEY` を使って Google Sheets に追記。range は `タブ名!A:A`、`タブ名!A1:Z1`、`タブ名!A${nextRow}` のように使用
 - **初回行の扱い（必須）**: シートが空（`nextRow === 1`）のときは **1行目に列タイトルのみ**、2行目に1件目データ。2件目以降は最下行に追記
-- **フォーム接続**: フォーム送信後に必ず `fetch("/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name, email, phone, ... }) })` が呼ばれるようにする
+- **フォーム実装方式の判定（v3 / v2）**:
+  - **v3（Server Action）**: `app/actions/submit-contact.ts` の存在 / `submitContactForm` の import を確認
+  - **v2（form-handler.js）**: `FormHandler.init` / `<Script src="...form-handler.js" />` を確認
+  - 判定結果を完了報告で明示する
+- **フォーム接続（v3）**: `handleSubmit` 内、`submitContactForm()` の戻り値が `ok: true` の分岐に `fetch("/api/contact", ...).catch(...)` を追記
+- **フォーム接続（v2）**: `FormHandler.init({ onSuccess })` の `onSuccess` 内に `fetch("/api/contact", ...).catch(...)` を追記
+- **エラー握りつぶし（必須）**: `/api/contact` の呼び出しは必ず `.catch((err) => console.error(err))` を付ける。スプシ書き込み失敗がメール通知の成否に影響しないようにするため
 - **秘密情報**: コード内に秘密を書かず、`.env.example` には説明のみ。実値は `.env.local` に人が手動で追記する形にする
 - **依存パッケージ**: `googleapis` は必ず `npm install` する（package.json への手書きだけで終わらせない）
+- **UFA トークンには触れない**: このコマンドは UFA とは独立した別系統の処理。`FORM_API_TOKEN` 等の UFA 関連環境変数を読んだり書いたりしない
 
 ### Execution Example
 
@@ -329,12 +426,16 @@ git push origin main
 ```
 [1] memories/spreadsheet_form_api.yaml を読み込み、app/contact/page.tsx を確認しました
 [2] タブ名を解析: "フォーム送信"
-[3] 前提チェック: お問い合わせフォーム本体は実装済みです（onSuccess を確認）
+[3] 前提チェック: お問い合わせフォーム本体は実装済みです
+    → 実装方式を判定: v3.0.0（Server Action 方式）を検出
+      - app/actions/submit-contact.ts が存在
+      - app/contact/page.tsx が submitContactForm を import
 [4] googleapis をインストールしました（npm install googleapis）
 [5] app/api/contact/route.ts を新規作成しました
     - タブ名: "フォーム送信"
     - 初回は1行目に列タイトル、2行目に1件目データ、2件目以降は最下行に追記
-[6] app/contact/page.tsx の onSuccess 内に fetch('/api/contact', ...) を追記しました
+[6] app/contact/page.tsx の handleSubmit 内、result.ok 分岐に fetch('/api/contact', ...).catch(...) を追記しました
+    （v3 の Server Action 成功後にスプシ書き込みを実行）
 [7] .env.example に GOOGLE_SPREADSHEET_API と SPREADSHEET_KEY の説明を追記しました
 
 ✅ コード側の作業は完了です。次は人がやる作業です：

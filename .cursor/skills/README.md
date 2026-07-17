@@ -3,31 +3,43 @@
 クリエイティブチェック用の **SKILL.md** と Playwright 用 **`.mjs`** をこのリポジトリ内に置いている。
 グローバルの `~/.cursor/skills/` は不要。エージェントは各フォルダの `SKILL.md` を読んで手順に従う。
 
-## スキル一覧（2つのみ）
+## スキル一覧
 
-| フォルダ | 用途 | トリガー | 実行タイミング |
-|----------|------|---------|-------------|
-| `director-visual/` | ディレクターレビュー全体 + PCビュー改行調整 | 「レビューして」「チェックして」「確認して」 | **通常のレビュー依頼で実行** |
-| `sp-responsive/` | SP（375px）改行最適化 | 「スマホ最適化して」「SP改行調整して」「レスポンシブ対応して」 | **明示的指示があった場合のみ実行** |
+### レビュー系（/review コマンド経由で実行）
 
-### 担当範囲
+| フォルダ | 用途 | トリガー |
+|----------|------|---------|
+| `director-visual/` | 総合ビジュアルレビュー + PC改行調整 | `/review director` |
+| `sp-responsive/` | SP（375px）改行品質レビュー・修正 | `/review sp` |
+| `overflow-check/` | テキスト見切れ・はみ出し検出 | `/review overflow` |
+| `text-wrap-cleanup/` | 不要 `<br>` / 禁止プロパティ一括除去 | `/review text-wrap` |
+| `font-review/` | フォントサイズ・ウェイト・行間チェック | `/review font` |
+| `color-review/` | 配色比率・コントラストチェック | `/review color` |
+| `image-icon-review/` | 画像・アイコン統一性チェック | `/review image` |
+| `layout-principles-review/` | デザイン4原則チェック | `/review layout` |
+| `lp-structure-review/` | LP 構成・ストーリーラインチェック | `/review lp-structure` |
+| `lp-design-review/` | LP 各セクションデザインチェック | `/review lp-design` |
+| `corporate-design-review/` | コーポレートサイトデザインチェック | `/review corporate` |
 
-```
-director-visual:
-  コード監査（フォントサイズ、禁止クラス、ボタン、セクション構造 等）
-  SP ビジュアルレビュー（レイアウト、サイズ、配色 ※改行修正はしない）
-  PC ビジュアルレビュー + PC改行調整（text-balance、カード揃え 等）
-  SP非破壊検証（PC改行修正がSPに影響していないか）
+### SP最適化系（/sp-optimize コマンド経由で実行）
 
-sp-responsive:
-  SP 改行品質レビュー（375px セクション単位）
-  SP 改行修正（md:hidden パターン等）
-  PC 非破壊検証（SP改行修正がPCに影響していないか）
-```
+| フォルダ | 用途 | Phase |
+|----------|------|-------|
+| `text-wrap-cleanup/` | コードクリーンアップ | Phase 1 |
+| `ios-viewport-fix/` | iOS ビューポートジャンプ修正 | Phase 2 |
+| `overflow-check/` | テキスト見切れ修正 | Phase 3 |
+| `font-review/` | フォントサイズ正規化 | Phase 4 |
+| `sp-responsive/` | SP 改行品質レビュー | Phase 5 |
+
+### その他
+
+| フォルダ | 用途 | トリガー |
+|----------|------|---------|
+| `localize-images/` | Unsplash 画像のローカル化 | 手動実行 |
 
 ## キャプチャスクリプト
 
-両スキルが共有する **`capture-sections.mjs`**（`director-visual/scripts/` に配置）で
+複数スキルが共有する **`capture-sections.mjs`**（`director-visual/scripts/` に配置）で
 セクション単位のスクリーンショットを撮影する。
 
 ```bash
@@ -53,17 +65,16 @@ PREVIEW_BASE_URL=http://127.0.0.1:4000 node .cursor/skills/director-visual/scrip
 .cache/visual-review/
   sp/
     home/
-      00-fullpage.png    ← ページ全体（概観用）
-      01-header.png      ← ヘッダー単体
-      02-hero.png        ← ヒーローセクション
-      03-service.png     ← サービスセクション
+      00-fullpage.png
+      01-header.png
+      02-hero.png
       ...
   pc/
     home/
       00-fullpage.png
       01-header.png
       ...
-  manifest.json          ← 全キャプチャの一覧とメタ情報
+  manifest.json
 ```
 
 ポートは自動検出される（`lsof` で Node.js のリッスンポートを探索）。

@@ -14,8 +14,7 @@ export const SITE_CONFIG = {
   businessHoursJp: "11:00〜21:00",
   holidays: "年中無休",
   instagramUrl:
-    "https://www.instagram.com/osaka_walkin_tattoo_studio?igsh=MTJ6Mm5ydDJ1Z3ViYg%3D%3D&utm_source=qr",
-  instagramHandle: "@osaka_walkin_tattoo_studio",
-  whatsappUrl: "https://wa.me/818025184492",
+    "https://www.instagram.com/kyoto_walkin_tattoo_studio?igsh=MTZuZGNyNWZhNHJsNw%3D%3D&utm_source=qr",
+  instagramHandle: "@kyoto_walkin_tattoo_studio",
   coordinates: "N 35.0116° / E 135.7681°",
 } as const;

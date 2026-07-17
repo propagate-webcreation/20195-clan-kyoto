@@ -8,6 +8,8 @@ alwaysApply: false
 
 # ページ構成・レイアウト
 
+> ⚠ legacy補助ルール: 矛盾時は `01-rule-priority-v3.mdc` と `05-v3-core.mdc` を優先する。
+
 ## ディレクトリ構成
 
 - `app/` 配下に各ページフォルダ（`app/about/page.tsx`）

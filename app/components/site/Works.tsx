@@ -106,7 +106,7 @@ export function Works() {
             ご希望のモチーフは Instagram DM にて気軽にご相談ください。
           </p>
           <a
-            href="https://www.instagram.com/osaka_walkin_tattoo_studio?igsh=MTJ6Mm5ydDJ1Z3ViYg%3D%3D&utm_source=qr"
+            href="https://www.instagram.com/kyoto_walkin_tattoo_studio?igsh=MTZuZGNyNWZhNHJsNw%3D%3D&utm_source=qr"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-square text-white"

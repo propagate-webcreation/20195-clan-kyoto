@@ -10,6 +10,7 @@ const NAV = [
   { label: "Offer", href: "#offer" },
   { label: "Flow", href: "#flow" },
   { label: "Price", href: "#pricing" },
+  { label: "Recruit", href: "#recruit" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -75,7 +76,7 @@ export function Footer() {
           <ul className="space-y-2.5">
             <li>
               <a
-                href="https://www.instagram.com/osaka_walkin_tattoo_studio?igsh=MTJ6Mm5ydDJ1Z3ViYg%3D%3D&utm_source=qr"
+                href="https://www.instagram.com/kyoto_walkin_tattoo_studio?igsh=MTZuZGNyNWZhNHJsNw%3D%3D&utm_source=qr"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-white/85 text-sm hover:text-[#c8102e] transition-colors"
@@ -91,26 +92,6 @@ export function Footer() {
                   />
                 </span>
                 Instagram
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://wa.me/818025184492"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-white/85 text-sm hover:text-[#c8102e] transition-colors"
-              >
-                <span className="relative shrink-0 w-[18px] h-[18px] overflow-hidden">
-                  <Image
-                    src="/images/1781500391229_618524089186779494.png"
-                    alt=""
-                    fill
-                    sizes="18px"
-                    className="object-cover"
-                    aria-hidden
-                  />
-                </span>
-                WhatsApp DM
               </a>
             </li>
             <li className="text-white/85 text-sm pt-2 tabular">

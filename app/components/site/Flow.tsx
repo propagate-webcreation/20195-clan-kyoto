@@ -6,14 +6,14 @@ const FLOW_DROPIN = [
   { num: "01", t: "Walk in", d: "Open every day, 11:00 — 21:00. Just step into the studio — no appointment needed." },
   { num: "02", t: "Pick a motif", d: "Browse our portfolio with the artist. Sakura, dragon, kanji, or your own idea." },
   { num: "03", t: "Get inked", d: "Comfortable booth, English explanation, sterile setup. Short or full-day work." },
-  { num: "04", t: "Polaroid + tour", d: "Take a polaroid, get tour suggestions, and walk back into Kyoto with a new story." },
+  { num: "04", t: "After-care + tour tips", d: "Receive after-care guidance, tour suggestions, and walk back into Kyoto with a new story." },
 ];
 
 const FLOW_PRIOR = [
-  { num: "01", t: "Message us", d: "If you have any concerns, reach out via WhatsApp before you visit — we're happy to answer in English or Japanese." },
+  { num: "01", t: "Message us", d: "If you have any concerns, reach out via Instagram DM before you visit — we're happy to answer in English or Japanese." },
   { num: "02", t: "Quick chat", d: "We confirm motif, size and a rough time-slot. Reply in English or Japanese." },
   { num: "03", t: "Walk in on the day", d: "Arrive at the studio at the agreed time — your booth is ready." },
-  { num: "04", t: "Same finish", d: "Polaroid, tour suggestions and after-care, just like our walk-in flow." },
+  { num: "04", t: "Same finish", d: "After-care, tour suggestions and the same studio experience as our walk-in flow." },
 ];
 
 export function Flow() {
@@ -46,20 +46,18 @@ export function Flow() {
           <div className="col-span-12 lg:col-span-5 lg:pt-6">
             <p className="text-white/65 text-sm sm:text-base leading-[1.85]">
               Walk-ins are welcome — that&apos;s our default. If anything
-              makes you unsure, message us on WhatsApp before you come.
-              Both paths end in the same chair, with the same polaroid.
+              makes you unsure, message us on Instagram before you come.
+              Both paths end in the same chair, with the same care.
             </p>
             <p className="font-jp text-white/45 text-sm leading-[2.0] mt-3 tracking-[0.04em]">
               基本は飛び込み来店。
               <br />
-              ご不安な点がある場合は、WhatsAppで事前にご相談ください。
+              ご不安な点がある場合は、Instagram DMで事前にご相談ください。
             </p>
           </div>
         </div>
 
-        {/* two-column comparison */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-px bg-white/10 mt-16 sm:mt-20 border-y border-white/10">
-          {/* Walk-in column */}
           <div className="bg-[#0a0a0a] p-8 sm:p-12 lg:p-16">
             <div className="flex items-baseline justify-between mb-8">
               <p className="text-[10px] tracking-[0.28em] uppercase text-[#c8102e] tabular">
@@ -94,11 +92,10 @@ export function Flow() {
             </ol>
           </div>
 
-          {/* Prior chat column */}
           <div className="bg-[#0a0a0a] p-8 sm:p-12 lg:p-16">
             <div className="flex items-baseline justify-between mb-8">
               <p className="text-[10px] tracking-[0.28em] uppercase text-[#c8102e] tabular">
-                — B / WhatsApp
+                — B / Instagram
               </p>
               <p className="font-jp text-white/45 text-xs tracking-[0.06em]">
                 事前相談あり

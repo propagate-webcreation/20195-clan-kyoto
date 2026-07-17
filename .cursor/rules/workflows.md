@@ -283,9 +283,26 @@ Execute each workflow in sequence without skipping (except workflow_0 if user ch
 **実行方法:** `/form-implement` コマンドを使用してください
 
 ### Context Files
-- `memories/form_workflow.yaml` （v2.0.0 - Token認証対応・完全な仕様を含む）
+- `memories/form_workflow.yaml` （v3.0.0 - Server Action 方式・最新 UFA 対応）
 
 **注意:** すべての必要な情報は `memories/form_workflow.yaml` に含まれています。外部ファイルへの参照は不要です。
+
+### 🚨 v3.0.0 で変わったこと（最新 UFA 対応）
+
+旧方式（v2.0.0）は廃止。理由：
+
+- `form-handler.js` をブラウザで読み込み、`NEXT_PUBLIC_FORM_API_TOKEN` をブラウザに露出していた
+- 最新 UFA では Token 認証サイトは **Server Action 経由のサーバー送信が推奨**
+- 2026-05-04 以降の UFA には `_hp_field` honeypot があり、空文字で送らないと bot 判定（200 偽装応答で記録されない）
+
+v3.0.0 の方針:
+
+- `form-handler.js` の `<Script>` 読み込みは **使わない**
+- `FormHandler.init()` は **呼ばない**
+- `app/actions/submit-contact.ts` に Server Action を作る
+- Client Component からは Server Action を `await` で呼ぶだけ
+- 環境変数は `FORM_API_URL` / `FORM_API_SITE_ID` / `FORM_API_TOKEN` の3つ（すべて `NEXT_PUBLIC_` なし）
+- honeypot 用に `_hp_field: ""` を送信ペイロードに含める
 
 ### Critical Rules
 
@@ -293,183 +310,156 @@ Execute each workflow in sequence without skipping (except workflow_0 if user ch
 When executing contact form implementation workflow, **always read `memories/form_workflow.yaml` first**.
 
 This file contains:
-- ✅ 7-step workflow for form implementation (Token認証対応)
-- ✅ JSON generation for admin panel registration (requireToken: true)
-- ✅ HTML email template generation (条件分岐対応)
-- ✅ Next.js component modification (Token認証コード追加)
+- ✅ 7-step workflow for form implementation (Server Action 方式)
+- ✅ JSON generation for admin panel registration (requireToken: true, emailTemplate inline HTML)
+- ✅ HTML email template generation (条件分岐対応、emailTemplate に直接 inline)
+- ✅ Server Action creation (app/actions/submit-contact.ts)
+- ✅ Next.js component modification (form-handler.js 依存削除 → Server Action 呼び出し)
 - ✅ .env.local file auto-creation (環境変数自動作成・write ツール使用・required_permissions: ['all'])
-- ✅ Security measures (XSS, HTML tag removal, validation)
-- ✅ Image/File attachment support (画像・ファイル添付機能)
+- ✅ Security measures (sanitize, validation, honeypot)
 
 #### Rule 2: Information Collection
 Collect information from:
 1. **app/contact/page.tsx (existing form)** ← TOP Priority
    - Check if app/contact/page.tsx exists
-   - If exists, extract field configuration directly from the form:
-     - Extract name attributes from <input>, <select>, <textarea>
-     - Extract label text
-     - Check required attribute
-     - Check type attribute
+   - If exists, extract field configuration directly from the form
    - **⚠️ Form fields MUST come from existing form code, NOT from about.yaml**
 
 2. **app/ files (if no existing form)**
    - Analyze app/page.tsx and other pages
-   - Identify business type and service content
-   - Infer appropriate form fields based on business type
+   - Identify business type and infer fields
 
 3. **about.yaml (supplementary, basic info only)**
    - Use ONLY for basic information (company name, email)
-   - **Do NOT use for form field information** (may be outdated after design completion)
+   - **Do NOT use for form field information**
 
 4. **User input (last resort)**
-   - If app/ and about.yaml provide insufficient information
 
 Required information:
 - **Site ID (lowercase, numbers, underscores only - NO HYPHENS, used as table name)**
-- Company name (from app/page.tsx h1 or metadata.title)
-- Admin email address (from Footer or contact page)
-- **requireToken: true** (Token認証を使用)
-- Form fields definition (inferred from business type)
-- Optional: Image/File attachment fields (自動検出、フィールド設定不要)
+- Company name
+- Admin email address
+- **requireToken: true**
+- Form fields definition
 
 #### Rule 3: Automatic File Generation & Modification
-1. **Generate JSON for admin panel (Token認証):**
-   - Use write tool or display in chat
+
+1. **Generate JSON for admin panel (Token 認証 + emailTemplate inline):**
    - **requireToken: true** に設定
-   - **productionDomain は不要**（Token認証のため）
+   - **productionDomain は不要**（Token 認証のため）
+   - **emailTemplate** に HTML 文字列を直接 inline で入れる
+   - 旧 `emailTemplateId` / `emailFromName` は使わない（API 側で警告）
    - User will paste this JSON into admin panel
 
-2. **Generate HTML email template:**
+2. **Generate HTML email template (JSON の emailTemplate に入れる文字列):**
    - 必須フィールド: 常に表示
    - 任意フィールド: 条件分岐で表示（`{{#if field}}...{{/if}}`）
    - 未入力メッセージ: `{{^field}}...{{/field}}`
-   - テンプレートID: `{site_id}_admin`
+   - テンプレート ID 方式は廃止
 
-3. **Modify existing Next.js component (🚨 IMPORTANT - Token認証対応):**
-   - 🚨 **Use search_replace to modify existing app/contact/page.tsx** (do NOT use write tool to create new file)
+3. **Create Server Action (`app/actions/submit-contact.ts`):**
+   - 🚨 **Use write tool** to create new file
+   - 先頭に `"use server";`
+   - `FORM_API_URL` / `FORM_API_SITE_ID` / `FORM_API_TOKEN` を環境変数から読む
+   - sanitize / validate を実装
+   - **🚨 honeypot: formData._hp_field = "" を必ず含める**
+   - `fetch(API_URL, { method: "POST", Authorization: "Bearer ...", body: JSON.stringify({ site_id, formData }) })`
+
+4. **Modify existing Next.js component (`app/contact/page.tsx`):**
+   - 🚨 **Use search_replace** to modify (do NOT use write to recreate)
    - **Preserve existing design, layout, and className**
-   - Add only API integration code
-   
-   **8 modifications using search_replace (in order):**
-   1. Add "use client" directive
-   2. Add imports (useState, useEffect, Script)
-   3. Add useState (state management)
-   4. Add security functions (escapeHtml, sanitizeInput, validateForm)
-   5. Add useEffect + initializeFormHandler (API integration, Token認証対応)
-   6. Modify <form> tag (add id="contactForm" and onSubmit={handleSubmit})
-   7. Modify <button> tag (add disabled={isSubmitting}, text change)
-   8. Add status message + Script tag
 
-4. **Create .env.local file automatically (🚨 CRITICAL - Sandbox restriction):**
+   **削除するもの:**
+   - `import Script from "next/script";`
+   - `<Script src="...form-handler.js" ... />` タグ
+   - `(window as any).FormHandler` の参照
+   - `FormHandler.init(...)` の呼び出し
+   - `formHandlerLoaded` state
+   - `useEffect` で FormHandler を待つロジック
+
+   **追加するもの:**
+   1. `"use client"` ディレクティブ（既存になければ）
+   2. `useState` import（既存になければ）
+   3. Server Action の import: `import { submitContactForm } from "@/app/actions/submit-contact";`
+   4. `useState` で `isSubmitting`, `status` を管理
+   5. `handleSubmit`: `FormData` を取り出して `await submitContactForm(...)`
+   6. `<form>` に `id="contactForm"` と `onSubmit={handleSubmit}` を追加
+   7. **honeypot 用 hidden input を追加**（人間には見えない）
+   8. `<button>` に `disabled={isSubmitting}` と動的テキスト
+   9. `</form>` の直後にステータスメッセージ
+
+5. **Create .env.local file automatically (🚨 CRITICAL - Sandbox restriction):**
    - 🚨 **Use write tool with required_permissions: ['all']**
    - .env.local is in .gitignore, so sandbox must be disabled
    - AI asks user for API token
    - User pastes token (starts with `ufa_`)
    - AI creates .env.local automatically using write tool
-   - **Never ask user to create manually**
-   - Handle existing .env.local (read → merge → write)
-   - Check .gitignore (add if not present)
-   
-   **🚨 CRITICAL - FormHandler.init() Configuration (Token認証):**
-   - **First argument:** site_id (determined in step_1)
-   - **Second argument:** API Token (`process.env.NEXT_PUBLIC_FORM_API_TOKEN`)
-   - **Third argument options (REQUIRED):**
-     - **apiBaseUrl: "https://universal-form-api.vercel.app"** (MANDATORY, form submission will fail without this)
-     - beforeSend, onSuccess, onError callbacks
-     - **beforeSend:** `_attachments` キーを保持（画像・ファイル添付用、削除しない）
-   
-   **🚨 CRITICAL - Pattern Attribute (User Verified Solution):**
-   - **Correct value:** `pattern="[^\<\>\&\&quot;\']+"` (use &quot; for double quote)
-   - **Solution:** Replace " with HTML entity &quot; to avoid smart quote conversion
-   - **Verified:** User tested and confirmed this works without errors
-   - **Wrong:** `pattern="[^\<\>\&\"\']+"` (normal quote converts to smart quote)
-   - **Method:** Use HTML entities for quotes in pattern attribute
-   
-   **🚨 CRITICAL - SDK URL:**
-   - **Correct:** `https://universal-form-api.vercel.app/form-handler.js`
-   - **Wrong:** `https://universal-form-api.vercel.app/sdk.js`
-   
-   **Process:**
-   1. Read FORMREADME.md (lines 318-585 for complete sample code)
-   2. Extract pattern attribute from line 469: `pattern="[^\<\>\&\"\']+""`
-   3. Use this exact value (do NOT modify or convert characters)
-   4. Generate component based on step_1 fields
+
+   **環境変数 3 つ（すべて NEXT_PUBLIC_ なし）:**
+   ```
+   FORM_API_URL=https://universal-form-api.vercel.app/api/submit
+   FORM_API_SITE_ID=your_site_id
+   FORM_API_TOKEN=ufa_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+   ```
+
+   **既存に NEXT_PUBLIC_FORM_API_TOKEN がある場合は削除すること（v2 の残骸）。**
+
+   **🚨 CRITICAL - Pattern Attribute (正規表現の v フラグ対策):**
+   - **Correct value (JSX):** `pattern={"[^<>&\"']+"}` (キャラクタークラス内は素の文字。バックスラッシュでエスケープしない)
+   - **Wrong:** `pattern="[^\<\>\&\"\']+"` や `pattern="[^\<\>\&\&quot;\']+"` (🚨 `\<` `\>` `\&` は不要なエスケープ)
+   - **理由:** 最新ブラウザは HTML の `pattern` 属性を ES2024 の `v` フラグ正規表現として評価する。キャラクタークラス内の不要なバックスラッシュは `Invalid escape` / `is not a valid regular expression` エラーになり、フォームのバリデーションが効かなくなる
+   - **Method:** `<>` `&` `"` `'` をそのまま列挙する。JSX のダブルクォートだけ `\"` でエスケープする
 
 #### Rule 4: Security Measures (MANDATORY)
-All generated forms MUST include:
+
+**Server Action 側:**
+- ✅ sanitize 関数（HTML タグ除去）
+- ✅ validate 関数（必須・形式チェック）
+- ✅ `_hp_field: ""` を必ず送信ペイロードに含める
+- ✅ `FORM_API_TOKEN` を環境変数から読む（NEXT_PUBLIC_ なし）
+
+**Client 側:**
 - ✅ maxLength attribute (character limit)
-- ✅ pattern attribute (dangerous character restriction: `pattern="[^\<\>\&\&quot;\']+"` with &quot;)
-- ✅ escapeHtml() function (XSS prevention)
-- ✅ sanitizeInput() function (HTML tag removal)
-- ✅ validateForm() function (pre-submit validation)
+- ✅ pattern attribute (JSX: `pattern={"[^<>&\"']+"}`。`\<` `\>` `\&` のような不要なエスケープは入れない。v フラグでエラーになる)
+- ✅ required attribute (必須項目)
+- ✅ honeypot hidden input (`tabIndex={-1}` + `aria-hidden="true"` で人間に見えない)
 
 **Never skip security implementation.**
 
-#### Rule 5: ESLint Error Prevention (🚨 CRITICAL)
-All generated code MUST include ESLint suppressions to avoid build errors:
+#### Rule 5: ESLint / TypeScript
 
-**Required suppressions:**
-1. **`// eslint-disable-next-line @typescript-eslint/no-explicit-any`**
-   - Add before ALL `(window as any)` usage (3 locations)
-   - Lines: useEffect check, initializeFormHandler check, FormHandler.init call
-   - Reason: FormHandler is external library without type definitions
+v3.0.0 では `(window as any)` を使わないため、関連する eslint-disable は不要。
 
-2. **`// eslint-disable-next-line @typescript-eslint/no-unused-vars`**
-   - Add before `const [formHandlerLoaded, setFormHandlerLoaded] = useState(false);`
-   - Reason: Used in Script onLoad callback, ESLint cannot detect usage
+- ✅ `any` 型を使わない（`Record<string, string>` / `FormData` / 専用型）
+- ✅ Server Action の引数は明示的な型で受ける
+- ✅ `process.env.FORM_API_TOKEN` などの string | undefined を必ず undefined チェック
 
-**Without these suppressions, `npm run build` will fail with:**
-- `Error: Unexpected any. Specify a different type. @typescript-eslint/no-explicit-any`
-- `Warning: 'formHandlerLoaded' is assigned a value but never used. @typescript-eslint/no-unused-vars`
+#### Rule 6: File Attachment (v3.0.0)
 
-#### Rule 5: Image/File Attachment Support (Optional)
-
-**画像添付:**
-```html
-<input
-  type="file"
-  name="images"
-  accept="image/jpeg,image/png,image/gif,image/webp"
-  multiple
-/>
-<p>JPEG, PNG, GIF, WebP対応 / 最大5枚, 合計4MBまで</p>
-```
-
-**ファイル添付:**
-```html
-<input
-  type="file"
-  name="attachments"
-  accept=".pdf,.txt,.zip"
-  multiple
-/>
-<p>.pdf/.txt/.zip対応 / 最大5ファイル, 合計4MBまで</p>
-```
-
-**⚠️ 重要な仕様:**
-- フィールド設定（JSON）への追加は**不要**
-- `form-handler.js` が `<input type="file">` を自動検出
-- DBにはメタデータのみ保存（ファイルデータは保存されない）
-- メールに直接添付される
-- API側で制限（サイト側で変更不可）
-- **beforeSend で `_attachments` を保持**（削除しない）
-
-**制限事項:**
-| 項目 | 画像 | ファイル |
-|------|------|---------|
-| 対応形式 | JPEG, PNG, GIF, WebP | PDF, TXT, ZIP |
-| 最大数 | 5枚 | 5ファイル |
-| 合計サイズ | 4MB | 4MB |
+⚠️ v3.0.0 では Server Action 経由のため、`form-handler.js` の自動添付検出は使えません。
+ファイル添付が必要な場合は、Server Action 内で `FormData` を Base64 化して `_attachments` 配列にして送る実装が必要です。
+**MVP では添付対応を含めない**ことを推奨。必要なら別途仕様確認。
 
 ### Integration with Other Workflows
-- **requireToken: true** に設定（Token認証）
-- **productionDomain は不要**（Token認証のため）
+- **requireToken: true** に設定（Token 認証）
+- **productionDomain は不要**（Token 認証のため）
 - Use about.yaml's contact_defaults.email for adminEmail（複数の場合はカンマ区切り）
-- **Environment variables:**
-  - **Client Component:** `NEXT_PUBLIC_FORM_API_TOKEN` （ブラウザに公開される）
-  - **Server Component:** `FORM_API_TOKEN` （サーバー側のみ、より安全）
+- **Environment variables (3 つ・すべて NEXT_PUBLIC_ なし):**
+  - `FORM_API_URL`
+  - `FORM_API_SITE_ID`
+  - `FORM_API_TOKEN`
 - **select要素:** JSON では `type: "text"` と指定（フロントエンドでは `<select>` 使用可）
 - Consistent with domain connection workflow
+
+### Troubleshooting (v3.0.0)
+
+| 症状 | 原因 | 対処 |
+| --- | --- | --- |
+| 200 が返るがダッシュボードに記録されない | honeypot 発動（`_hp_field` に値が入って送信） | Server Action 内で `formData._hp_field = ""` を強制 |
+| 403 Forbidden | `FORM_API_TOKEN` 未設定 / 旧トークン | `.env.local` と Vercel 環境変数を再確認 |
+| 404 Site not found | `FORM_API_SITE_ID` の typo / `is_active=false` | 管理画面でサイト ID を確認 |
+| 500 Server error | UFA 側で contacts_<site_id> 未作成 / RLS 未設定 | UFA 管理者に依頼（コード側では対応不可） |
+| トークンがブラウザに露出 | `NEXT_PUBLIC_FORM_API_TOKEN` を使っている | `FORM_API_TOKEN`（NEXT_PUBLIC_ なし）に変更 |
 
 ---
 

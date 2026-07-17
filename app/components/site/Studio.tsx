@@ -5,7 +5,7 @@ import { ScrollReveal } from "../animation/ScrollReveal";
 import { Parallax } from "../animation/Parallax";
 
 const STATS = [
-  { num: "6", label: "BOOTHS", sub: "Private rooms" },
+  { num: "3", label: "BOOTHS", sub: "Private rooms" },
   { num: "10h", label: "DAILY", sub: "11:00 — 21:00" },
   { num: "365", label: "DAYS OPEN", sub: "Year-round" },
   { num: "EN", label: "LANGUAGE", sub: "English spoken" },
@@ -42,14 +42,14 @@ export function Studio() {
             <p className="font-jp text-white/70 text-base leading-[1.95] tracking-[0.04em]">
               京都に構えるウォークイン対応のタトゥースタジオ。
               <br />
-              6つのブースを完備し、選別された日本人彫師が毎日出勤。
+              3つのブースを完備し、選別された日本人彫師が毎日出勤。
               <br className="hidden sm:block" />
               短時間の小さな一筆から、
               <br className="hidden sm:block" />
               一日かけて仕上げる和柄まで。
             </p>
             <p className="text-white/50 text-sm mt-4 leading-[1.75]">
-              A walk-in tattoo studio in Kyoto. Six private booths with
+              A walk-in tattoo studio in Kyoto. Three private booths with
               selected Japanese artists on duty every day — from quick
               fine-line pieces to full-day traditional irezumi work.
             </p>
@@ -76,11 +76,11 @@ export function Studio() {
           <div className="absolute inset-0 z-[5] flex items-center justify-center pointer-events-none px-6">
             <div className="relative w-[min(58vw,240px)] sm:w-[min(32vw,300px)] aspect-square">
               <Image
-                src="/1783674409896_622171488207765896.jpg"
+                src="/images/studio-logo.png"
                 alt="KYOTO Walk-in Tattoo Studio Japan ロゴ"
                 fill
                 sizes="(max-width: 640px) 58vw, 300px"
-                className="object-contain -rotate-90"
+                className="object-contain"
               />
             </div>
           </div>

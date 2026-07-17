@@ -98,12 +98,17 @@ rg 'overflow-hidden' app/ components/ --glob '*.tsx' -n -B 3 -A 3
 | 5 | transition-all → 対象プロパティを明示 | 副作用の防止 |
 | 6 | passive: true → 全スクロールリスナーに付与 | カクつき防止 |
 | 7 | コンテンツオーバーフロー → モバイル余白圧縮 | CTA 見切れ防止 |
+| 8 | FV の `h-` 固定 → `min-h-` に変更 | テキストオーバーフロー防止 |
 
 ---
 
 ## STEP 3 — 修正パターン
 
-### 3-1. ビューポート単位 → JS ピクセル固定
+### 3-1. ビューポート単位 → min-h + JS ピクセル固定
+
+**原則: SP の FV 高さは `min-h`（最低保証）で指定する。`h` 固定は禁止。**
+テキスト量が多い場合にコンテンツがオーバーフローするため、
+高さが足りなければ内包テキストで高さが決まるようにする。
 
 ```tsx
 // ❌ アドレスバー伸縮で画像がガクンと跳ねる
@@ -111,7 +116,12 @@ rg 'overflow-hidden' app/ components/ --glob '*.tsx' -n -B 3 -A 3
   <Image src="..." alt="..." fill className="object-cover" />
 </section>
 
-// ✅ SP は JS でピクセル固定、PC は vh を維持
+// ❌ h- 固定だとテキストがオーバーフローする
+<section className="h-[500px] md:h-[90vh]">
+  ...
+</section>
+
+// ✅ SP は min-h + JS で最低高さを保証、テキストが多ければ自動拡張
 "use client";
 import { useRef, useEffect } from "react";
 
@@ -119,16 +129,18 @@ const sectionRef = useRef<HTMLElement>(null);
 useEffect(() => {
   if (window.innerWidth < 768 && sectionRef.current) {
     const h = window.innerHeight * 0.88;
-    sectionRef.current.style.height = `${Math.max(h, 500)}px`;
+    sectionRef.current.style.minHeight = `${Math.max(h, 500)}px`;
   }
 }, []);
 
-<section ref={sectionRef} className="h-[500px] md:h-[90vh]">
+<section ref={sectionRef} className="min-h-[500px] md:h-[90vh]">
   <Image src="..." alt="..." fill className="object-cover" />
 </section>
 ```
 
-CSS 側は `h-[500px] md:h-[90vh]` をフォールバックとして設定。
+CSS 側は `min-h-[500px] md:h-[90vh]` をフォールバックとして設定。
+SP は `min-h` で最低限の高さを担保し、テキストが収まらない場合はコンテナが伸びる。
+PC は `h-[90vh]` 固定のまま（PC はテキスト量が少ないため問題ない）。
 
 ### 3-2. scroll-behavior: smooth → モバイルで auto
 
