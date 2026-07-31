@@ -1,0 +1,29 @@
+{
+  "timestamp": "2026-07-31T07:20:01.354Z",
+  "base": "http://127.0.0.1:3000",
+  "viewports": [
+    "sp",
+    "pc"
+  ],
+  "routes": [
+    "/"
+  ],
+  "captures": [
+    {
+      "route": "/",
+      "page": "home",
+      "viewport": "sp",
+      "url": "http://127.0.0.1:3000/",
+      "sections": [],
+      "error": "page.goto: Timeout 60000ms exceeded.\nCall log:\n  - navigating to \"http://127.0.0.1:3000/\", waiting until \"domcontentloaded\"\n"
+    },
+    {
+      "route": "/",
+      "page": "home",
+      "viewport": "pc",
+      "url": "http://127.0.0.1:3000/",
+      "sections": [],
+      "error": "page.goto: Timeout 60000ms exceeded.\nCall log:\n  - navigating to \"http://127.0.0.1:3000/\", waiting until \"domcontentloaded\"\n"
+    }
+  ]
+}

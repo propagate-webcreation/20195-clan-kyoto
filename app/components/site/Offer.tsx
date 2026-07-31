@@ -10,12 +10,12 @@ export function Offer() {
       className="relative bg-[#f5f5f3] text-[#0a0a0a] overflow-hidden"
     >
       <div className="border-t border-black/15">
-        <div className="max-w-[1600px] mx-auto px-5 sm:px-8 py-6 flex items-center justify-between text-[10px] sm:text-[11px] tracking-[0.28em] uppercase text-black/55">
-          <div className="flex items-center gap-4">
-            <span className="tabular text-[#c8102e]">05</span>
-            <span>The Experience</span>
+        <div className="max-w-[1600px] mx-auto px-5 sm:px-8 py-6 flex items-center justify-between gap-3 min-w-0 text-[10px] sm:text-[11px] tracking-[0.28em] uppercase text-black/55">
+          <div className="flex items-center gap-4 min-w-0">
+            <span className="tabular text-[#c8102e] shrink-0">05</span>
+            <span className="min-w-0">The Experience</span>
           </div>
-          <span>—— Offer</span>
+          <span className="shrink-0 hidden sm:inline">—— Offer</span>
         </div>
         <div className="h-px bg-black/15" />
       </div>

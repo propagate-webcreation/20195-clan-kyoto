@@ -42,12 +42,12 @@ export function WhyUs() {
       className="relative bg-[#0a0a0a] text-white overflow-hidden"
     >
       <div className="border-t border-white/10">
-        <div className="max-w-[1600px] mx-auto px-5 sm:px-8 py-6 flex items-center justify-between text-[10px] sm:text-[11px] tracking-[0.28em] uppercase text-white/55">
-          <div className="flex items-center gap-4">
-            <span className="tabular text-[#c8102e]">02</span>
-            <span>Why Travellers Choose Us</span>
+        <div className="max-w-[1600px] mx-auto px-5 sm:px-8 py-6 flex items-center justify-between gap-3 min-w-0 text-[10px] sm:text-[11px] tracking-[0.28em] uppercase text-white/55">
+          <div className="flex items-center gap-4 min-w-0">
+            <span className="tabular text-[#c8102e] shrink-0">02</span>
+            <span className="min-w-0">Why Travellers Choose Us</span>
           </div>
-          <span>—— Why Us</span>
+          <span className="shrink-0 hidden sm:inline">—— Why Us</span>
         </div>
         <div className="hairline" />
       </div>

@@ -31,7 +31,24 @@
     color: var(--foreground);
     font-variant-numeric: lining-nums tabular-nums;
     -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
+  }
+  /* テキスト折り返し最適化 ※必須 — 削除・変更禁止 */
+  h1 {
+    text-wrap: wrap;
+    word-break: normal;
+  }
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    text-wrap: balance;
+    word-break: auto-phrase;
+  }
+  @media screen and (max-width: 768px) {
+    html {
+      -webkit-text-size-adjust: 100%;
+    }
   }
   ::selection {
     background-color: #c8102e;

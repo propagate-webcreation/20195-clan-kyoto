@@ -41,8 +41,8 @@ export function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 inset-x-0 z-50 px-5 sm:px-8 py-5 sm:py-6 transition-all duration-300 ${
-          scrolled ? "bg-black/80 backdrop-blur-md py-4" : "mix-blend-difference"
+        className={`fixed top-0 inset-x-0 z-50 px-5 sm:px-8 py-5 sm:py-6 transition-[background-color,padding] duration-300 ${
+          scrolled ? "bg-black/80 md:backdrop-blur-md py-4" : "mix-blend-difference"
         }`}
       >
         <div className="max-w-[1600px] mx-auto flex items-center justify-between">
@@ -89,7 +89,7 @@ export function Header() {
 
       {/* Mobile sheet */}
       <div
-        className={`fixed inset-0 z-40 bg-[#0a0a0a] transition-all duration-500 ease-[cubic-bezier(0.77,0,0.175,1)] lg:hidden ${
+        className={`fixed inset-0 z-40 bg-[#0a0a0a] transition-[transform,opacity,visibility] duration-500 ease-[cubic-bezier(0.77,0,0.175,1)] lg:hidden ${
           open 
             ? "translate-y-0 opacity-100 visible" 
             : "-translate-y-full opacity-0 invisible pointer-events-none"

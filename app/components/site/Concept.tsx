@@ -12,12 +12,12 @@ export function Concept() {
     >
       {/* section header rail */}
       <div className="border-t border-white/10">
-        <div className="max-w-[1600px] mx-auto px-5 sm:px-8 py-6 flex items-center justify-between text-[10px] sm:text-[11px] tracking-[0.28em] uppercase text-white/55">
-          <div className="flex items-center gap-4">
-            <span className="tabular text-[#c8102e]">01</span>
-            <span>The Principles of Ink</span>
+        <div className="max-w-[1600px] mx-auto px-5 sm:px-8 py-6 flex items-center justify-between gap-3 min-w-0 text-[10px] sm:text-[11px] tracking-[0.28em] uppercase text-white/55">
+          <div className="flex items-center gap-4 min-w-0">
+            <span className="tabular text-[#c8102e] shrink-0">01</span>
+            <span className="min-w-0">The Principles of Ink</span>
           </div>
-          <span>—— Concept</span>
+          <span className="shrink-0 hidden sm:inline">—— Concept</span>
         </div>
         <div className="hairline" />
       </div>
@@ -51,7 +51,7 @@ export function Concept() {
 
       {/* image with overlay quote — like NHA "Landscape First" */}
       <div className="relative w-full">
-        <div className="relative w-full h-[60vh] sm:h-[80vh] min-h-[420px]">
+        <div className="relative w-full h-[420px] md:h-[80vh] min-h-[420px]">
           <Image
             src="/images/journal-sakura.webp"
             alt="京都の桜と和の情景"
@@ -105,9 +105,9 @@ export function Concept() {
             <p className="font-jp text-white/65 text-sm sm:text-base leading-[2.0] tracking-[0.04em]">
               当スタジオは、日本での特別な体験をより気軽に提供したいという想いからスタートしました。観光で訪れる海外のお客様にとって、「その場で体験できる」「思い出として残せる」場所を作りたいと考えています。タトゥーをただ彫るだけでなく、日本の文化やデザインの意味も含めて体験できる空間を提供し、旅の一部として記憶に残るサービスを目指しています。
             </p>
-            <div className="mt-8 flex items-center gap-4 text-[11px] tracking-[0.28em] uppercase text-white/50">
-              <span className="block w-8 h-px bg-white/40" />
-              <span>KYOTO WALK-IN TATTOO STUDIO JAPAN</span>
+            <div className="mt-8 flex items-start gap-4 text-[11px] tracking-[0.28em] uppercase text-white/50 min-w-0">
+              <span className="block w-8 h-px bg-white/40 shrink-0 mt-2" />
+              <span className="min-w-0">KYOTO WALK-IN TATTOO STUDIO JAPAN</span>
             </div>
           </ScrollReveal>
         </div>

@@ -18,12 +18,12 @@ export function Studio() {
       className="relative bg-[#0a0a0a] text-white overflow-hidden"
     >
       <div className="border-t border-white/10">
-        <div className="max-w-[1600px] mx-auto px-5 sm:px-8 py-6 flex items-center justify-between text-[10px] sm:text-[11px] tracking-[0.28em] uppercase text-white/55">
-          <div className="flex items-center gap-4">
-            <span className="tabular text-[#c8102e]">03</span>
-            <span>Inside the Studio</span>
+        <div className="max-w-[1600px] mx-auto px-5 sm:px-8 py-6 flex items-center justify-between gap-3 min-w-0 text-[10px] sm:text-[11px] tracking-[0.28em] uppercase text-white/55">
+          <div className="flex items-center gap-4 min-w-0">
+            <span className="tabular text-[#c8102e] shrink-0">03</span>
+            <span className="min-w-0">Inside the Studio</span>
           </div>
-          <span>—— Studio</span>
+          <span className="shrink-0 hidden sm:inline">—— Studio</span>
         </div>
         <div className="hairline" />
       </div>
@@ -59,7 +59,7 @@ export function Studio() {
 
       {/* Big editorial image with parallax */}
       <div className="mt-16 sm:mt-20 relative w-full">
-        <div className="relative w-full h-[70vh] sm:h-[90vh] min-h-[480px] overflow-hidden">
+        <div className="relative w-full h-[500px] md:h-[90vh] min-h-[480px] overflow-hidden">
           <Parallax speed={0.18} className="absolute inset-0">
             <div className="relative h-[120%] w-full -translate-y-[10%]">
               <Image

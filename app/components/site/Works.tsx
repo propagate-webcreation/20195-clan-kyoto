@@ -16,12 +16,12 @@ export function Works() {
   return (
     <section id="works" className="relative bg-[#0a0a0a] text-white">
       <div className="border-t border-white/10">
-        <div className="max-w-[1600px] mx-auto px-5 sm:px-8 py-6 flex items-center justify-between text-[10px] sm:text-[11px] tracking-[0.28em] uppercase text-white/55">
-          <div className="flex items-center gap-4">
-            <span className="tabular text-[#c8102e]">04</span>
-            <span>Works · Motifs</span>
+        <div className="max-w-[1600px] mx-auto px-5 sm:px-8 py-6 flex items-center justify-between gap-3 min-w-0 text-[10px] sm:text-[11px] tracking-[0.28em] uppercase text-white/55">
+          <div className="flex items-center gap-4 min-w-0">
+            <span className="tabular text-[#c8102e] shrink-0">04</span>
+            <span className="min-w-0">Works · Motifs</span>
           </div>
-          <span>—— Gallery</span>
+          <span className="shrink-0 hidden sm:inline">—— Gallery</span>
         </div>
         <div className="hairline" />
       </div>

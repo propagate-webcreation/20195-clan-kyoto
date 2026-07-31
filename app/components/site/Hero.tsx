@@ -2,12 +2,24 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
 
 export function Hero() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (window.innerWidth >= 768) return;
+    const height = `${Math.max(window.innerHeight, 500)}px`;
+    if (sectionRef.current) sectionRef.current.style.minHeight = height;
+    if (contentRef.current) contentRef.current.style.minHeight = height;
+  }, []);
+
   return (
     <section
+      ref={sectionRef}
       id="top"
-      className="relative min-h-screen w-full overflow-hidden bg-[#0a0a0a] text-white"
+      className="relative min-h-[500px] md:min-h-screen w-full overflow-hidden bg-[#0a0a0a] text-white"
     >
       {/* Background image — main subject */}
       <div className="absolute inset-0 z-0">
@@ -45,7 +57,10 @@ export function Hero() {
       </div>
 
       {/* main headline — bottom-anchored */}
-      <div className="relative z-10 min-h-screen flex flex-col justify-end pb-36 sm:pb-48 px-5 sm:px-8 max-w-[1600px] mx-auto">
+      <div
+        ref={contentRef}
+        className="relative z-10 min-h-[500px] md:min-h-screen flex flex-col justify-end pb-28 sm:pb-48 px-5 sm:px-8 max-w-[1600px] mx-auto"
+      >
         <div className="grid grid-cols-12 gap-y-6">
           <div className="col-span-12 lg:col-span-9">
             <motion.div
@@ -136,13 +151,13 @@ export function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2, duration: 0.6 }}
-          className="mt-8 sm:mt-12 flex items-end justify-between text-[10px] sm:text-[11px] tracking-[0.24em] uppercase text-white/50"
+          className="mt-8 sm:mt-12 flex items-end justify-between gap-3 min-w-0 text-[10px] sm:text-[11px] tracking-[0.24em] uppercase text-white/50"
         >
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 shrink-0">
             <span className="block w-8 sm:w-12 h-px bg-white/40" />
             <span>Scroll</span>
           </div>
-          <p className="text-right whitespace-nowrap">
+          <p className="text-right text-[9px] sm:text-[10px] leading-tight min-w-0">
             © 株式会社 Clan③ / 2025
           </p>
         </motion.div>

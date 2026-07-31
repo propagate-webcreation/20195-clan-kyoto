@@ -14,12 +14,12 @@ export function Contact() {
       className="relative bg-[#0a0a0a] text-white overflow-hidden"
     >
       <div className="border-t border-white/10">
-        <div className="max-w-[1600px] mx-auto px-5 sm:px-8 py-6 flex items-center justify-between text-[10px] sm:text-[11px] tracking-[0.28em] uppercase text-white/55">
-          <div className="flex items-center gap-4">
-            <span className="tabular text-[#c8102e]">09</span>
-            <span>Walk in or Message</span>
+        <div className="max-w-[1600px] mx-auto px-5 sm:px-8 py-6 flex items-center justify-between gap-3 min-w-0 text-[10px] sm:text-[11px] tracking-[0.28em] uppercase text-white/55">
+          <div className="flex items-center gap-4 min-w-0">
+            <span className="tabular text-[#c8102e] shrink-0">09</span>
+            <span className="min-w-0">Walk in or Message</span>
           </div>
-          <span>—— Contact</span>
+          <span className="shrink-0 hidden sm:inline">—— Contact</span>
         </div>
         <div className="hairline" />
       </div>
@@ -50,32 +50,31 @@ export function Contact() {
       </div>
 
       <div className="max-w-[1600px] mx-auto px-5 sm:px-8">
-        <div className="grid grid-cols-3 md:grid-cols-3 gap-px bg-white/10 border-y border-white/10">
-          <div className="bg-[#0a0a0a] p-4 sm:p-10">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-white/10 border-y border-white/10">
+          <div className="bg-[#0a0a0a] p-6 sm:p-10">
             <p className="text-[9px] sm:text-[10px] tracking-[0.24em] uppercase text-white/45 mb-2 sm:mb-3">
               Hours
             </p>
-            <p className="text-white text-sm sm:text-xl tracking-[-0.005em] tabular leading-tight">
-              11:00<span className="hidden sm:inline"> — 21:00</span>
-              <span className="block sm:hidden text-[11px] mt-0.5">— 21:00</span>
+            <p className="text-white text-[13px] sm:text-xl tracking-[-0.005em] tabular leading-tight">
+              11:00 — 21:00
             </p>
-            <p className="hidden sm:block text-white/55 text-sm mt-1">Open every day · 年中無休</p>
+            <p className="text-white/55 text-[13px] sm:text-sm mt-1">Open every day · 年中無休</p>
           </div>
-          <div className="bg-[#0a0a0a] p-4 sm:p-10">
+          <div className="bg-[#0a0a0a] p-6 sm:p-10">
             <p className="text-[9px] sm:text-[10px] tracking-[0.24em] uppercase text-white/45 mb-2 sm:mb-3">
               Location
             </p>
-            <p className="text-white text-sm sm:text-xl tracking-[-0.005em]">Kyoto, JP</p>
-            <p className="hidden sm:block text-white/55 text-sm mt-1">
+            <p className="text-white text-[13px] sm:text-xl tracking-[-0.005em]">Kyoto, JP</p>
+            <p className="text-white/55 text-[13px] sm:text-sm mt-1">
               詳細住所はDMにてご案内
             </p>
           </div>
-          <div className="bg-[#0a0a0a] p-4 sm:p-10">
+          <div className="bg-[#0a0a0a] p-6 sm:p-10">
             <p className="text-[9px] sm:text-[10px] tracking-[0.24em] uppercase text-white/45 mb-2 sm:mb-3">
               Lang.
             </p>
-            <p className="text-white text-sm sm:text-xl tracking-[-0.005em]">JP / EN</p>
-            <p className="hidden sm:block text-white/55 text-sm mt-1">日本語・English</p>
+            <p className="text-white text-[13px] sm:text-xl tracking-[-0.005em]">JP / EN</p>
+            <p className="text-white/55 text-[13px] sm:text-sm mt-1">日本語・English</p>
           </div>
         </div>
       </div>
