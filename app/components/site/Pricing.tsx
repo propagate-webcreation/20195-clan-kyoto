@@ -11,31 +11,31 @@ const PRICE_ROWS = [
     num: "01",
     en: "ONE POINT",
     size: "up to 3cm",
-    price: "¥8,000 – ¥15,000",
+    price: "¥10,000 – ¥18,000",
   },
   {
     num: "02",
     en: "CARD SIZE",
     size: "approx. 8 × 5cm",
-    price: "¥20,000 – ¥25,000",
+    price: "¥25,000 – ¥35,000",
   },
   {
     num: "03",
     en: "POSTCARD SIZE",
     size: "approx. 10 × 15cm",
-    price: "¥60,000 – ¥65,000",
+    price: "¥65,000 – ¥75,000",
   },
   {
     num: "04",
     en: "B5 SIZE",
     size: "approx. 18 × 25cm",
-    price: "¥85,000 – ¥90,000",
+    price: "¥90,000 – ¥100,000",
   },
   {
     num: "05",
     en: "A4 SIZE",
     size: "approx. 21 × 30cm",
-    price: "¥100,000〜",
+    price: "¥120,000〜",
   },
 ];
 
