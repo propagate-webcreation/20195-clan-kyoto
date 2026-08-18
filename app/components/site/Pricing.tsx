@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { ScrollReveal } from "../animation/ScrollReveal";
 
-const PRICE_MENU_IMAGE = "/images/1781095781563_617845264254239028.jpg";
+const PRICE_MENU_IMAGE = "/images/menu-kyoto.jpg";
 
 const PRICE_ROWS = [
   {
@@ -215,8 +215,8 @@ export function Pricing() {
           <Image
             src={PRICE_MENU_IMAGE}
             alt="京都店タトゥーメニュー料金表（拡大）"
-            width={1086}
-            height={1448}
+            width={900}
+            height={1606}
             className="max-w-[min(900px,calc(100vw-40px))] max-h-[85dvh] w-auto h-auto object-contain"
             priority
             onClick={(e) => e.stopPropagation()}
