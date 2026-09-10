@@ -1,8 +1,9 @@
 "use client";
 
-import { Check, Clock, Send } from "lucide-react";
+import { Check, Clock } from "lucide-react";
 import { ScrollReveal } from "../animation/ScrollReveal";
 import { SITE_CONFIG } from "../../config/site.config";
+import { SocialIcon } from "../shared/SocialIcon";
 
 const BENEFITS = [
   {
@@ -43,7 +44,7 @@ export function Recruit() {
       <div className="border-t border-white/10">
         <div className="max-w-[1600px] mx-auto px-5 sm:px-8 py-6 flex items-center justify-between gap-3 min-w-0 text-[10px] sm:text-[11px] tracking-[0.28em] uppercase text-white/55">
           <div className="flex items-center gap-4 min-w-0">
-            <span className="tabular text-[#c8102e] shrink-0">08</span>
+            <span className="tabular text-[#c8102e] shrink-0">03</span>
             <span className="min-w-0">Artist Recruitment</span>
           </div>
           <span className="shrink-0 hidden sm:inline">—— Recruit</span>
@@ -83,8 +84,8 @@ export function Recruit() {
                 aria-hidden
               />
               <span>
-                <span className="font-bold text-white">1日〜何日でもOK!</span>
-                {" "}自由シフト制 / あなたのペースで働けます。
+                <span className="font-bold text-white">1日〜何日でもOK!</span>{" "}
+                自由シフト制 / あなたのペースで働けます。
               </span>
             </p>
           </div>
@@ -166,7 +167,7 @@ export function Recruit() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-[#c8102e] text-white px-8 py-4 rounded-2xl text-[13px] md:text-[20px] font-bold hover:opacity-90 hover:shadow-md transition min-h-12"
               >
-                <Send size={18} aria-hidden />
+                <SocialIcon channel="Instagram" />
                 Instagram DMで応募する
               </a>
               <p className="text-white/45 text-[10px] md:text-[14px] tracking-[0.12em] mt-4">

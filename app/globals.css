@@ -161,3 +161,36 @@
   color: var(--ink);
   border-color: var(--bone);
 }
+
+/* Shared page structure retains the original palette, type and editorial grid. */
+.site-width { max-width: 1600px; margin-inline: auto; padding-inline: 20px; }
+.eyebrow { font-size: 11px; line-height: 1.7; letter-spacing: .22em; text-transform: uppercase; }
+.page-intro { padding-top: 160px; padding-bottom: 80px; }
+.page-intro.with-photo { min-height: 640px; display: flex; align-items: flex-end; }
+section[id], main[id] { scroll-margin-top: 100px; }
+a, button, input, select, textarea, summary { -webkit-tap-highlight-color: transparent; }
+button, summary { touch-action: manipulation; }
+button { cursor: pointer; }
+:focus-visible { outline: 2px solid #c8102e; outline-offset: 5px; }
+.skip-link { position: fixed; top: -100px; left: 20px; z-index: 100; background: #f5f5f3; color: #0a0a0a; padding: 15px; }
+.skip-link:focus { top: 15px; }
+.form-label { display: block; font-size: 14px; line-height: 1.6; letter-spacing: .025em; }
+.form-en { display: block; font-size: 12px; line-height: 1.7; color: #888; margin-top: 7px; }
+.form-field { display: block; width: 100%; min-width: 0; max-width: 100%; border: 1px solid #ffffff30; background: #101010; color: #f5f5f3; border-radius: 0; padding: 15px 12px; margin-top: 12px; font-size: 16px; line-height: 1.6; color-scheme: dark; }
+.form-field::placeholder { color: #777; }
+.form-field:focus { border-color: #c8102e; }
+.image-dialog { position: fixed; inset: 0; margin: auto; width: min(1050px, 94vw); max-width: 94vw; max-height: 92dvh; overflow-y: auto; background: #101010; color: #f5f5f3; border: 1px solid #ffffff30; padding: 0; }
+.image-dialog::backdrop { background: #000d; backdrop-filter: blur(6px); }
+.faq-row summary { list-style: none; }
+.faq-row summary::-webkit-details-marker { display: none; }
+.faq-row[open] .faq-plus { transform: rotate(45deg); }
+.faq-plus { transition: transform .2s; }
+@media (min-width: 640px) {
+  .site-width { padding-inline: 32px; }
+  .page-intro { padding-top: 180px; padding-bottom: 96px; }
+  .page-intro.with-photo { min-height: 72vh; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}

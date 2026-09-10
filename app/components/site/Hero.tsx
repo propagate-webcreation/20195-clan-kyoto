@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { useEffect, useRef } from "react";
 
@@ -46,20 +47,20 @@ export function Hero() {
 
       {/* meta corner top-left */}
       <div className="absolute top-28 sm:top-28 left-5 sm:left-8 z-20 text-[10px] sm:text-[11px] tracking-[0.24em] uppercase text-white/70 leading-relaxed">
-        <p>N 35.0116° / E 135.7681°</p>
-        <p className="mt-1">Walk-in Tattoo Studio · Kyoto, Japan</p>
+        <p>OSAKA · KOBE · KYOTO</p>
+        <p className="mt-1">Walk-in Tattoo Studio · Japan</p>
       </div>
 
       {/* meta corner top-right */}
       <div className="absolute top-[164px] sm:top-28 right-5 sm:right-8 lg:right-16 z-20 text-[10px] sm:text-[11px] tracking-[0.24em] uppercase text-white/70 text-right leading-relaxed">
-        <p>Est. 2025</p>
-        <p className="mt-1">Three booths · Daily 11:00–21:00</p>
+        <p>Three cities. One journey.</p>
+        <p className="mt-1">Japanese motifs · English welcome</p>
       </div>
 
       {/* main headline — bottom-anchored */}
       <div
         ref={contentRef}
-        className="relative z-10 min-h-[500px] md:min-h-screen flex flex-col justify-end pb-28 sm:pb-48 px-5 sm:px-8 max-w-[1600px] mx-auto"
+        className="relative z-10 min-h-[700px] md:min-h-screen flex flex-col justify-end pt-64 pb-20 sm:pb-28 px-5 sm:px-8 max-w-[1600px] mx-auto"
       >
         <div className="grid grid-cols-12 gap-y-6">
           <div className="col-span-12 lg:col-span-9">
@@ -89,7 +90,7 @@ export function Hero() {
                 transition={{ duration: 1.0, delay: 0.30, ease: [0.22, 1, 0.36, 1] }}
                 className="block"
               >
-                IN <span className="text-[#c8102e]">KYOTO</span>,
+                IN <span className="text-[#c8102e]">KANSAI</span>,
               </motion.span>
               <motion.span
                 initial={{ opacity: 0, y: 80 }}
@@ -102,7 +103,7 @@ export function Hero() {
             </h1>
           </div>
 
-          <div className="col-span-12 lg:col-span-3 lg:pl-0 lg:-ml-6 flex flex-col justify-end gap-6 items-start">
+          <div className="col-span-12 lg:col-span-3 flex flex-col justify-end gap-6 items-start">
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -114,7 +115,7 @@ export function Hero() {
               旅の思い出を一生に刻む。
               <br />
               <span className="text-white/50 text-xs tracking-[0.04em]">
-                A Japanese tattoo as your souvenir from Kyoto.
+                A Japanese tattoo as your souvenir from Osaka, Kobe or Kyoto.
               </span>
             </motion.p>
 
@@ -122,26 +123,10 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.85 }}
-              className="flex flex-nowrap items-center gap-2 sm:gap-3 -ml-1 sm:-ml-2 lg:-ml-4"
+              className="flex flex-wrap items-center gap-3"
             >
-              <a
-                href="https://www.instagram.com/kyoto_walkin_tattoo_studio?igsh=MTZuZGNyNWZhNHJsNw%3D%3D&utm_source=qr"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-square text-white shrink-0"
-              >
-                <span className="relative shrink-0 w-5 h-5 overflow-hidden">
-                  <Image
-                    src="/images/2227.png"
-                    alt=""
-                    fill
-                    sizes="20px"
-                    className="object-cover scale-[1.35]"
-                    aria-hidden
-                  />
-                </span>
-                Instagram
-              </a>
+              <Link href="/studios" className="btn-square btn-blood">Find your studio ↗</Link>
+              <Link href="/works" className="text-xs tracking-[0.15em] uppercase border-b border-white/50 pb-2">Works & Artists ↗</Link>
             </motion.div>
           </div>
         </div>
@@ -158,7 +143,7 @@ export function Hero() {
             <span>Scroll</span>
           </div>
           <p className="text-right text-[9px] sm:text-[10px] leading-tight min-w-0">
-            © 株式会社 Clan③ / 2025
+            Osaka / Kobe / Kyoto — Japan
           </p>
         </motion.div>
       </div>
@@ -166,7 +151,7 @@ export function Hero() {
       {/* side vertical text — desktop only */}
       <div className="hidden xl:block absolute right-6 top-1/2 -translate-y-1/2 z-10">
         <p className="vert text-[10px] tracking-[0.4em] uppercase text-white/45 select-none">
-          Three booths · Japanese artists daily · Walk-in welcome
+          Osaka · Kobe · Kyoto · Japanese artists · Walk-in welcome
         </p>
       </div>
     </section>

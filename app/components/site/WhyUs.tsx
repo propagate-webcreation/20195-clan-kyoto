@@ -6,32 +6,32 @@ const REASONS = [
   {
     num: "01",
     en: "Walk-in Welcome",
-    jp: "予約不要・飛び込みOK",
-    body: "Drop in during your sightseeing — no appointment needed. A tattoo experience that fits naturally into your travel schedule.",
+    subtitle: "No appointment needed",
+    body: "Drop in during your sightseeing. All three studios welcome walk-ins, subject to availability. Check Kobe’s hours via LINE before visiting.",
   },
   {
     num: "02",
     en: "Japanese Motifs",
-    jp: "日本モチーフ・和テイスト専門",
+    subtitle: "Inspired by Japanese tradition",
     body: "Sakura, dragon, wave, kanji, koi — traditional Japanese motifs reinterpreted in modern fine-line and bold irezumi work, loved by international guests.",
   },
   {
     num: "03",
-    en: "Three Booths · Daily Artists",
-    jp: "3ブース完備・日本人彫師が毎日出勤",
-    body: "Three private booths with selected Japanese tattoo artists on duty every day — smooth service even without a reservation.",
+    en: "English Welcome",
+    subtitle: "Consultations in your language",
+    body: "Discuss your design and travel plans in English or Japanese. Kobe also provides English consent forms and aftercare sheets.",
   },
   {
     num: "04",
     en: "Short Sessions",
-    jp: "短時間施術も多数",
+    subtitle: "Made to fit your itinerary",
     body: "Many designs can be completed in a short session — perfect for travellers who want a tattoo without reshaping their entire itinerary.",
   },
   {
     num: "05",
     en: "Card & E-Pay",
-    jp: "各種電子決済・クレジットカード対応",
-    body: "Visa / Mastercard / AMEX, Apple Pay, Google Pay, PayPay, Alipay, WeChat Pay. Travel light — pay how you usually pay.",
+    subtitle: "Flexible payment options",
+    body: "Cards and electronic payments are accepted. Available payment brands vary by studio — check your preferred method before visiting.",
   },
 ];
 
@@ -44,7 +44,7 @@ export function WhyUs() {
       <div className="border-t border-white/10">
         <div className="max-w-[1600px] mx-auto px-5 sm:px-8 py-6 flex items-center justify-between gap-3 min-w-0 text-[10px] sm:text-[11px] tracking-[0.28em] uppercase text-white/55">
           <div className="flex items-center gap-4 min-w-0">
-            <span className="tabular text-[#c8102e] shrink-0">02</span>
+            <span className="tabular text-[#c8102e] shrink-0">01</span>
             <span className="min-w-0">Why Travellers Choose Us</span>
           </div>
           <span className="shrink-0 hidden sm:inline">—— Why Us</span>
@@ -69,12 +69,10 @@ export function WhyUs() {
                 <br />
                 US.
               </h2>
-              <p className="font-jp text-white/55 text-sm leading-[1.95] mt-8 max-w-sm">
-                観光の合間に気軽に立ち寄れる
-                <br />
-                ウォークイン対応のタトゥースタジオ。
-                <br />
-                海外からのお客様にも多くご利用いただいています。
+              <p className="text-white/55 text-sm leading-[1.95] mt-8 max-w-sm">
+                Drop in between your adventures. Our walk-in studios welcome
+                travellers from around the world, with an experience that feels
+                easy and approachable.
               </p>
             </div>
           </div>
@@ -96,8 +94,8 @@ export function WhyUs() {
                         <h3 className="text-white text-xl sm:text-2xl tracking-[-0.005em] font-medium">
                           {r.en}
                         </h3>
-                        <p className="font-jp text-white/45 text-xs sm:text-sm mt-1 tracking-[0.06em]">
-                          {r.jp}
+                        <p className="text-white/45 text-xs sm:text-sm mt-1 tracking-[0.06em]">
+                          {r.subtitle}
                         </p>
                       </div>
                       <p className="col-span-12 sm:col-span-6 text-white/55 text-sm leading-[1.75] mt-4 sm:mt-0">
@@ -114,7 +112,16 @@ export function WhyUs() {
               <p className="text-[10px] tracking-[0.28em] uppercase text-white/40 mr-2">
                 Pay how you usually pay —
               </p>
-              {["VISA", "MASTERCARD", "AMEX", "APPLE PAY", "GOOGLE PAY", "PAYPAY", "ALIPAY", "WECHAT"].map((p) => (
+              {[
+                "VISA",
+                "MASTERCARD",
+                "AMEX",
+                "APPLE PAY",
+                "GOOGLE PAY",
+                "PAYPAY",
+                "ALIPAY",
+                "WECHAT",
+              ].map((p) => (
                 <span
                   key={p}
                   className="border border-white/15 px-3 py-1.5 text-[10px] sm:text-[11px] tracking-[0.18em] uppercase text-white/70"
