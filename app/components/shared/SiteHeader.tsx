@@ -84,7 +84,7 @@ function HeaderContents({ pathname }: { pathname: string }) {
                 key={item.href}
                 href={item.href}
                 aria-current={pathname === item.href ? "page" : undefined}
-                className={`text-[11px] tracking-[0.12em] uppercase hover:text-[#c8102e] transition-colors ${pathname === item.href ? "text-[#c8102e]" : ""}`}
+                className={`site-nav-link text-[11px] tracking-[0.12em] uppercase hover:text-[#c8102e] transition-colors ${pathname === item.href ? "is-current text-[#c8102e]" : ""}`}
               >
                 <span className="block">{item.label}</span>
                 <span className="block text-[10px] tracking-[0.04em] mt-1.5 text-white/50">
@@ -137,7 +137,10 @@ function HeaderContents({ pathname }: { pathname: string }) {
                 href={item.href}
                 aria-current={pathname === item.href ? "page" : undefined}
                 onClick={() => setOpen(false)}
-                className="border-b border-white/15 py-4 flex items-center gap-4"
+                style={{
+                  transitionDelay: open ? `${100 + i * 55}ms` : "0ms",
+                }}
+                className={`border-b border-white/15 py-4 flex items-center gap-4 transition-[opacity,transform] duration-500 ${open ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
               >
                 <span className="text-xs text-[#c8102e]">0{i + 1}</span>
                 <span>

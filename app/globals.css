@@ -167,6 +167,40 @@
 .eyebrow { font-size: 11px; line-height: 1.7; letter-spacing: .22em; text-transform: uppercase; }
 .page-intro { padding-top: 160px; padding-bottom: 80px; }
 .page-intro.with-photo { min-height: 640px; display: flex; align-items: flex-end; }
+.section-motion {
+  opacity: 0;
+  transform: translateY(36px);
+  filter: blur(3px);
+  transition:
+    opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.85s ease;
+}
+.section-motion.section-motion-in {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+.site-nav-link {
+  position: relative;
+}
+.site-nav-link::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -9px;
+  left: 0;
+  height: 1px;
+  background: #c8102e;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.site-nav-link:hover::after,
+.site-nav-link.is-current::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
 section[id], main[id] { scroll-margin-top: 100px; }
 a, button, input, select, textarea, summary { -webkit-tap-highlight-color: transparent; }
 button, summary { touch-action: manipulation; }

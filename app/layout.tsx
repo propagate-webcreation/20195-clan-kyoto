@@ -4,6 +4,7 @@ import Script from "next/script";
 import "./globals.css";
 import { SiteHeader } from "./components/shared/SiteHeader";
 import { SiteFooter } from "./components/shared/SiteFooter";
+import { SiteMotion } from "./components/animation/SiteMotion";
 // Display sans for huge English headlines (NHA-style condensed grotesque)
 const anton = Anton({
   subsets: ["latin"],
@@ -52,15 +53,17 @@ export default function RootLayout({
       className={`scroll-auto md:scroll-smooth ${anton.variable} ${inter.variable} ${notoSansJP.variable}`}
     >
       <body className="font-sans antialiased min-h-screen bg-[#0a0a0a] text-white selection:bg-[#c8102e] selection:text-white">
-        <SiteHeader />
-        <main
-          id="main-content"
-          className="bg-[#0a0a0a] text-white"
-          tabIndex={-1}
-        >
-          {children}
-        </main>
-        <SiteFooter />
+        <SiteMotion>
+          <SiteHeader />
+          <main
+            id="main-content"
+            className="bg-[#0a0a0a] text-white"
+            tabIndex={-1}
+          >
+            {children}
+          </main>
+          <SiteFooter />
+        </SiteMotion>
         <Script
           src="https://site-annotator.vercel.app/tracker.js"
           strategy="afterInteractive"
