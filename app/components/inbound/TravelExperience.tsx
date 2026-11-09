@@ -6,11 +6,11 @@ export function TravelExperience() {
   const experiences = [
     {
       city: "OSAKA",
-      title: "A memory, in ink and on film.",
-      alt: "A traveller showing a cherry blossom tattoo",
-      image: "/images/polaroid-traveler.webp",
-      text: "A polaroid of your new tattoo, and ideas for exploring the city. Osaka’s studio brings a tangible souvenir to your tattoo experience.",
-      body: "Take home a complimentary polaroid after your session — two ways to remember your time in Japan.",
+      title: "Japanese motifs, between sights.",
+      alt: "温かな照明の大阪店の内観",
+      image: "/images/studio-interior.webp",
+      text: "From a small piece during your sightseeing to a full day of work. The Osaka studio is in the Shinsaibashi area.",
+      body: "The studio is open 11:00–21:00, and the price is quoted on the day.",
       id: "osaka",
     },
     {
