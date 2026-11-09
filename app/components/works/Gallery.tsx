@@ -202,7 +202,7 @@ export function Gallery({ compact = false }: { compact?: boolean }) {
           </p>
           <Link
             className="btn-square self-start"
-            href={compact ? "/works" : "#artists"}
+            href="#artists"
           >
             {compact
               ? "Works & Artists / 作品・彫師"
@@ -247,7 +247,7 @@ export function Gallery({ compact = false }: { compact?: boolean }) {
               </p>
               <Link
                 onClick={() => setSelected(null)}
-                href={`/contact?motif=${encodeURIComponent(MOTIFS.find((m) => m === selected.motif) ?? "")}${selected.studios.length === 1 ? `&studio=${selected.studios[0]}` : filter !== "all" ? `&studio=${filter}` : ""}`}
+                href={`/?motif=${encodeURIComponent(MOTIFS.find((m) => m === selected.motif) ?? "")}${selected.studios.length === 1 ? `&studio=${selected.studios[0]}` : filter !== "all" ? `&studio=${filter}` : ""}#contact`}
                 className="btn-square btn-blood mt-8 self-start"
               >
                 このモチーフで相談する ↗

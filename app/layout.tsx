@@ -32,11 +32,12 @@ const notoSansJP = Noto_Sans_JP({
 export const metadata: Metadata = {
   metadataBase: new URL("https://kyoto-walkin-tattoo-studio.com"),
   title: {
-    default: "大阪・神戸・京都のタトゥースタジオ | WALK-IN TATTOO STUDIO JAPAN",
+    default:
+      "大阪・神戸・京都・アメ村のタトゥースタジオ | WALK-IN TATTOO STUDIO JAPAN",
     template: "%s | WALK-IN TATTOO STUDIO JAPAN",
   },
   description:
-    "大阪・神戸・京都の3店舗をつなぐタトゥースタジオサイト。日本モチーフ・和テイストの作品、英語対応、店舗情報、料金、ご利用ガイドをご紹介。Walk-in tattoo studios in Osaka, Kobe and Kyoto, Japan.",
+    "大阪インバウンド、神戸、京都、アメ村のタトゥースタジオを1ページで案内します。新宿店は11月15日オープン予定です。各店舗の紹介、写真、問い合わせ先を掲載しています。",
   alternates: {
     canonical: "/",
   },

@@ -19,7 +19,7 @@ export function TravelExperience() {
       alt: "Tattoo artist at work",
       image: "/images/kobe-hero.webp",
       text: "A small studio near Sannomiya and Motomachi. English consultation, consent and aftercare sheets help you feel at ease throughout your visit.",
-      body: "Fit your visit around your time in Sannomiya and Motomachi. Check opening hours via LINE before stopping by.",
+      body: "Fit your visit around your time in Sannomiya and Motomachi. The studio is open 11:00–21:00, and the price is quoted on the day.",
       id: "kobe",
     },
     {
@@ -72,7 +72,7 @@ export function TravelExperience() {
                 {e.body}
               </p>
               <Link
-                href={`/studios#${e.id}`}
+                href={`#${e.id}`}
                 className="inline-block text-sm border-b border-black/40 pb-2 mt-6"
               >
                 Visit {e.city} ↗
@@ -85,7 +85,7 @@ export function TravelExperience() {
             Contact your studio for availability and the details of each
             experience.
           </p>
-          <Link href="/guide#flow" className="btn-square self-start">
+          <Link href="#flow" className="btn-square self-start">
             Plan your visit ↗
           </Link>
         </div>

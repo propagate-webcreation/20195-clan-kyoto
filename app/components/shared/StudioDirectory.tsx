@@ -27,7 +27,7 @@ export function StudioDirectory({ compact = false }: { compact?: boolean }) {
           {STUDIOS.map((studio, i) => (
             <article key={studio.id} className="group min-w-0">
               <Link
-                href={`/studios#${studio.id}`}
+                href={`#${studio.id}`}
                 className="block relative aspect-[3/4] overflow-hidden bg-[#161616]"
                 aria-label={`${studio.jp}店の情報を見る`}
               >
@@ -66,7 +66,7 @@ export function StudioDirectory({ compact = false }: { compact?: boolean }) {
                   </p>
                 )}
                 <Link
-                  href={`/studios#${studio.id}`}
+                  href={`#${studio.id}`}
                   className="inline-flex items-center justify-between w-full mt-6 text-xs tracking-[0.12em] uppercase hover:text-[#c8102e]"
                 >
                   店舗・アクセス / View studio <span aria-hidden>↗</span>

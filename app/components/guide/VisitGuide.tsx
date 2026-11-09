@@ -133,8 +133,8 @@ const QUESTIONS = [
   [
     "本当に予約なしで相談できますか？",
     "Can I walk in without a booking?",
-    "はい。3店舗ともウォークインに対応しています。混雑時はお待ちいただく場合があります。住所と当日の受付状況を事前に確認するとスムーズです。神戸は営業時間もLINEでご確認ください。",
-    "All three studios welcome walk-ins, subject to availability. Confirm directions and opening hours first, especially for Kobe.",
+    "はい。全店舗ウォークインに対応しています。営業時間は11:00–21:00、料金は当日見積もりのみです。混雑時はお待ちいただく場合があります。",
+    "All studios welcome walk-ins from 11:00 to 21:00. Pricing is quoted on the day, and you may need to wait if the studio is busy.",
   ],
   [
     "初めてのタトゥーでも大丈夫ですか？",
@@ -253,7 +253,7 @@ function Aftercare() {
               </li>
               <li>03 — 帰宅・帰国後の相談先 / Follow-up contact</li>
             </ul>
-            <Link className="btn-square mt-8" href="/contact?purpose=aftercare">
+            <Link className="btn-square mt-8" href="/?purpose=aftercare#contact">
               施術後の相談 / Aftercare question ↗
             </Link>
           </div>

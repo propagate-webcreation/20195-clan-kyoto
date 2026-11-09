@@ -133,7 +133,7 @@ export function StudioDetails() {
                   </p>
                   <div className="flex flex-wrap gap-3 mt-6">
                     <Link
-                      href={`/contact?studio=${s.id}`}
+                      href={`/?studio=${s.id}#contact`}
                       className="btn-square btn-blood"
                     >
                       {s.jp}店に相談する ↗

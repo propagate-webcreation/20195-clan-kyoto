@@ -53,7 +53,7 @@ export function Artists() {
                 {s.artistEn}
               </p>
               <Link
-                href={`/contact?studio=${s.id}&purpose=artist`}
+                href={`/?studio=${s.id}&purpose=artist#contact`}
                 className="inline-block border-b border-white/50 pb-2 mt-6 text-sm hover:text-[#c8102e]"
               >
                 担当彫師・作品を問い合わせる ↗

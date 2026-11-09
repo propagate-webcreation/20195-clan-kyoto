@@ -26,7 +26,7 @@ export function BrandIntro() {
             Three cities, a shared love of Japanese tattoo. Walk in with an
             idea. Leave with a memory that travels with you.
           </p>
-          <Link href="/inbound" className="btn-square mt-8">
+          <Link href="#why" className="btn-square mt-8">
             For travellers / 旅する方へ ↗
           </Link>
         </div>

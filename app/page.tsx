@@ -1,17 +1,62 @@
 import { Hero } from "./components/site/Hero";
-import { BrandIntro } from "./components/home/BrandIntro";
-import { StudioDirectory } from "./components/shared/StudioDirectory";
+import { StoreGuide } from "./components/home/StoreGuide";
 import { Gallery } from "./components/works/Gallery";
-import { ContactBanner } from "./components/shared/Editorial";
+import { Artists } from "./components/works/Artists";
+import { Recruit } from "./components/site/Recruit";
+import { PriceGuide } from "./components/guide/PriceGuide";
+import { VisitGuide } from "./components/guide/VisitGuide";
+import { WhyUs } from "./components/site/WhyUs";
+import { Concept } from "./components/site/Concept";
+import { TravelExperience } from "./components/inbound/TravelExperience";
+import {
+  ConsultationForm,
+  DirectContacts,
+} from "./components/contact/ConsultationForm";
+import { MOTIFS } from "./config/studios";
+import { STORE_GUIDE } from "./config/store-guide";
 
-export default function Home() {
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}) {
+  const params = await searchParams;
+  const studio =
+    typeof params.studio === "string" &&
+    STORE_GUIDE.some((item) => item.id === params.studio)
+      ? params.studio
+      : "";
+  const motif =
+    typeof params.motif === "string" &&
+    (MOTIFS as readonly string[]).includes(params.motif)
+      ? params.motif
+      : "";
+  const purpose =
+    params.purpose === "artist" || params.purpose === "aftercare"
+      ? params.purpose
+      : "";
+
   return (
     <>
       <Hero />
-      <BrandIntro />
-      <StudioDirectory compact />
-      <Gallery compact />
-      <ContactBanner />
+      <StoreGuide />
+      <Gallery />
+      <Artists />
+      <Recruit />
+      <PriceGuide />
+      <VisitGuide />
+      <WhyUs />
+      <Concept />
+      <TravelExperience />
+      <div id="contact">
+        <ConsultationForm
+          key={`${studio}-${motif}-${purpose}`}
+          initialStudio={studio ?? ""}
+          initialMotif={motif}
+          purpose={purpose}
+        />
+        <DirectContacts />
+      </div>
     </>
   );
 }

@@ -1,9 +1,17 @@
 "use client";
 
 import { useState, useRef, type FormEvent } from "react";
-import { STUDIOS, MOTIFS, SIZES, getStudio } from "../../config/studios";
+import { MOTIFS, SIZES } from "../../config/studios";
+import { STORE_GUIDE, type StoreProfile } from "../../config/store-guide";
 import { SectionHeading, SectionRail } from "../shared/Editorial";
 import { SocialIcon } from "../shared/SocialIcon";
+
+function primaryContact(store: StoreProfile) {
+  return (
+    store.contacts.find((contact) => contact.channel === "WhatsApp") ??
+    store.contacts[0]
+  );
+}
 
 export function ConsultationForm({
   initialStudio = "",
@@ -32,7 +40,8 @@ export function ConsultationForm({
   const [copyStatus, setCopyStatus] = useState("");
   const resultRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLTextAreaElement>(null);
-  const studio = getStudio(studioId);
+  const studio = STORE_GUIDE.find((item) => item.id === studioId);
+  const chat = studio ? primaryContact(studio) : undefined;
   const consultation = studio
     ? [
         `Tattoo consultation / タトゥーのご相談 — ${studio.name}`,
@@ -116,8 +125,8 @@ export function ConsultationForm({
                   Choose a studio · Required
                 </span>
               </legend>
-              <div className="grid grid-cols-3 gap-2 sm:gap-3 mt-5">
-                {STUDIOS.map((s) => (
+              <div className="mt-5 grid grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-3">
+                {STORE_GUIDE.map((s) => (
                   <label
                     key={s.id}
                     className={`relative cursor-pointer border p-3 sm:p-5 transition-colors ${studioId === s.id ? "border-[#c8102e] bg-[#c8102e]/10" : "border-white/20 hover:border-white/50"}`}
@@ -131,12 +140,17 @@ export function ConsultationForm({
                       onChange={() => setStudioId(s.id)}
                       className="accent-[#c8102e] mb-3"
                     />
-                    <span className="display block text-2xl sm:text-3xl">
+                    <span className="display block text-[22px] leading-none md:text-[28px]">
                       {s.city}
                     </span>
-                    <span className="block mt-2 text-sm text-white/60">
+                    <span className="mt-2 block text-[14px] leading-relaxed text-white/60 md:text-[16px]">
                       {s.jp}
                     </span>
+                    {s.opening ? (
+                      <span className="mt-2 block text-[13px] leading-relaxed text-white/70 md:text-[14px]">
+                        {s.opening}
+                      </span>
+                    ) : null}
                   </label>
                 ))}
               </div>
@@ -247,13 +261,16 @@ export function ConsultationForm({
             {prepared && studio && (
               <div className="mt-10 border border-white/25 p-5 sm:p-8">
                 <p className="eyebrow text-[#c8102e] mb-5">
-                  Next / {studio.city} · {studio.channel}
+                  Next / {studio.city}
+                  {chat ? ` · ${chat.channel}` : ""}
                 </p>
                 <h3 className="text-xl">内容を確認して、店舗へ送る</h3>
                 <p className="text-white/60 text-sm leading-[1.9] mt-4">
-                  {studio.channel === "WhatsApp"
+                  {chat?.channel === "WhatsApp"
                     ? "WhatsAppに相談文を引き継ぎます。送信前に内容をご確認ください。 / Your message will be added to WhatsApp for review."
-                    : `相談文をコピーし、${studio.channel}を開いてチャットに貼り付けてください。 / Copy your message, open ${studio.channel}, and paste it into the chat.`}
+                    : chat
+                      ? `相談文をコピーし、${chat.channel}を開いてチャットに貼り付けてください。 / Copy your message, open ${chat.channel}, and paste it into the chat.`
+                      : "問い合わせ先は、分かり次第この場所に掲載します。相談文はコピーして保管できます。 / The contact link will be added here when it is confirmed. You can copy the message for now."}
                 </p>
                 <textarea
                   ref={textRef}
@@ -266,19 +283,21 @@ export function ConsultationForm({
                   <button type="button" className="btn-square" onClick={copy}>
                     相談文をコピー / Copy
                   </button>
-                  <a
-                    href={
-                      studio.channel === "WhatsApp"
-                        ? `${studio.contact}?text=${encodeURIComponent(consultation)}`
-                        : studio.contact
-                    }
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-square btn-blood"
-                  >
-                    <SocialIcon channel={studio.channel} />
-                    {studio.channel}を開く ↗
-                  </a>
+                  {chat ? (
+                    <a
+                      href={
+                        chat.channel === "WhatsApp"
+                          ? `${chat.href}?text=${encodeURIComponent(consultation)}`
+                          : chat.href
+                      }
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-square btn-blood"
+                    >
+                      <SocialIcon channel={chat.channel} />
+                      {chat.channel}を開く ↗
+                    </a>
+                  ) : null}
                 </div>
                 <p
                   className="text-sm text-white/70 leading-[1.9] mt-4"
@@ -306,38 +325,49 @@ export function DirectContacts() {
         <p className="eyebrow text-[#c8102e] mb-10">
           Or talk directly / 直接相談する
         </p>
-        <div className="grid md:grid-cols-3 gap-8">
-          {STUDIOS.map((s) => (
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+          {STORE_GUIDE.map((s) => (
             <article key={s.id} className="border-t border-white/20 pt-6">
-              <h2 className="display text-4xl">
+              <h2 className="display text-[32px] leading-none md:text-[40px]">
                 {s.city}
                 <span className="text-[#c8102e]">.</span>
               </h2>
-              <p className="text-white/55 text-sm mt-4 leading-relaxed">
+              <p className="mt-3 text-[14px] leading-relaxed text-white/70 md:text-[16px]">
+                {s.jp}
+                {s.name ? ` / ${s.name}` : ""}
+              </p>
+              {s.opening ? (
+                <p className="mt-3 text-[14px] font-bold leading-relaxed text-white md:text-[16px]">
+                  {s.opening}
+                </p>
+              ) : null}
+              <p className="mt-4 text-[14px] leading-relaxed text-white/55 md:text-[16px]">
                 {s.hours}
               </p>
-              <p className="text-white/55 text-sm mt-3 leading-[1.9]">
+              <p className="mt-3 text-[14px] leading-relaxed text-white/55 md:text-[16px]">
                 {s.hoursNote}
               </p>
-              <a
-                href={s.contact}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-square mt-6"
-              >
-                <SocialIcon channel={s.channel} />
-                {s.channel} / {s.jp} ↗
-              </a>
-              {s.id === "osaka" && (
-                <a
-                  href={s.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 w-fit mt-5 border-b border-white/40 pb-1 text-sm"
-                >
-                  <SocialIcon channel="Instagram" />
-                  Instagram ↗
-                </a>
+              {s.contacts.length > 0 ? (
+                <div className="mt-6 flex flex-col items-start gap-3">
+                  {s.contacts.map((contact) => (
+                    <a
+                      key={contact.href}
+                      href={contact.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-square"
+                    >
+                      <SocialIcon channel={contact.channel} />
+                      {contact.label}
+                    </a>
+                  ))}
+                </div>
+              ) : (
+                <p className="mt-6 text-[14px] leading-relaxed text-white/75 md:text-[16px]">
+                  {s.opening
+                    ? "問い合わせ先は、オープン情報と一緒に追加します。"
+                    : "問い合わせ先は、分かり次第この場所に掲載します。"}
+                </p>
               )}
             </article>
           ))}

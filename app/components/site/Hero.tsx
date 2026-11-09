@@ -47,13 +47,13 @@ export function Hero() {
 
       {/* meta corner top-left */}
       <div className="absolute top-28 sm:top-28 left-5 sm:left-8 z-20 text-[10px] sm:text-[11px] tracking-[0.24em] uppercase text-white/70 leading-relaxed">
-        <p>OSAKA · KOBE · KYOTO</p>
+        <p>OSAKA · KOBE · KYOTO · AMEMURA</p>
         <p className="mt-1">Walk-in Tattoo Studio · Japan</p>
       </div>
 
       {/* meta corner top-right */}
       <div className="absolute top-[164px] sm:top-28 right-5 sm:right-8 lg:right-16 z-20 text-[10px] sm:text-[11px] tracking-[0.24em] uppercase text-white/70 text-right leading-relaxed">
-        <p>Three cities. One journey.</p>
+        <p>Choose a studio.</p>
         <p className="mt-1">Japanese motifs · English welcome</p>
       </div>
 
@@ -114,8 +114,8 @@ export function Hero() {
               <br />
               旅の思い出を一生に刻む。
               <br />
-              <span className="text-white/50 text-xs tracking-[0.04em]">
-                A Japanese tattoo as your souvenir from Osaka, Kobe or Kyoto.
+              <span className="text-white/70 text-[13px] tracking-[0.04em] md:text-[14px]">
+                Osaka, Kobe, Kyoto and Amemura. Shinjuku opens November 15.
               </span>
             </motion.p>
 
@@ -125,8 +125,15 @@ export function Hero() {
               transition={{ duration: 0.8, delay: 0.85 }}
               className="flex flex-wrap items-center gap-3"
             >
-              <Link href="/studios" className="btn-square btn-blood">Find your studio ↗</Link>
-              <Link href="/works" className="text-xs tracking-[0.15em] uppercase border-b border-white/50 pb-2">Works & Artists ↗</Link>
+              <Link href="#stores" className="btn-square btn-blood min-h-12 font-bold">
+                <svg viewBox="0 0 24 24" className="size-5" aria-hidden="true">
+                  <path
+                    fill="currentColor"
+                    d="M12 2.5 4.5 20.5l7.5-3.2 7.5 3.2L12 2.5Z"
+                  />
+                </svg>
+                店舗を選ぶ
+              </Link>
             </motion.div>
           </div>
         </div>
@@ -143,7 +150,7 @@ export function Hero() {
             <span>Scroll</span>
           </div>
           <p className="text-right text-[9px] sm:text-[10px] leading-tight min-w-0">
-            Osaka / Kobe / Kyoto — Japan
+            Osaka / Kobe / Kyoto / Amemura — Japan
           </p>
         </motion.div>
       </div>
@@ -151,7 +158,7 @@ export function Hero() {
       {/* side vertical text — desktop only */}
       <div className="hidden xl:block absolute right-6 top-1/2 -translate-y-1/2 z-10">
         <p className="vert text-[10px] tracking-[0.4em] uppercase text-white/45 select-none">
-          Osaka · Kobe · Kyoto · Japanese artists · Walk-in welcome
+          Osaka · Kobe · Kyoto · Amemura · Walk-in welcome
         </p>
       </div>
     </section>

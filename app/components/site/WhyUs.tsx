@@ -7,7 +7,7 @@ const REASONS = [
     num: "01",
     en: "Walk-in Welcome",
     subtitle: "No appointment needed",
-    body: "Drop in during your sightseeing. All three studios welcome walk-ins, subject to availability. Check Kobe’s hours via LINE before visiting.",
+    body: "Drop in during your sightseeing. Every studio is open 11:00–21:00, and the price is quoted on the day.",
   },
   {
     num: "02",

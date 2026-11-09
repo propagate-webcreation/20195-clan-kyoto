@@ -3,14 +3,7 @@ import type { MetadataRoute } from 'next';
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://kyoto-walkin-tattoo-studio.com';
 
-  const routes = [
-    '/',
-    '/inbound',
-    '/studios',
-    '/works',
-    '/guide',
-    '/contact',
-  ];
+  const routes = ["/"];
 
   return routes.map((route) => ({
     url: `${baseUrl}${route}`,

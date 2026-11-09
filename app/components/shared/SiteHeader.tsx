@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { NAVIGATION } from "../../config/studios";
@@ -12,15 +13,8 @@ export function SiteHeader() {
 
 function HeaderContents({ pathname }: { pathname: string }) {
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
   useEffect(() => {
     if (!open) return;
     const oldOverflow = document.body.style.overflow;
@@ -65,15 +59,18 @@ function HeaderContents({ pathname }: { pathname: string }) {
         本文へ移動 / Skip to content
       </a>
       <header
-        className={`fixed top-0 inset-x-0 z-50 px-5 sm:px-8 py-5 sm:py-6 transition-[background-color,padding] duration-300 ${scrolled || open || pathname !== "/" ? "bg-[#0a0a0a]/95 backdrop-blur-md" : "mix-blend-difference"}`}
+        className="fixed top-0 inset-x-0 z-50 bg-[#0a0a0a] px-5 py-2 sm:px-8"
       >
         <div className="max-w-[1600px] mx-auto flex items-center justify-between gap-5">
-          <Link
-            href="/"
-            className="text-white tracking-[0.18em] text-[10px] sm:text-[11px] font-semibold leading-tight shrink-0"
-          >
-            <span className="block">WALK-IN</span>
-            <span className="block">TATTOO STUDIO / JAPAN</span>
+          <Link href="/" className="inline-flex shrink-0 items-center">
+            <Image
+              src="/images/site-logo.png"
+              alt="WALK-IN TATTOO STUDIO JAPAN"
+              width={888}
+              height={751}
+              priority
+              className="h-[72px] w-auto md:h-[84px]"
+            />
           </Link>
           <nav
             aria-label="メインナビゲーション"
@@ -95,7 +92,7 @@ function HeaderContents({ pathname }: { pathname: string }) {
           </nav>
           <div className="flex items-center gap-4">
             <Link
-              href="/contact"
+              href="/#contact"
               className="hidden md:inline-flex items-center gap-2 border border-white text-white px-4 py-2 text-[11px] tracking-[0.15em] uppercase hover:bg-white hover:text-black transition-colors"
             >
               Walk-in
@@ -157,7 +154,7 @@ function HeaderContents({ pathname }: { pathname: string }) {
             ))}
           </nav>
           <p className="eyebrow text-white/50 mt-8">
-            Osaka · Kobe · Kyoto / JP · EN
+            Osaka · Kobe · Kyoto · Amemura / JP · EN
           </p>
         </div>
       </div>

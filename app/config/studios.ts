@@ -1,10 +1,10 @@
 export const NAVIGATION = [
-  { href: "/", label: "Home", jp: "トップ" },
-  { href: "/inbound", label: "For Travellers", jp: "インバウンド" },
-  { href: "/studios", label: "Studios", jp: "店舗" },
-  { href: "/works", label: "Works & Artists", jp: "作品・アーティスト" },
-  { href: "/guide", label: "Price & Guide", jp: "料金・ご利用ガイド" },
-  { href: "/contact", label: "Contact", jp: "問い合わせ" },
+  { href: "/#top", label: "Home", jp: "トップ" },
+  { href: "/#stores", label: "Studios", jp: "店舗" },
+  { href: "/#works", label: "Works", jp: "作品" },
+  { href: "/#pricing", label: "Price", jp: "料金" },
+  { href: "/#flow", label: "Guide", jp: "ご案内" },
+  { href: "/#contact", label: "Contact", jp: "相談" },
 ] as const;
 
 export type StudioId = "osaka" | "kobe" | "kyoto";
@@ -19,11 +19,12 @@ export const STUDIOS = [
     name: "OSAKA WALK-IN TATTOO STUDIO JAPAN",
     area: "大阪・心斎橋エリア",
     areaEn: "Shinsaibashi area, Osaka",
-    hours: "11:00 — 24:00",
+    hours: "11:00 — 21:00",
     holidays: "年中無休 / Open daily",
-    hoursNote: "最終受付・当日の空き状況はお問い合わせください。",
+    hoursNote:
+      "料金は当日見積もりのみです。最終受付と当日の空きはお問い合わせください。",
     hoursNoteEn:
-      "Contact the studio for last admission and same-day availability.",
+      "Pricing is quoted on the day. Contact the studio for last admission and availability.",
     address: "詳細住所は WhatsApp / Instagram DM にてご案内",
     addressEn: "Message us for the exact address before visiting.",
     facilities: "プライベートブース・日本人彫師が毎日常駐",
@@ -55,10 +56,11 @@ export const STUDIOS = [
     name: "tattoo studio domy 神戸店",
     area: "神戸・三宮〜元町エリア",
     areaEn: "Sannomiya / Motomachi area, Kobe",
-    hours: "LINEにてご確認 / Ask via LINE",
-    holidays: "営業日・受付状況はLINEにてご案内",
-    hoursNote: "営業時間が流動的なため、来店前にLINEでご確認ください。",
-    hoursNoteEn: "Opening hours vary. Please check via LINE before visiting.",
+    hours: "11:00 — 21:00",
+    holidays: "料金は当日見積もりのみ / Same-day quote only",
+    hoursNote: "料金は当日見積もりのみです。詳細住所はLINEでご案内します。",
+    hoursNoteEn:
+      "Pricing is quoted on the day. The exact address is shared on LINE.",
     address: "詳細住所は LINE 公式アカウントにてご案内",
     addressEn: "Contact our official LINE account for the exact address.",
     facilities: "清潔な施術スペース・英語版同意書とアフターケアシート",
@@ -91,9 +93,10 @@ export const STUDIOS = [
     areaEn: "Kyoto, Japan",
     hours: "11:00 — 21:00",
     holidays: "年中無休 / Open daily",
-    hoursNote: "来店場所・当日の空き状況はInstagram DMでご案内します。",
+    hoursNote:
+      "料金は当日見積もりのみです。来店場所はInstagram DMでご案内します。",
     hoursNoteEn:
-      "Message us on Instagram for directions and same-day availability.",
+      "Pricing is quoted on the day. Message us on Instagram for directions.",
     address: "詳細住所は Instagram DM にてご案内",
     addressEn: "Message us on Instagram for the exact address before visiting.",
     facilities: "3ブース完備・日本人彫師が毎日出勤",

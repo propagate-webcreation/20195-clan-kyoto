@@ -148,13 +148,11 @@ export function ContactBanner({
             className={`${englishOnly ? "" : "font-jp "}text-white/65 text-base leading-[1.9] mb-7`}
           >
             {englishOnly
-              ? "Osaka, Kobe or Kyoto. Talk to your preferred studio about a tattoo that fits your journey and your style."
-              : "大阪・神戸・京都。旅先やデザインに合わせて、ご希望の店舗へご相談ください。"}
+              ? "Osaka, Kobe, Kyoto and Amemura. Choose a studio and contact that shop directly."
+              : "大阪、神戸、京都、アメ村。行きたい店舗を選んで、その店舗へ直接相談できます。"}
           </p>
-          <Link className="btn-square btn-blood" href="/contact">
-            {englishOnly
-              ? "Start a conversation"
-              : "相談する / Start a conversation"}{" "}
+          <Link className="btn-square btn-blood" href="#stores">
+            {englishOnly ? "Choose a studio" : "店舗を選ぶ"}{" "}
             <span aria-hidden>↗</span>
           </Link>
         </div>
