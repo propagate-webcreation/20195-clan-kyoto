@@ -148,8 +148,8 @@ export function ContactBanner({
             className={`${englishOnly ? "" : "font-jp "}text-white/65 text-base leading-[1.9] mb-7`}
           >
             {englishOnly
-              ? "Osaka, Kobe, Kyoto and Amemura. Choose a studio and contact that shop directly."
-              : "大阪、神戸、京都、アメ村。行きたい店舗を選んで、その店舗へ直接相談できます。"}
+              ? "Osaka, Kyoto and Shibuya. Shinjuku opens November 15. Choose a studio and contact that shop directly."
+              : "大阪、京都、渋谷。新宿は11月15日オープン予定です。行きたい店舗を選んで相談できます。"}
           </p>
           <Link className="btn-square btn-blood" href="#stores">
             {englishOnly ? "Choose a studio" : "店舗を選ぶ"}{" "}

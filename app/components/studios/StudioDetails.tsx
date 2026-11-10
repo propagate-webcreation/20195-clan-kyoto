@@ -26,7 +26,7 @@ export function StudioDetails() {
                   {s.city} <span className="text-[#c8102e]">↘</span>
                 </Link>
                 <p className="text-sm mt-4 text-white/55">
-                  {s.jp} / {s.id === "kobe" ? "DOMY" : "WALK-IN"}
+                  {s.jp} / WALK-IN
                 </p>
                 <dl className="mt-8 space-y-6">
                   <div>
@@ -59,12 +59,11 @@ export function StudioDetails() {
         <section
           key={s.id}
           id={s.id}
-          className={s.id === "kobe" ? "bg-black" : ""}
         >
           <SectionRail
             number={`0${i + 2}`}
             title={`${s.city} / ${s.jp}`}
-            label={s.id === "kobe" ? "DOMY" : "Walk-in"}
+            label="Walk-in"
           />
           <div className="site-width py-20 sm:py-28">
             <div className="grid lg:grid-cols-[1.1fr_1fr] gap-10 lg:gap-20 items-start">
@@ -102,9 +101,7 @@ export function StudioDetails() {
                     [
                       "Language / 言語",
                       "日本語 / English",
-                      s.id === "kobe"
-                        ? "英語版の同意書・アフターケアシートをご用意"
-                        : "英語でのご相談に対応",
+                      "英語でのご相談に対応",
                       "",
                     ],
                     ["Payments / お支払い", s.payments, "", ""],

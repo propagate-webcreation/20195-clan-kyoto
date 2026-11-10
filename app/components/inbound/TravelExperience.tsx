@@ -14,15 +14,6 @@ export function TravelExperience() {
       id: "osaka",
     },
     {
-      city: "KOBE",
-      title: "Mark your journey.",
-      alt: "Tattoo artist at work",
-      image: "/images/kobe-hero.webp",
-      text: "A small studio near Sannomiya and Motomachi. English consultation, consent and aftercare sheets help you feel at ease throughout your visit.",
-      body: "Fit your visit around your time in Sannomiya and Motomachi. The studio is open 11:00–21:00, and the price is quoted on the day.",
-      id: "kobe",
-    },
-    {
       city: "KYOTO",
       title: "Discover the story behind the ink.",
       alt: "Sakura blossoms on a dark surface",

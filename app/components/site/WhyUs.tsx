@@ -19,7 +19,7 @@ const REASONS = [
     num: "03",
     en: "English Welcome",
     subtitle: "Consultations in your language",
-    body: "Discuss your design and travel plans in English or Japanese. Kobe also provides English consent forms and aftercare sheets.",
+    body: "Osaka and Kyoto can discuss your design and travel plans in English or Japanese.",
   },
   {
     num: "04",

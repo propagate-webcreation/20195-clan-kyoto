@@ -9,7 +9,7 @@ export function SiteFooter() {
       <div className="border-b border-white/15">
         <div className="site-width py-16 sm:py-24">
           <p className="eyebrow text-[#c8102e] mb-8">
-            — Osaka · Kobe · Kyoto · Amemura / Japan
+            — Osaka · Kyoto · Shibuya · Shinjuku / Japan
           </p>
           <h2 className="display text-[clamp(3rem,12vw,11rem)] leading-[0.88]">
             WALK-IN
@@ -26,7 +26,7 @@ export function SiteFooter() {
         <div className="col-span-2 lg:col-span-4">
           <p className="eyebrow text-white/45 mb-5">— Our studios</p>
           <p className="text-[14px] leading-relaxed max-w-sm md:text-[16px]">
-            大阪、神戸、京都、アメ村。行きたい店舗から、そのまま問い合わせできます。
+            大阪、京都、渋谷。行きたい店舗から、そのまま問い合わせできます。
           </p>
           <p className="font-jp text-[14px] leading-relaxed text-white/75 mt-5">
             新宿店は11月15日オープン予定です。
@@ -96,7 +96,7 @@ export function SiteFooter() {
       </div>
       <div className="border-t border-white/15">
         <div className="site-width py-9 text-center eyebrow text-white/55">
-          Made for travellers · 大阪 / 神戸 / 京都 / アメ村 · Japan
+          Made for travellers · 大阪 / 京都 / 渋谷 / 新宿 · Japan
         </div>
       </div>
       <div className="border-t border-white/10 site-width py-6 flex flex-wrap justify-between gap-3 text-[10px] tracking-[0.15em] uppercase text-white/40">

@@ -19,7 +19,7 @@ export function StudioDirectory({ compact = false }: { compact?: boolean }) {
             <span className="text-white/35">ONE CRAFT.</span>
           </SectionHeading>
           <p className="max-w-md text-white/60 text-base leading-[1.85]">
-            Osaka, Kobe and Kyoto. Find your studio, meet the artist, and take a
+            Osaka, Kyoto and Shibuya. Find your studio, meet the artist, and take a
             piece of Japan with you.
           </p>
         </div>
@@ -49,9 +49,7 @@ export function StudioDirectory({ compact = false }: { compact?: boolean }) {
                     <span className="text-[#c8102e]">.</span>
                   </h3>
                   <p className="text-[11px] tracking-[0.14em] uppercase text-white/75 mt-4">
-                    {studio.id === "kobe"
-                      ? "tattoo studio domy"
-                      : "Walk-in Tattoo Studio"}
+                    Walk-in Tattoo Studio
                   </p>
                 </div>
               </Link>

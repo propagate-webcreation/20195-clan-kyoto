@@ -62,40 +62,13 @@ const WORKS = [
     description:
       "日本の伝統的な面をタトゥーに。繊細な表情を、陰影と線で表現するデザインです。",
   },
-  {
-    src: "/images/kobe-sakura.webp",
-    title: "Sakura",
-    motif: "Sakura / 桜",
-    number: "07",
-    studios: ["kobe"],
-    description:
-      "散りぎわの一片に、旅の記憶を重ねる。余白を生かして、日本の季節を肌に残します。",
-  },
-  {
-    src: "/images/kobe-dragon.webp",
-    title: "Ryū",
-    motif: "Dragon / 龍",
-    number: "08",
-    studios: ["kobe"],
-    description:
-      "鱗の流れと曲線の重なり。身体のラインに合わせた、力強い構図へ。",
-  },
-  {
-    src: "/images/kobe-wave.webp",
-    title: "Nami",
-    motif: "Wave / 波",
-    number: "09",
-    studios: ["kobe"],
-    description:
-      "墨の濃淡で距離と深さを描く。神戸の港から続く、波のモチーフです。",
-  },
 ];
 
 export function Gallery({ compact = false }: { compact?: boolean }) {
   const [filter, setFilter] = useState<"all" | StudioId>("all");
   const [selected, setSelected] = useState<(typeof WORKS)[number] | null>(null);
   const works = compact
-    ? [WORKS[0], WORKS[6], WORKS[2]]
+    ? [WORKS[0], WORKS[1], WORKS[2]]
     : WORKS.filter((w) => filter === "all" || w.studios.includes(filter));
   const layout = [
     "col-span-7 lg:col-span-4",
@@ -229,9 +202,7 @@ export function Gallery({ compact = false }: { compact?: boolean }) {
             </div>
             <div className="flex flex-col justify-center py-4">
               <p className="eyebrow text-[#c8102e] mb-5">
-                {selected.studios[0] === "kobe"
-                  ? "Motif inspiration"
-                  : "Design"}{" "}
+                Design{" "}
                 / {selected.number}
               </p>
               <h2 className="display text-5xl">{selected.title}</h2>

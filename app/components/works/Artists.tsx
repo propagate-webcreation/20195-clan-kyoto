@@ -44,7 +44,7 @@ export function Artists() {
                 {s.jp} / Studio team
               </p>
               <h3 className="display text-4xl mt-4">
-                {s.city} {s.id === "kobe" ? "DOMY" : "ARTISTS"}
+                {s.city} ARTISTS
               </h3>
               <p className="text-white/65 text-sm leading-[2] mt-5">
                 {s.artistText}

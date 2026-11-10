@@ -154,7 +154,7 @@ function HeaderContents({ pathname }: { pathname: string }) {
             ))}
           </nav>
           <p className="eyebrow text-white/50 mt-8">
-            Osaka · Kobe · Kyoto · Amemura / JP · EN
+            Osaka · Kyoto · Shibuya · Shinjuku / JP · EN
           </p>
         </div>
       </div>

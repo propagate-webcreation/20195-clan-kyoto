@@ -50,7 +50,7 @@ export function VisitGuide() {
             </SectionHeading>
             <div className="relative aspect-[4/5] mt-10">
               <Image
-                src="/images/kobe-process.webp"
+                src="/images/artist-hands.webp"
                 alt="タトゥーの施術風景"
                 fill
                 sizes="(max-width: 1024px) 100vw, 45vw"
@@ -91,34 +91,11 @@ export function VisitGuide() {
             </h2>
           </div>
           <div>
-            <div className="grid sm:grid-cols-2 gap-10">
-              <div>
-                <p className="text-white/55 text-sm">
-                  ワンポイント / Small tattoo
-                </p>
-                <p className="display text-5xl sm:text-6xl mt-4">
-                  30–60<span className="text-xl ml-3 text-white/50">MIN</span>
-                </p>
-                <p className="text-sm leading-[1.9] text-white/60 mt-4">
-                  神戸店の施術目安。相談を含む滞在は約1〜1.5時間。
-                </p>
-              </div>
-              <div>
-                <p className="text-white/55 text-sm">
-                  構図を作る作品 / Larger composition
-                </p>
-                <p className="display text-5xl sm:text-6xl mt-4">
-                  2–4<span className="text-xl ml-3 text-white/50">HOURS</span>
-                </p>
-                <p className="text-sm leading-[1.9] text-white/60 mt-4">
-                  神戸店の目安。デザインによっては複数回来店が必要です。
-                </p>
-              </div>
-            </div>
-            <p className="text-white/50 text-sm leading-[1.85] border-t border-white/15 mt-8 pt-5">
-              Based on Kobe’s published guide. Timing varies by studio and
-              design; confirm your total visit time before making travel plans.
-              大阪・京都を含め、実際の所要時間は店舗にご確認ください。
+            <p className="text-[14px] leading-relaxed text-white md:text-[16px]">
+              所要時間は、デザイン・サイズ・部位を見て、来店当日に店舗でご案内します。営業時間は全店舗 11:00–21:00 です。
+            </p>
+            <p className="mt-4 text-[14px] leading-relaxed text-white/70 md:text-[16px]">
+              Session length is confirmed at the studio on the day. Every studio is open 11:00–21:00.
             </p>
           </div>
         </div>
@@ -145,8 +122,8 @@ const QUESTIONS = [
   [
     "英語で相談できますか？",
     "Can I have my consultation in English?",
-    "3店舗とも日本語・英語でのご相談に対応しています。神戸店では英語版の同意書・アフターケアシートもご用意しています。",
-    "Consultations are available in English and Japanese. Kobe also provides English consent and aftercare sheets.",
+    "大阪と京都は、日本語と英語で相談できます。渋谷と新宿の対応言語は、決まり次第ご案内します。",
+    "Osaka and Kyoto can consult in English and Japanese. Language support for Shibuya and Shinjuku will be added when it is confirmed.",
   ],
   [
     "画像の持ち込みやオリジナル制作はできますか？",
@@ -157,8 +134,8 @@ const QUESTIONS = [
   [
     "支払い方法は何がありますか？",
     "Which payment methods are accepted?",
-    "3店舗ともクレジットカード・各種電子決済に対応しています。使えるブランドは店舗により異なるため、店舗ページをご確認のうえ、ご希望の決済方法をお伝えください。",
-    "Cards and electronic payments are accepted. Available brands vary; check with your chosen studio.",
+    "大阪と京都は、クレジットカードと各種電子決済に対応しています。使えるブランドは店舗により異なります。渋谷と新宿の支払い方法は、決まり次第ご案内します。",
+    "Osaka and Kyoto accept cards and electronic payments. Available brands vary. Payment methods for Shibuya and Shinjuku will be added when they are confirmed.",
   ],
   [
     "当日中に完成しますか？",
@@ -169,8 +146,8 @@ const QUESTIONS = [
   [
     "年齢などの利用条件はありますか？",
     "Are there age requirements?",
-    "大阪・京都では、18歳未満への施術は行っていません。神戸の年齢条件や、各店舗で必要な確認書類は来店前にお問い合わせください。",
-    "Osaka and Kyoto do not tattoo anyone under 18. Ask Kobe about its requirements and check the documents needed at your chosen studio.",
+    "大阪と京都では、18歳未満への施術は行っていません。渋谷と新宿の年齢条件は、このページではご案内していません。",
+    "Osaka and Kyoto do not tattoo anyone under 18. Age requirements for Shibuya and Shinjuku are not published on this page.",
   ],
 ];
 

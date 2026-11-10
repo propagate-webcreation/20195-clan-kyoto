@@ -115,7 +115,7 @@ export function Concept() {
             </p>
             <div className="mt-8 flex items-start gap-4 text-[11px] tracking-[0.28em] uppercase text-white/50 min-w-0">
               <span className="block w-8 h-px bg-white/40 shrink-0 mt-2" />
-              <span className="min-w-0">OSAKA · KOBE · KYOTO / JAPAN</span>
+              <span className="min-w-0">OSAKA · KYOTO · SHIBUYA · SHINJUKU / JAPAN</span>
             </div>
           </ScrollReveal>
         </div>

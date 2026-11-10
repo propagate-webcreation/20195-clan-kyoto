@@ -17,7 +17,7 @@ export function PriceGuide() {
           <span className="text-[#c8102e]">.</span>
         </SectionHeading>
         <p className="mt-7 max-w-2xl text-left text-[14px] leading-relaxed text-black/80 md:text-[16px]">
-          大阪、神戸、京都、アメ村、新宿。
+          大阪、京都、渋谷、新宿。
           <br />
           料金はデザイン・サイズ・部位を見て、当日にご案内します。
           <br />

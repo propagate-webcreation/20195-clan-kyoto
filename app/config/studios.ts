@@ -7,7 +7,7 @@ export const NAVIGATION = [
   { href: "/#contact", label: "Contact", jp: "相談" },
 ] as const;
 
-export type StudioId = "osaka" | "kobe" | "kyoto";
+export type StudioId = "osaka" | "kyoto";
 
 // Public information and existing contact destinations checked on 2026-09-10.
 // Headquarters addresses are not studio addresses. Do not infer missing details.
@@ -48,41 +48,6 @@ export const STUDIOS = [
     source: "https://tattoo-studio-osaka.com/",
     company: "株式会社 Clan②",
     payments: "Visa / Mastercard / AMEX・各種電子決済",
-  },
-  {
-    id: "kobe",
-    city: "KOBE",
-    jp: "神戸",
-    name: "tattoo studio domy 神戸店",
-    area: "神戸・三宮〜元町エリア",
-    areaEn: "Sannomiya / Motomachi area, Kobe",
-    hours: "11:00 — 21:00",
-    holidays: "料金は当日見積もりのみ / Same-day quote only",
-    hoursNote: "料金は当日見積もりのみです。詳細住所はLINEでご案内します。",
-    hoursNoteEn:
-      "Pricing is quoted on the day. The exact address is shared on LINE.",
-    address: "詳細住所は LINE 公式アカウントにてご案内",
-    addressEn: "Contact our official LINE account for the exact address.",
-    facilities: "清潔な施術スペース・英語版同意書とアフターケアシート",
-    facilitiesEn: "Dedicated workspace · English consent and aftercare sheets",
-    description:
-      "三宮・元町の旅の途中に。小さなスタジオで、構図と余白に向き合う和のタトゥーを。",
-    descriptionEn:
-      "A small walk-in studio in Kobe, with a focus on composition, negative space and a design that belongs on your skin.",
-    hero: "/images/kobe-hero.webp",
-    image: "/images/kobe-studio.webp",
-    imageAlt: "tattoo studio domyの作業空間",
-    artistImage: "/images/kobe-process.webp",
-    artistText:
-      "桜・龍・波・漢字を起点に、肌の曲線に合わせて構図を提案。カウンセリングからアフターケアまで日本語・英語で対応します。",
-    artistEn:
-      "Sakura, dragon, wave and kanji, composed for your body. Consultation and aftercare are available in Japanese and English.",
-    channel: "LINE",
-    contact: "https://lin.ee/xlll0SV",
-    instagram: "",
-    source: "https://www.tattoo-studio-domy.com/",
-    company: "tattoo studio domy",
-    payments: "Visa / Mastercard / JCB / AMEX・QR・IC・現金",
   },
   {
     id: "kyoto",

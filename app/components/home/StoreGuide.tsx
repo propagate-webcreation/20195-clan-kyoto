@@ -16,7 +16,7 @@ export function StoreGuide() {
         aria-label="店舗へ移動"
         className="sticky top-[88px] z-30 border-y border-white/15 bg-[#0a0a0a] md:top-[100px]"
       >
-        <ul className="mx-auto grid max-w-[1600px] grid-cols-5">
+        <ul className="mx-auto grid max-w-[1600px] grid-cols-4">
           {STORE_GUIDE.map((store) => (
             <li key={store.id} className="min-w-0">
               <a
@@ -74,11 +74,9 @@ export function StoreGuide() {
                   alt={`${store.jp}店のロゴ`}
                   width={280}
                   height={280}
-                  className={`mb-6 h-auto ${store.id === "amemura" ? "w-[220px] bg-white md:w-[280px]" : store.id === "shinjuku" ? "w-[240px] md:w-[340px]" : "w-[140px] md:w-[180px]"}`}
+                  className="mb-6 h-auto w-[140px] md:w-[180px]"
                 />
-              ) : (
-                <p className="eyebrow mb-4 text-[#c8102e]">{store.city}</p>
-              )}
+              ) : null}
               <h2 className="display text-[40px] leading-none text-white md:text-[72px]">
                 {store.city}
                 <span className="text-[#c8102e]">.</span>

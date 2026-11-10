@@ -33,11 +33,11 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://kyoto-walkin-tattoo-studio.com"),
   title: {
     default:
-      "大阪・神戸・京都・アメ村のタトゥースタジオ | WALK-IN TATTOO STUDIO JAPAN",
+      "大阪・京都・渋谷・新宿のタトゥースタジオ | WALK-IN TATTOO STUDIO JAPAN",
     template: "%s | WALK-IN TATTOO STUDIO JAPAN",
   },
   description:
-    "大阪インバウンド、神戸、京都、アメ村のタトゥースタジオを1ページで案内します。新宿店は11月15日オープン予定です。各店舗の紹介、写真、問い合わせ先を掲載しています。",
+    "大阪、京都、渋谷のタトゥースタジオを1ページで案内します。新宿店は11月15日オープン予定です。営業時間は11:00–21:00、料金は来店当日に店頭で見積もりします。",
   alternates: {
     canonical: "/",
   },

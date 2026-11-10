@@ -27,7 +27,7 @@ export type StoreProfile = {
   opening: string;
 };
 
-function published(id: "osaka" | "kobe" | "kyoto") {
+function published(id: "osaka" | "kyoto") {
   const studio = STUDIOS.find((item) => item.id === id);
   if (!studio) {
     throw new Error(`Studio ${id} is missing from studios.ts`);
@@ -36,7 +36,6 @@ function published(id: "osaka" | "kobe" | "kyoto") {
 }
 
 const osaka = published("osaka");
-const kobe = published("kobe");
 const kyoto = published("kyoto");
 
 export const STORE_GUIDE: StoreProfile[] = [
@@ -77,36 +76,6 @@ export const STORE_GUIDE: StoreProfile[] = [
     opening: "",
   },
   {
-    id: kobe.id,
-    city: kobe.city,
-    jp: kobe.jp,
-    nav: "神戸",
-    name: kobe.name,
-    area: kobe.area,
-    hours: "11:00 — 21:00",
-    hoursNote:
-      "料金は当日見積もりのみです。詳細住所は公式LINEでご案内します。",
-    address: "詳細住所は公式LINEでご案内します。",
-    description: kobe.description,
-    services: [
-      "予約なしで来店できます",
-      "桜・龍・波・漢字を中心に、肌の曲線に合わせて構図を提案します",
-      "英語の同意書とアフターケアシートがあります",
-      "ワンポイントなど、短時間の施術も相談できます",
-      kobe.payments,
-    ],
-    hero: kobe.hero,
-    logo: "",
-    contacts: [
-      {
-        channel: "LINE",
-        href: kobe.contact,
-        label: "LINEで予約・来店相談",
-      },
-    ],
-    opening: "",
-  },
-  {
     id: kyoto.id,
     city: kyoto.city,
     jp: kyoto.jp,
@@ -136,21 +105,20 @@ export const STORE_GUIDE: StoreProfile[] = [
     opening: "",
   },
   {
-    id: "amemura",
-    city: "AMEMURA",
-    jp: "アメ村",
-    nav: "アメ村",
-    name: "DOMY TATTOO STUDIO（アメ村店）",
-    area: "大阪・アメリカ村 / 北堀江",
+    id: "shibuya",
+    city: "SHIBUYA",
+    jp: "渋谷",
+    nav: "渋谷",
+    name: "TOKYO SHIBUYA WALK-IN TATTOO STUDIO",
+    area: "東京・渋谷",
     hours: "11:00 — 21:00",
-    hoursNote: "料金は当日見積もりのみです。",
-    address:
-      "〒550-0014 大阪府大阪市西区北堀江1丁目2−16 おおきにサイタ サイタビルヂング 902",
-    description: "アメリカ村、北堀江の DOMY TATTOO STUDIO です。",
+    hoursNote: "料金は来店当日に店頭で見積もりします。",
+    address: "〒150-0002 東京都渋谷区渋谷1丁目8−5 グローリア宮益坂 303",
+    description: "渋谷の WALK-IN TATTOO STUDIO です。",
     services: [],
-    hero: "/images/amemura-studio.webp",
+    hero: "/images/shibuya-studio-v8.webp",
     heroNote: "写真は仮のイメージです。",
-    logo: "/images/amemura-logo.png",
+    logo: "",
     contacts: [],
     opening: "",
   },
@@ -168,7 +136,7 @@ export const STORE_GUIDE: StoreProfile[] = [
     services: [],
     hero: "/images/shinjuku-studio.webp",
     heroNote: "写真は仮のイメージです。",
-    logo: "/images/shinjuku-logo.png",
+    logo: "",
     contacts: [],
     opening: "11月15日オープン予定",
   },
