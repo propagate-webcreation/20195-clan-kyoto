@@ -4,6 +4,7 @@ export const NAVIGATION = [
   { href: "/#works", label: "Works", jp: "作品" },
   { href: "/#pricing", label: "Price", jp: "料金" },
   { href: "/#flow", label: "Guide", jp: "ご案内" },
+  { href: "/blog", label: "Journal", jp: "ブログ" },
   { href: "/#contact", label: "Contact", jp: "相談" },
 ] as const;
 

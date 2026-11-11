@@ -12,6 +12,7 @@ import {
   ConsultationForm,
   DirectContacts,
 } from "./components/contact/ConsultationForm";
+import { LatestPosts } from "./components/home/LatestPosts";
 import { MOTIFS } from "./config/studios";
 import { STORE_GUIDE } from "./config/store-guide";
 
@@ -48,6 +49,7 @@ export default async function Home({
       <WhyUs />
       <Concept />
       <TravelExperience />
+      <LatestPosts />
       <div id="contact">
         <ConsultationForm
           key={`${studio}-${motif}-${purpose}`}
