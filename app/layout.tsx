@@ -33,11 +33,11 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://kyoto-walkin-tattoo-studio.com"),
   title: {
     default:
-      "大阪・京都・渋谷・新宿のタトゥースタジオ | WALK-IN TATTOO STUDIO JAPAN",
+      "Tattoo studios in Osaka, Kyoto, Shibuya and Shinjuku | WALK-IN TATTOO STUDIO JAPAN",
     template: "%s | WALK-IN TATTOO STUDIO JAPAN",
   },
   description:
-    "大阪、京都、渋谷のタトゥースタジオを1ページで案内します。新宿店は11月15日オープン予定です。営業時間は11:00–21:00、料金は来店当日に店頭で見積もりします。",
+    "Walk-in tattoo studios in Osaka, Kyoto, Shibuya and Shinjuku. Shinjuku is scheduled to open on 15 November 2026. Open 11:00–21:00. Menu prices include tax.",
   alternates: {
     canonical: "/",
   },
@@ -50,7 +50,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="ja"
+      lang="en"
       className={`scroll-auto md:scroll-smooth ${anton.variable} ${inter.variable} ${notoSansJP.variable}`}
     >
       <body className="font-sans antialiased min-h-screen bg-[#0a0a0a] text-white selection:bg-[#c8102e] selection:text-white">

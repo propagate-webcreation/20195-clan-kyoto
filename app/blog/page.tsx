@@ -19,7 +19,7 @@ function pageHref(page: number, tag?: string): string {
 
 export async function generateMetadata({ searchParams }: { searchParams: SP }): Promise<Metadata> {
   const { tag } = await searchParams;
-  return { title: tag ? `${tag} の記事一覧` : "ブログ" };
+  return { title: tag ? `${tag} articles` : "Journal" };
 }
 
 export default async function BlogIndexPage({ searchParams }: { searchParams: SP }) {
@@ -39,25 +39,25 @@ export default async function BlogIndexPage({ searchParams }: { searchParams: SP
         <h1 className="display text-[clamp(3rem,10vw,9rem)] leading-[0.9]">
           JOURNAL<span className="text-[#c8102e]">.</span>
         </h1>
-        <p className="font-jp text-white/60 text-sm mt-6 tracking-[0.04em]">
-          スタジオからのお知らせ・タトゥーカルチャーの読みもの。
+        <p className="text-white/60 text-sm mt-6 tracking-[0.04em]">
+          Notes from the studio.
         </p>
         {tag ? (
-          <p className="font-jp mt-8 text-sm">
-            <span className="text-[#c8102e]">#{tag}</span> の記事一覧
+          <p className="mt-8 text-sm">
+            <span className="text-[#c8102e]">#{tag}</span>
             <Link href="/blog" className="ml-4 text-white/55 border-b border-white/25 hover:text-white">
-              絞り込みを解除
+              Clear filter
             </Link>
           </p>
         ) : null}
         <div className="hairline mt-12 mb-14" />
 
         {!result ? (
-          <p className="font-jp text-white/70">記事の読み込みに失敗しました</p>
+          <p className="text-white/70">Could not load articles.</p>
         ) : !result.success ? (
-          <p className="font-jp text-white/70">記事の読み込みに失敗しました（{result.error}）</p>
+          <p className="text-white/70">Could not load articles ({result.error}).</p>
         ) : result.posts.length === 0 ? (
-          <p className="font-jp text-white/70">記事がありません</p>
+          <p className="text-white/70">No articles yet.</p>
         ) : (
           <>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-14">
@@ -66,10 +66,10 @@ export default async function BlogIndexPage({ searchParams }: { searchParams: SP
               ))}
             </div>
             {result.pagination.totalPages > 1 && (
-              <nav aria-label="ページ送り" className="mt-20 flex items-center justify-center gap-8 text-[12px] tracking-[0.2em] uppercase">
+              <nav aria-label="Pagination" className="mt-20 flex items-center justify-center gap-8 text-[12px] tracking-[0.2em] uppercase">
                 {page > 1 ? (
                   <Link href={pageHref(page - 1, tag)} className="border border-white/40 px-5 py-3 hover:bg-white hover:text-black transition-colors">
-                    ← 前へ
+                    Previous
                   </Link>
                 ) : null}
                 <span className="tabular text-white/70">
@@ -77,7 +77,7 @@ export default async function BlogIndexPage({ searchParams }: { searchParams: SP
                 </span>
                 {page < result.pagination.totalPages ? (
                   <Link href={pageHref(page + 1, tag)} className="border border-white/40 px-5 py-3 hover:bg-white hover:text-black transition-colors">
-                    次へ →
+                    Next
                   </Link>
                 ) : null}
               </nav>

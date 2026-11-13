@@ -20,13 +20,13 @@ export async function LatestPosts() {
             <h2 className="display text-[clamp(2.6rem,8vw,8rem)] leading-[0.92]">
               JOURNAL<span className="text-[#c8102e]">.</span>
             </h2>
-            <p className="font-jp text-white/55 text-sm mt-4">スタジオからの最新記事</p>
+            <p className="text-white/55 text-sm mt-4">Latest notes from the studio</p>
           </div>
           <Link
             href="/blog"
             className="inline-flex items-center gap-2 border border-white text-white px-5 py-3 text-[11px] tracking-[0.15em] uppercase hover:bg-white hover:text-black transition-colors"
           >
-            一覧を見る / View all
+            View all
             <span className="block w-1.5 h-1.5 rounded-full bg-[#c8102e]" />
           </Link>
         </div>

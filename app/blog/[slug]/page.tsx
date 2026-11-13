@@ -45,7 +45,7 @@ export default async function ArticlePage({ params }: { params: Params }) {
     headline: article.title,
     datePublished: article.publishedDate,
     dateModified: article.metadata?.lastModified || article.publishedDate,
-    author: article.author ? { "@type": "Person", name: article.author } : undefined,
+    author: undefined,
     image: article.thumbnailUrl || undefined,
     mainEntityOfPage: `${BLOG_SITE_ORIGIN}/blog/${encodeURIComponent(slug)}`,
   };
@@ -62,8 +62,13 @@ export default async function ArticlePage({ params }: { params: Params }) {
         </h1>
         <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-[13px] text-[#6B6F78] font-jp">
           <time dateTime={article.publishedDate}>{formatBlogDate(article.publishedDate)}</time>
-          {article.author ? <span>{article.author}</span> : null}
-          {article.metadata?.readingTime ? <span>{article.metadata.readingTime}で読めます</span> : null}
+          {article.metadata?.readingTime ? (
+            <span>
+              {/^\d+/.test(article.metadata.readingTime)
+                ? `${article.metadata.readingTime.match(/\d+/)?.[0]} min read`
+                : article.metadata.readingTime}
+            </span>
+          ) : null}
         </div>
         {article.tags.length > 0 ? (
           <ul className="flex flex-wrap gap-2 mt-4">
@@ -86,7 +91,7 @@ export default async function ArticlePage({ params }: { params: Params }) {
           href="/blog"
           className="inline-flex items-center gap-2 border border-[#111318] text-[#111318] px-5 py-3 text-[12px] tracking-[0.18em] hover:bg-[#111318] hover:text-white transition-colors font-jp"
         >
-          ← 記事一覧に戻る
+          Back to journal
         </Link>
       </article>
     </div>

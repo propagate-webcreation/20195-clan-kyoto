@@ -1,8 +1,9 @@
-import { FaInstagram, FaLine, FaWhatsapp } from "react-icons/fa6";
+import { FaInstagram, FaLine, FaTiktok, FaWhatsapp } from "react-icons/fa6";
 
 const ICONS = {
   Instagram: FaInstagram,
   LINE: FaLine,
+  TikTok: FaTiktok,
   WhatsApp: FaWhatsapp,
 };
 

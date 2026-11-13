@@ -6,6 +6,7 @@ const contactClass: Record<ContactChannel, string> = {
   Instagram:
     "bg-gradient-to-r from-[#833ab4] to-[#fd1d1d] text-white hover:opacity-90",
   LINE: "bg-[#06C755] text-white hover:opacity-90",
+  TikTok: "bg-white text-black hover:opacity-90",
   WhatsApp: "bg-[#128C7E] text-white hover:opacity-90",
 };
 
@@ -13,7 +14,7 @@ export function StoreGuide() {
   return (
     <div id="stores">
       <nav
-        aria-label="店舗へ移動"
+        aria-label="Jump to a studio"
         className="sticky top-[88px] z-30 border-y border-white/15 bg-[#0a0a0a] md:top-[100px]"
       >
         <ul className="mx-auto grid max-w-[1600px] grid-cols-4">
@@ -44,7 +45,7 @@ export function StoreGuide() {
                   <div className="relative aspect-[4/5] w-full">
                     <Image
                       src={store.hero}
-                      alt={`${store.jp}店の店内と施術の様子`}
+                      alt={`${store.city} studio interior`}
                       fill
                       sizes="(min-width: 768px) 50vw, 100vw"
                       className="object-cover"
@@ -60,8 +61,8 @@ export function StoreGuide() {
                 <div className="flex aspect-[4/5] w-full items-end border border-white/15 bg-[#161616] p-6">
                   <p className="text-[14px] leading-relaxed text-white/80 md:text-[16px]">
                     {store.opening
-                      ? "写真は、お客様から届き次第こちらに掲載します。"
-                      : "店舗写真は、共有いただき次第こちらに掲載します。"}
+                      ? "A photo will be added when it is provided."
+                      : "A photo will be added when it is provided."}
                   </p>
                 </div>
               )}
@@ -71,7 +72,7 @@ export function StoreGuide() {
               {store.logo ? (
                 <Image
                   src={store.logo}
-                  alt={`${store.jp}店のロゴ`}
+                  alt={`${store.city} logo`}
                   width={280}
                   height={280}
                   className="mb-6 h-auto w-[140px] md:w-[180px]"
@@ -81,9 +82,11 @@ export function StoreGuide() {
                 {store.city}
                 <span className="text-[#c8102e]">.</span>
               </h2>
-              <p className="mt-4 text-[16px] font-bold leading-snug text-white md:text-[20px]">
-                {store.name}
-              </p>
+              {store.name ? (
+                <p className="mt-4 text-[16px] font-bold leading-snug text-white md:text-[20px]">
+                  {store.name}
+                </p>
+              ) : null}
               {store.opening ? (
                 <p className="mt-5 text-[18px] font-bold leading-snug text-[#c8102e] md:text-[26px]">
                   {store.opening}
@@ -94,7 +97,7 @@ export function StoreGuide() {
                 {store.area ? (
                   <div className="border-b border-white/15 py-4">
                     <dt className="text-[13px] text-white/60 md:text-[14px]">
-                      エリア
+                      Area
                     </dt>
                     <dd className="mt-1 text-[14px] leading-relaxed text-white md:text-[16px]">
                       {store.area}
@@ -103,10 +106,10 @@ export function StoreGuide() {
                 ) : null}
                 <div className="border-b border-white/15 py-4">
                   <dt className="text-[13px] text-white/60 md:text-[14px]">
-                    営業時間
+                    Hours
                   </dt>
                   <dd className="mt-1 text-[14px] leading-relaxed text-white md:text-[16px]">
-                    {store.hours || "営業時間は決まり次第掲載します。"}
+                    {store.hours || "Hours will be posted when they are confirmed."}
                   </dd>
                   {store.hoursNote ? (
                     <dd className="mt-2 text-[14px] leading-relaxed text-white/75 md:text-[16px]">
@@ -116,18 +119,36 @@ export function StoreGuide() {
                 </div>
                 <div className="border-b border-white/15 py-4">
                   <dt className="text-[13px] text-white/60 md:text-[14px]">
-                    料金
+                    Price
                   </dt>
                   <dd className="mt-1 text-[14px] leading-relaxed text-white md:text-[16px]">
-                    当日見積もりのみ
+                    <a href="#pricing" className="border-b border-white/40">
+                      See the price list. Prices include tax.
+                    </a>
                   </dd>
                 </div>
                 <div className="border-b border-white/15 py-4">
                   <dt className="text-[13px] text-white/60 md:text-[14px]">
-                    住所
+                    Address
                   </dt>
                   <dd className="mt-1 text-[14px] leading-relaxed text-white md:text-[16px]">
-                    {store.address || "住所は決まり次第掲載します。"}
+                    {store.address || "The address will be posted when it is confirmed."}
+                    {store.mapUrl ? (
+                      <a
+                        href={store.mapUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-3 flex min-h-12 w-full items-center justify-center gap-2 border border-white px-4 text-[13px] font-bold text-white md:w-fit md:text-[16px]"
+                      >
+                        <svg viewBox="0 0 24 24" className="size-5" aria-hidden="true">
+                          <path
+                            fill="currentColor"
+                            d="M12 2.2c-3.9 0-7 3.1-7 7 0 5.2 7 12.6 7 12.6s7-7.4 7-12.6c0-3.9-3.1-7-7-7Zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5Z"
+                          />
+                        </svg>
+                        Directions
+                      </a>
+                    ) : null}
                   </dd>
                 </div>
               </dl>
@@ -150,8 +171,8 @@ export function StoreGuide() {
               ) : (
                 <p className="mt-6 text-[14px] leading-relaxed text-white/75 md:text-[16px]">
                   {store.opening
-                    ? "問い合わせ先は、オープン情報と一緒に追加します。"
-                    : "問い合わせ先は、分かり次第この場所に掲載します。"}
+                    ? "Contact details will be added with the opening information."
+                    : "Contact details will be added when they are confirmed."}
                 </p>
               )}
 

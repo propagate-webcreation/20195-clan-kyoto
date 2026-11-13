@@ -26,7 +26,7 @@ export function Hero() {
       <div className="absolute inset-0 z-0">
         <Image
           src="/images/hero-kyoto.webp"
-          alt="京都の桜と和柄タトゥーのクローズアップ"
+          alt="Close-up of a Japanese-motif tattoo with cherry blossom"
           fill
           priority
           sizes="100vw"
@@ -108,14 +108,13 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.7 }}
-              className="font-jp text-sm sm:text-base text-white/80 leading-[1.9] tracking-[0.04em] max-w-xs"
+              className="text-sm sm:text-base text-white/80 leading-[1.9] tracking-[0.04em] max-w-xs"
             >
-              日本のタトゥーで、
-              <br />
-              旅の思い出を一生に刻む。
+              A Japanese tattoo, kept for the rest of the trip.
               <br />
               <span className="text-white/70 text-[13px] tracking-[0.04em] md:text-[14px]">
-                Osaka, Kyoto and Shibuya. Shinjuku opens November 15.
+                Osaka, Kyoto and Shibuya. Shinjuku is scheduled to open on 15
+                November 2026.
               </span>
             </motion.p>
 
@@ -132,7 +131,7 @@ export function Hero() {
                     d="M12 2.5 4.5 20.5l7.5-3.2 7.5 3.2L12 2.5Z"
                   />
                 </svg>
-                店舗を選ぶ
+                Choose a studio
               </Link>
             </motion.div>
           </div>

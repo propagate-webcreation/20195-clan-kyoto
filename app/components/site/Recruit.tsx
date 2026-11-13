@@ -8,31 +8,31 @@ import { SocialIcon } from "../shared/SocialIcon";
 const BENEFITS = [
   {
     num: "01",
-    title: "集客はお任せ",
-    body: "スタジオが集客・マーケティングを行うので、施術に集中できます。",
+    title: "Guests come to the studio",
+    body: "The studio handles guests and promotion, so you can focus on tattooing.",
   },
   {
     num: "02",
-    title: "売上の50%還元",
-    body: "頑張った分はしっかり還元。高収入が目指せます。",
+    title: "50% of sales",
+    body: "You keep 50% of sales.",
   },
   {
     num: "03",
-    title: "自由シフト制",
-    body: "1日〜何日でもOK! 自分のペースで働けます。",
+    title: "Choose your days",
+    body: "One day or many. Work at your own pace.",
   },
   {
     num: "04",
-    title: "働きやすい環境",
-    body: "おしゃれなスタジオで快適に施術ができます。",
+    title: "A studio built for work",
+    body: "Tattoo in a studio set up for the work.",
   },
 ];
 
 const REQUIREMENTS = [
-  "タトゥーの技術に自信がある方",
-  "お客様への接客・対応が得意な方",
-  "清潔感があり、責任感を持てる方",
-  "衛生管理・安全基準を守れる方",
+  "Confident in your tattooing",
+  "Comfortable talking with guests",
+  "Clean and reliable",
+  "Willing to follow hygiene and safety standards",
 ];
 
 export function Recruit() {
@@ -57,7 +57,7 @@ export function Recruit() {
         <div className="grid grid-cols-12 gap-y-8 gap-x-6">
           <div className="col-span-12 lg:col-span-7 min-w-0">
             <p className="text-[10px] tracking-[0.28em] uppercase text-[#c8102e] mb-6">
-              — タトゥーアーティスト募集
+              — Tattoo artists wanted
             </p>
             <h2 className="display text-[clamp(2.6rem,8vw,8rem)] leading-[0.92] tracking-[-0.018em]">
               ARTIST
@@ -68,15 +68,15 @@ export function Recruit() {
             </h2>
           </div>
           <div className="col-span-12 lg:col-span-5 lg:pt-6 min-w-0">
-            <p className="font-jp text-white text-[18px] md:text-[26px] font-bold leading-snug tracking-[0.04em]">
-              京都で働きませんか？
+            <p className="text-white text-[18px] font-bold leading-snug tracking-[0.04em] md:text-[26px]">
+              Work in Kyoto.
             </p>
             <div className="mt-5 sm:mt-6 border border-white/20 bg-black px-5 sm:px-6 py-3 sm:py-4 inline-block">
-              <p className="font-jp text-white text-[16px] md:text-[20px] font-bold leading-snug tracking-[0.06em]">
-                タトゥーアーティスト募集
+              <p className="text-white text-[16px] font-bold leading-snug tracking-[0.06em] md:text-[20px]">
+                Tattoo artists wanted
               </p>
             </div>
-            <p className="font-jp text-white/70 text-[13px] md:text-[16px] leading-relaxed mt-6 tracking-[0.04em] flex items-start gap-3">
+            <p className="text-white/70 text-[13px] leading-relaxed mt-6 tracking-[0.04em] flex items-start gap-3 md:text-[16px]">
               <Clock
                 size={20}
                 className="shrink-0 mt-[2px] text-[#c8102e]"
@@ -84,8 +84,8 @@ export function Recruit() {
                 aria-hidden
               />
               <span>
-                <span className="font-bold text-white">1日〜何日でもOK!</span>{" "}
-                自由シフト制 / あなたのペースで働けます。
+                <span className="font-bold text-white">One day or many.</span>{" "}
+                Choose your days and work at your own pace.
               </span>
             </p>
           </div>
@@ -102,10 +102,10 @@ export function Recruit() {
               <p className="text-[10px] tracking-[0.28em] uppercase text-[#c8102e] tabular mb-5">
                 — {item.num}
               </p>
-              <h3 className="font-jp text-white text-[18px] md:text-[26px] font-bold leading-snug">
+              <h3 className="text-white text-[18px] font-bold leading-snug md:text-[26px]">
                 {item.title}
               </h3>
-              <p className="font-jp text-white/60 text-[13px] md:text-[16px] leading-relaxed mt-4 flex-1">
+              <p className="text-white/60 text-[13px] leading-relaxed mt-4 flex-1 md:text-[16px]">
                 {item.body}
               </p>
             </ScrollReveal>
@@ -118,8 +118,8 @@ export function Recruit() {
             <p className="text-[10px] tracking-[0.28em] uppercase text-[#c8102e] mb-5">
               — Who we want
             </p>
-            <h3 className="font-jp text-white text-[18px] md:text-[26px] font-bold leading-snug">
-              こんな方を求めています！
+            <h3 className="text-white text-[18px] font-bold leading-snug md:text-[26px]">
+              Who we are looking for
             </h3>
             <ul className="mt-8 sm:mt-10 space-y-4">
               {REQUIREMENTS.map((item) => (
@@ -130,18 +130,18 @@ export function Recruit() {
                     strokeWidth={2}
                     aria-hidden
                   />
-                  <p className="font-jp text-white/75 text-[13px] md:text-[16px] leading-relaxed">
+                  <p className="text-white/75 text-[13px] leading-relaxed md:text-[16px]">
                     {item}
                   </p>
                 </li>
               ))}
             </ul>
             <div className="mt-8 sm:mt-10 border border-white/20 bg-white/[0.03] px-5 sm:px-6 py-4 sm:py-5 inline-block">
-              <p className="font-jp text-white text-[13px] md:text-[16px] font-bold leading-relaxed">
-                経験不問 / 国籍不問
+              <p className="text-white text-[13px] font-bold leading-relaxed md:text-[16px]">
+                Experience and nationality are open
               </p>
-              <p className="font-jp text-white/55 text-[10px] md:text-[14px] mt-1">
-                （ビザサポート相談可能）
+              <p className="text-white/55 text-[10px] mt-1 md:text-[14px]">
+                Visa support can be discussed
               </p>
             </div>
           </div>
@@ -151,13 +151,11 @@ export function Recruit() {
               <p className="text-[10px] tracking-[0.28em] uppercase text-[#c8102e] mb-5">
                 — Apply
               </p>
-              <p className="font-jp text-white text-[16px] md:text-[20px] font-bold leading-snug">
-                DMまたはInstagramメッセージで
-                <br />
-                お気軽にお問い合わせください！
+              <p className="text-white text-[16px] font-bold leading-snug md:text-[20px]">
+                Send a message on Instagram.
               </p>
-              <p className="font-jp text-white/55 text-[13px] md:text-[16px] leading-relaxed mt-6">
-                一緒に京都から、タトゥーの文化を広げていきましょう！
+              <p className="text-white/55 text-[13px] leading-relaxed mt-6 md:text-[16px]">
+                Tattoo with us from Kyoto.
               </p>
             </div>
             <div className="mt-10 sm:mt-12">
@@ -165,10 +163,10 @@ export function Recruit() {
                 href={SITE_CONFIG.instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-[#c8102e] text-white px-8 py-4 rounded-2xl text-[13px] md:text-[20px] font-bold hover:opacity-90 hover:shadow-md transition min-h-12"
+                className="inline-flex min-h-12 items-center gap-2 bg-[#c8102e] px-8 py-4 text-[13px] font-bold text-white hover:opacity-90 md:text-[20px]"
               >
                 <SocialIcon channel="Instagram" />
-                Instagram DMで応募する
+                Apply on Instagram
               </a>
               <p className="text-white/45 text-[10px] md:text-[14px] tracking-[0.12em] mt-4">
                 {SITE_CONFIG.instagramHandle}

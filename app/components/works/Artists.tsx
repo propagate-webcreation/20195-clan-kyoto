@@ -19,12 +19,9 @@ export function Artists() {
             <span className="text-white/35">YOUR STORY.</span>
           </SectionHeading>
           <div>
-            <p className="font-jp text-base leading-[1.95] text-white/70">
-              希望のモチーフと滞在日程をお聞かせください。店舗ごとの彫師に相談しながら、あなたに合うデザインを見つけていきます。
-            </p>
-            <p className="text-sm text-white/50 leading-[1.85] mt-4">
-              Meet the studio team. Ask about the artist working on your
-              preferred day and view their latest portfolio before choosing.
+            <p className="text-base leading-[1.95] text-white/70">
+              Tell the studio your motif and travel dates. Ask who is working,
+              and look at recent work before you choose.
             </p>
           </div>
         </div>
@@ -34,35 +31,32 @@ export function Artists() {
               <div className="relative aspect-[4/5]">
                 <Image
                   src={s.artistImage}
-                  alt={`${s.jp}の彫師の施術風景`}
+                  alt={`An artist at work in ${s.city}`}
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"
                   className="object-cover"
                 />
               </div>
               <p className="eyebrow mt-6 text-[#c8102e]">
-                {s.jp} / Studio team
+                Studio team
               </p>
               <h3 className="display text-4xl mt-4">
                 {s.city} ARTISTS
               </h3>
               <p className="text-white/65 text-sm leading-[2] mt-5">
-                {s.artistText}
-              </p>
-              <p className="text-white/50 text-sm leading-[1.85] mt-3">
                 {s.artistEn}
               </p>
               <Link
                 href={`/?studio=${s.id}&purpose=artist#contact`}
                 className="inline-block border-b border-white/50 pb-2 mt-6 text-sm hover:text-[#c8102e]"
               >
-                担当彫師・作品を問い合わせる ↗
+                Ask about artists and recent work ↗
               </Link>
             </article>
           ))}
         </div>
         <p className="border-t border-white/15 mt-12 pt-6 text-sm text-white/55 leading-[1.9]">
-          アーティストの出勤・指名可否は店舗ごとにご案内します。ご希望のアーティストがいる方は、お名前や作品画像を添えてご相談ください。
+          Each studio confirms who is working and whether you can request an artist. If you have someone in mind, send their name and a photo of their work.
         </p>
       </div>
     </section>

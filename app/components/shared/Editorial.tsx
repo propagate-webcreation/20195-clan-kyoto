@@ -135,7 +135,7 @@ export function ContactBanner({
       <div className="site-width py-20 sm:py-28 grid lg:grid-cols-[1.7fr_1fr] gap-10 items-end">
         <div>
           <p className="eyebrow mb-8 text-[#c8102e]">
-            — Walk in or message / JP · EN
+            — Walk in or message
           </p>
           <h2 className="display text-[clamp(3rem,7vw,7rem)] leading-[0.94]">
             COME GET INKED.
@@ -147,12 +147,11 @@ export function ContactBanner({
           <p
             className={`${englishOnly ? "" : "font-jp "}text-white/65 text-base leading-[1.9] mb-7`}
           >
-            {englishOnly
-              ? "Osaka, Kyoto and Shibuya. Shinjuku opens November 15. Choose a studio and contact that shop directly."
-              : "大阪、京都、渋谷。新宿は11月15日オープン予定です。行きたい店舗を選んで相談できます。"}
+            Osaka, Kyoto and Shibuya. Shinjuku is scheduled to open on 15
+            November 2026. Choose a studio and contact that shop directly.
           </p>
           <Link className="btn-square btn-blood" href="#stores">
-            {englishOnly ? "Choose a studio" : "店舗を選ぶ"}{" "}
+            Choose a studio{" "}
             <span aria-hidden>↗</span>
           </Link>
         </div>

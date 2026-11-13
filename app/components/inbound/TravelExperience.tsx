@@ -7,10 +7,10 @@ export function TravelExperience() {
     {
       city: "OSAKA",
       title: "Japanese motifs, between sights.",
-      alt: "温かな照明の大阪店の内観",
+      alt: "Osaka studio interior in warm light",
       image: "/images/studio-interior.webp",
       text: "From a small piece during your sightseeing to a full day of work. The Osaka studio is in the Shinsaibashi area.",
-      body: "The studio is open 11:00–21:00, and the price is quoted on the day.",
+      body: "The studio is open 11:00–21:00. Menu prices include tax.",
       id: "osaka",
     },
     {

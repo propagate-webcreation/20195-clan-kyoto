@@ -26,10 +26,11 @@ export function SiteFooter() {
         <div className="col-span-2 lg:col-span-4">
           <p className="eyebrow text-white/45 mb-5">— Our studios</p>
           <p className="text-[14px] leading-relaxed max-w-sm md:text-[16px]">
-            大阪、京都、渋谷。行きたい店舗から、そのまま問い合わせできます。
+            Osaka, Kyoto and Shibuya are open for walk-ins. Contact the studio
+            you want to visit.
           </p>
-          <p className="font-jp text-[14px] leading-relaxed text-white/75 mt-5">
-            新宿店は11月15日オープン予定です。
+          <p className="text-[14px] leading-relaxed text-white/75 mt-5 md:text-[16px]">
+            Shinjuku is scheduled to open on 15 November 2026.
           </p>
         </div>
         <div className="col-span-2 sm:col-span-1 lg:col-span-4">
@@ -39,7 +40,6 @@ export function SiteFooter() {
               <li key={n.href}>
                 <Link className="text-sm hover:text-[#c8102e]" href={n.href}>
                   {n.label}
-                  <span className="ml-3 text-xs text-white/45">{n.jp}</span>
                 </Link>
               </li>
             ))}
@@ -54,7 +54,7 @@ export function SiteFooter() {
                   href={`/#${store.id}`}
                   className="text-[14px] font-bold hover:text-[#c8102e] md:text-[16px]"
                 >
-                  {store.jp}
+                  {store.nav}
                 </Link>
                 {store.opening ? (
                   <p className="mt-2 text-[14px] leading-relaxed text-white/75">
@@ -83,12 +83,16 @@ export function SiteFooter() {
           {STORE_GUIDE.map((store) => (
             <div key={store.id}>
               <p className="eyebrow text-white/45 mb-3">{store.city}</p>
-              <p className="text-[14px] md:text-[16px]">{store.name}</p>
+              {store.name ? (
+                <p className="text-[14px] md:text-[16px]">{store.name}</p>
+              ) : (
+                <p className="text-[14px] md:text-[16px]">{store.opening}</p>
+              )}
               <Link
                 href={`/#${store.id}`}
                 className="text-[14px] text-white/75 inline-block border-b border-white/25 pb-1 mt-4"
               >
-                店舗情報を見る
+                Studio details
               </Link>
             </div>
           ))}
@@ -96,7 +100,7 @@ export function SiteFooter() {
       </div>
       <div className="border-t border-white/15">
         <div className="site-width py-9 text-center eyebrow text-white/55">
-          Made for travellers · 大阪 / 京都 / 渋谷 / 新宿 · Japan
+          Made for travellers · Osaka / Kyoto / Shibuya / Shinjuku · Japan
         </div>
       </div>
       <div className="border-t border-white/10 site-width py-6 flex flex-wrap justify-between gap-3 text-[10px] tracking-[0.15em] uppercase text-white/40">

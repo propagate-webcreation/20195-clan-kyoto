@@ -40,7 +40,7 @@ export function ImageDialog({
           type="button"
           onClick={onClose}
           className="absolute top-3 right-3 z-10 w-11 h-11 bg-black border border-white/40 text-xl"
-          aria-label="閉じる / Close"
+          aria-label="Close"
         >
           ×
         </button>

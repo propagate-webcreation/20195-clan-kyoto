@@ -1,82 +1,81 @@
 export const NAVIGATION = [
-  { href: "/#top", label: "Home", jp: "トップ" },
-  { href: "/#stores", label: "Studios", jp: "店舗" },
-  { href: "/#works", label: "Works", jp: "作品" },
-  { href: "/#pricing", label: "Price", jp: "料金" },
-  { href: "/#flow", label: "Guide", jp: "ご案内" },
-  { href: "/blog", label: "Journal", jp: "ブログ" },
-  { href: "/#contact", label: "Contact", jp: "相談" },
+  { href: "/#top", label: "Home" },
+  { href: "/#stores", label: "Studios" },
+  { href: "/#works", label: "Works" },
+  { href: "/#pricing", label: "Price" },
+  { href: "/#flow", label: "Guide" },
+  { href: "/blog", label: "Journal" },
+  { href: "/#contact", label: "Contact" },
 ] as const;
 
 export type StudioId = "osaka" | "kyoto";
 
-// Public information and existing contact destinations checked on 2026-09-10.
-// Headquarters addresses are not studio addresses. Do not infer missing details.
+// Public information checked against the materials supplied on 2026-11-13.
+// Do not infer a street address for Osaka. Company and personal names stay unpublished.
 export const STUDIOS = [
   {
     id: "osaka",
     city: "OSAKA",
-    jp: "大阪",
+    jp: "Inbound",
     name: "OSAKA WALK-IN TATTOO STUDIO JAPAN",
-    area: "大阪・心斎橋エリア",
+    area: "Shinsaibashi area, Osaka",
     areaEn: "Shinsaibashi area, Osaka",
     hours: "11:00 — 21:00",
-    holidays: "年中無休 / Open daily",
+    holidays: "Open daily",
     hoursNote:
-      "料金は当日見積もりのみです。最終受付と当日の空きはお問い合わせください。",
+      "Ask on WhatsApp or Instagram about last admission and same-day availability.",
     hoursNoteEn:
-      "Pricing is quoted on the day. Contact the studio for last admission and availability.",
-    address: "詳細住所は WhatsApp / Instagram DM にてご案内",
-    addressEn: "Message us for the exact address before visiting.",
-    facilities: "プライベートブース・日本人彫師が毎日常駐",
-    facilitiesEn: "Private booths · Japanese artists on duty daily",
+      "Ask on WhatsApp or Instagram about last admission and same-day availability.",
+    address: "The exact address is sent by WhatsApp or Instagram DM.",
+    addressEn: "The exact address is sent by WhatsApp or Instagram DM.",
+    facilities: "Private booths, with Japanese artists on duty daily",
+    facilitiesEn: "Private booths, with Japanese artists on duty daily",
     description:
-      "観光の合間のワンポイントから、一日かけて仕上げる和柄まで。心斎橋エリアで、日本のモチーフを旅の記憶に。",
+      "From a small piece between sights to a full-day Japanese motif, in the Shinsaibashi area.",
     descriptionEn:
-      "Japanese motifs in central Osaka, from a small keepsake during your sightseeing to a full-day piece.",
+      "From a small piece between sights to a full-day Japanese motif, in the Shinsaibashi area.",
     hero: "/images/hero-main.webp",
     image: "/images/studio-interior.webp",
-    imageAlt: "温かな照明のスタジオ内観",
+    imageAlt: "Studio interior in warm light",
     artistImage: "/images/artist-hands.webp",
     artistText:
-      "日本人彫師が毎日常駐。ファインラインから和柄まで、ご希望のデザインに合わせてご相談いただけます。",
+      "Japanese artists are on duty daily. Talk with the studio about fine line or traditional Japanese work.",
     artistEn:
-      "Japanese artists on duty daily. Talk to the studio about fine-line or traditional Japanese work.",
+      "Japanese artists are on duty daily. Talk with the studio about fine line or traditional Japanese work.",
     channel: "WhatsApp",
     contact: "https://wa.me/818025184492",
     instagram:
       "https://www.instagram.com/osaka_walkin_tattoo_studio?igsh=MTJ6Mm5ydDJ1Z3ViYg%3D%3D&utm_source=qr",
     source: "https://tattoo-studio-osaka.com/",
-    company: "株式会社 Clan②",
-    payments: "Visa / Mastercard / AMEX・各種電子決済",
+    payments: "Visa, Mastercard, AMEX and electronic payments",
   },
   {
     id: "kyoto",
     city: "KYOTO",
-    jp: "京都",
+    jp: "Kyoto",
     name: "KYOTO WALK-IN TATTOO STUDIO JAPAN",
-    area: "京都",
-    areaEn: "Kyoto, Japan",
+    area: "Shimogyo-ku, Kyoto",
+    areaEn: "Shimogyo-ku, Kyoto",
     hours: "11:00 — 21:00",
-    holidays: "年中無休 / Open daily",
-    hoursNote:
-      "料金は当日見積もりのみです。来店場所はInstagram DMでご案内します。",
-    hoursNoteEn:
-      "Pricing is quoted on the day. Message us on Instagram for directions.",
-    address: "詳細住所は Instagram DM にてご案内",
-    addressEn: "Message us on Instagram for the exact address before visiting.",
-    facilities: "3ブース完備・日本人彫師が毎日出勤",
-    facilitiesEn: "Three private booths · Japanese artists on duty daily",
+    holidays: "Open daily",
+    hoursNote: "Open daily, 11:00–21:00.",
+    hoursNoteEn: "Open daily, 11:00–21:00.",
+    address:
+      "401, Kawaramachi Kaikan, 253-1 Ichinomachi, Shimogyo-ku, Kyoto 600-8018",
+    addressEn:
+      "401, Kawaramachi Kaikan, 253-1 Ichinomachi, Shimogyo-ku, Kyoto 600-8018",
+    facilities: "Three booths, with Japanese artists on duty daily",
+    facilitiesEn: "Three booths, with Japanese artists on duty daily",
     description:
-      "桜・龍・波・漢字。京都で出会った日本の美意識を、一生残る思い出に。3つのブースでお迎えします。",
+      "Sakura, dragon, wave and kanji. A Japanese tattoo as a souvenir from Kyoto, with three booths.",
     descriptionEn:
-      "Sakura, dragon, wave and kanji. A Japanese tattoo as your souvenir from Kyoto, with three private booths.",
+      "Sakura, dragon, wave and kanji. A Japanese tattoo as a souvenir from Kyoto, with three booths.",
     hero: "/images/hero-kyoto.webp",
     image: "/images/studio-interior.webp",
-    imageAlt: "プライベートブースの内観",
+    imageAlt: "A private studio booth",
     artistImage: "/images/artist-portrait.webp",
     artistText:
-      "選別された日本人彫師が毎日出勤。ワンポイントから日本モチーフ・和テイストまで、旅程とご希望をうかがってご提案します。",
+      "Selected Japanese artists work daily, from one-point designs to Japanese motifs, with your travel plans in mind.",
     artistEn:
       "Selected Japanese artists work daily, from one-point designs to Japanese motifs, with your travel plans in mind.",
     channel: "Instagram",
@@ -85,8 +84,7 @@ export const STUDIOS = [
     instagram:
       "https://www.instagram.com/kyoto_walkin_tattoo_studio?igsh=MTZuZGNyNWZhNHJsNw%3D%3D&utm_source=qr",
     source: "https://20195-clan-kyoto.vercel.app/",
-    company: "株式会社 Clan③",
-    payments: "Visa / Mastercard / AMEX・各種電子決済",
+    payments: "Visa, Mastercard, AMEX and electronic payments",
   },
 ] as const;
 
@@ -95,53 +93,57 @@ export function getStudio(id: string | undefined) {
 }
 
 export const MOTIFS = [
-  "Sakura / 桜",
-  "Dragon / 龍",
-  "Wave / 波",
-  "Kanji / 漢字",
-  "Tiger / 虎",
-  "Hannya / 般若",
-  "Original / 持ち込み・オリジナル",
-  "Undecided / 相談して決めたい",
-];
+  "Sakura",
+  "Dragon",
+  "Wave",
+  "Kanji",
+  "Tiger",
+  "Hannya",
+  "Original design",
+  "Not sure yet",
+] as const;
+
 export const SIZES = [
-  "One point / 3cmまで",
-  "Card / 約8 × 5cm",
-  "Postcard / 約10 × 15cm",
-  "B5 / 約18 × 25cm",
-  "A4 / 約21 × 30cm以上",
-  "Undecided / 相談して決めたい",
-];
+  "One point / up to 3 cm",
+  "Card size / approx. 8 × 5 cm",
+  "Postcard size / approx. 10 × 15 cm",
+  "B5 size / approx. 18 × 25 cm",
+  "A4 size / approx. 21 × 30 cm",
+  "Custom / large project",
+  "Not sure yet",
+] as const;
+
+export const PRICE_NOTE = "Prices include tax.";
 
 export const PRICE_ROWS = [
   {
-    name: "ONE POINT",
-    size: "up to 3cm",
-    osaka: "¥8,000 – ¥15,000",
-    kyoto: "¥10,000 – ¥18,000",
+    name: "One point",
+    size: "up to 3 cm",
+    price: "¥10,000 – ¥20,000",
   },
   {
-    name: "CARD SIZE",
-    size: "approx. 8 × 5cm",
-    osaka: "¥20,000 – ¥25,000",
-    kyoto: "¥25,000 – ¥35,000",
+    name: "Card size",
+    size: "approx. 8 × 5 cm",
+    price: "¥25,000 – ¥45,000",
   },
   {
-    name: "POSTCARD SIZE",
-    size: "approx. 10 × 15cm",
-    osaka: "¥60,000 – ¥65,000",
-    kyoto: "¥65,000 – ¥75,000",
+    name: "Postcard size",
+    size: "approx. 10 × 15 cm",
+    price: "¥50,000 – ¥85,000",
   },
   {
-    name: "B5 SIZE",
-    size: "approx. 18 × 25cm",
-    osaka: "¥85,000 – ¥90,000",
-    kyoto: "¥90,000 – ¥100,000",
+    name: "B5 size",
+    size: "approx. 18 × 25 cm",
+    price: "¥90,000 – ¥145,000",
   },
   {
-    name: "A4 SIZE",
-    size: "approx. 21 × 30cm",
-    osaka: "¥100,000〜",
-    kyoto: "¥120,000〜",
+    name: "A4 size",
+    size: "approx. 21 × 30 cm",
+    price: "¥150,000 and up",
   },
 ] as const;
+
+export const CUSTOM_PRICE = {
+  name: "Custom / large projects",
+  note: "Price upon consultation",
+} as const;

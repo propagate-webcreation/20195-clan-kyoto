@@ -56,7 +56,7 @@ function HeaderContents({ pathname }: { pathname: string }) {
   return (
     <>
       <a href="#main-content" className="skip-link">
-        本文へ移動 / Skip to content
+        Skip to content
       </a>
       <header
         className="fixed top-0 inset-x-0 z-50 bg-[#0a0a0a] px-5 py-2 sm:px-8"
@@ -73,7 +73,7 @@ function HeaderContents({ pathname }: { pathname: string }) {
             />
           </Link>
           <nav
-            aria-label="メインナビゲーション"
+            aria-label="Main"
             className="hidden xl:flex items-center gap-7 text-white"
           >
             {NAVIGATION.map((item) => (
@@ -84,9 +84,6 @@ function HeaderContents({ pathname }: { pathname: string }) {
                 className={`site-nav-link text-[11px] tracking-[0.12em] uppercase hover:text-[#c8102e] transition-colors ${pathname === item.href ? "is-current text-[#c8102e]" : ""}`}
               >
                 <span className="block">{item.label}</span>
-                <span className="block text-[10px] tracking-[0.04em] mt-1.5 text-white/50">
-                  {item.jp}
-                </span>
               </Link>
             ))}
           </nav>
@@ -101,7 +98,7 @@ function HeaderContents({ pathname }: { pathname: string }) {
             <button
               ref={buttonRef}
               type="button"
-              aria-label={open ? "メニューを閉じる" : "メニューを開く"}
+              aria-label={open ? "Close menu" : "Open menu"}
               aria-expanded={open}
               aria-controls="mobile-menu"
               onClick={() => setOpen(!open)}
@@ -127,7 +124,7 @@ function HeaderContents({ pathname }: { pathname: string }) {
         className={`fixed inset-0 z-40 bg-[#0a0a0a] xl:hidden transition-[transform,visibility] duration-300 ${open ? "translate-y-0 visible" : "-translate-y-full invisible"}`}
       >
         <div className="h-full overflow-y-auto px-6 pt-28 pb-10">
-          <nav aria-label="モバイルナビゲーション">
+          <nav aria-label="Mobile">
             {NAVIGATION.map((item, i) => (
               <Link
                 key={item.href}
@@ -146,15 +143,12 @@ function HeaderContents({ pathname }: { pathname: string }) {
                   >
                     {item.label.toUpperCase()}
                   </span>
-                  <span className="text-white/50 text-xs block mt-2">
-                    {item.jp}
-                  </span>
                 </span>
               </Link>
             ))}
           </nav>
           <p className="eyebrow text-white/50 mt-8">
-            Osaka · Kyoto · Shibuya · Shinjuku / JP · EN
+            Osaka · Kyoto · Shibuya · Shinjuku
           </p>
         </div>
       </div>

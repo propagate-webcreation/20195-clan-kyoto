@@ -28,7 +28,6 @@ export function PostCard({ post, index }: { post: BlogPost; index: number }) {
       <div className="pt-5">
         <p className="text-[11px] tracking-[0.18em] text-white/50">
           {formatBlogDate(post.publishedDate)}
-          {post.author ? <span className="ml-3">/ {post.author}</span> : null}
         </p>
         <Link href={`/blog/${encodeURIComponent(post.slug)}`}>
           <h3 className="font-jp text-white text-lg sm:text-xl leading-[1.5] font-bold mt-3 group-hover:text-[#c8102e] transition-colors">
